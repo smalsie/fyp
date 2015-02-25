@@ -169,7 +169,7 @@ function Player(startX, startY, game, spriteSheet, spriteX, spriteY) {
 	
 		//The first part of this statement only returns true if the player is on an already defined collision
 		//platform as defined by Platform.checkCollision so the second part checks if the player is touching the
-		//borrom of the canvas, this will only work if the w
+		//bottom of the canvas, this will only work if the collideWorldBounds is set to true (it is by default)
 		return (this.character.body.touching.down || this.getY() == (this.game.gameHeight() - this.spriteY) )
 	
 	}

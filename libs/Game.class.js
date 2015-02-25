@@ -15,7 +15,7 @@ function Game(width, height,  name){
     if (typeof phaserType === 'undefined') { phaserType = Phaser.AUTO; }
     
     /** @member {Phaser.Game} */
-    this.world = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    this.world = new Phaser.Game(width, height, phaserType, '', { preload: preload, create: create, update: update });
     
     /**
 	* Game Height function that returns the height of the game, useful when 
