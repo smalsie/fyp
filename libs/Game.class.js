@@ -16,6 +16,8 @@ function Game(width, height,  name){
     
     /** @member {Phaser.Game} */
     this.world = new Phaser.Game(width, height, phaserType, '', { preload: preload, create: create, update: update });
+	/** @member {Phaser.Game} */
+    this.background;
     
     /**
 	* Game Height function that returns the height of the game, useful when 
@@ -36,6 +38,27 @@ function Game(width, height,  name){
     this.gameWidth = function(){
         return this.world.world.width;
     };
+        
+    /**
+	* Load an image to use as the background, can be used multiple times
+	* if you want different backgrounds in your game
+	*
+	* @param {String} key The name of the reference to give the image
+	* @param {String} image String reference of the image to use for the player
+	*/ 
+    this.loadBackgroundImage = function(key, image) {    
+    	this.world.load.image(key, image);    
+    };
+
+    /**
+	* Set the specified image as the background
+
+	* @param {String} key The name of the reference to give the image
+	* @param {String} image String reference of the image to use for the player
+	*/ 
+    this.setBackgroundImage = function() {
+    	return this.world.add.tileSprite(0, 0, 400, 300, 'background', 0);
+    }
    
     
 };

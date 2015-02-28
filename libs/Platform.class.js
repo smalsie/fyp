@@ -3,19 +3,18 @@ function Platform(name, image, game) {
 	this.name = name;
 	this.image = image;
 	this.game = game.world;
+
+  this.game.load.image(this.name, this.image);
 	
 	this.children = new Array();
 	
-	this.group = this.game.add.group();
+	this.group = this.game.add.group(null, '', true, false, 0);
 	
 	this.group.enableBody = true;
 	
-	this.game.load.image(name, image);
+	
   
-  	this.createPlatform = function(x, y, width, height) {
-  		
-
-  		 		
+  	this.createPlatform = function(x, y, width, height) {		
   		  	
   		if((typeof width === "string") || (width < 0)) {
   		
@@ -47,8 +46,9 @@ function Platform(name, image, game) {
   				
   			}
   			
-  			
-  			  		if((typeof x === "string") || (x < 0)) {
+  	  }
+
+  		if((typeof x === "string") || (x < 0)) {
   		
   			var newX = parseInt(x);
   			
@@ -90,14 +90,14 @@ function Platform(name, image, game) {
   			
   		}
   			
-  		}
   		
-  		this.children.push(this.group.create(x, y, name));
-  		
-  		var index = this.children.length-1
-  		
+  		this.children.push(this.group.create(x, y, this.name));
+
+      var index = this.children.length - 1;
+
   		this.children[index].width = width;
-  		this.children[index].height = height;
+      this.children[index].height = height;
+
   		
   		console.log("Width is :" + width + " and the height is: " + height);
   	
