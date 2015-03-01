@@ -124,7 +124,8 @@ var ourBullets;
   		  			
 		if(up.isDown()) {
 		
-			ourBullets.moveUp(player.getX(), player.getY()+10, -400);
+			var currentBullet = ourBullets.moveUp(player.getX(), player.getY()+10);
+      currentBullet.setVelocityY(-400);
 		
 		}
 

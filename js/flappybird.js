@@ -9,8 +9,6 @@ var keys;
 var player;
 var left, right, up, down;
 
-var enemy;
-
 var platforms;
 
 /////////////////////////////////////////////////////////////////
@@ -24,10 +22,7 @@ var platforms;
 		
 		platforms = new Platform("platforms", "img/platform.png", game);
 
-		//enemy = new Enemy(game);
-
-    ///enemy.loadImage('A', "img/mario.png");
-    //enemy.loadSpriteSheet('B', "img/mario-sprite.png", 17, 32);
+		
 
 	}
 	
@@ -48,7 +43,7 @@ var platforms;
     	
     	player.setGravity(100);
     	
-    	platforms.createPlatform("0", "100", "100", "5");
+    	platforms.createPlatform("0", "100", "50", "5");
     	
     	platforms.setImmovable(true);
     	
@@ -61,33 +56,11 @@ var platforms;
 
 		platforms.checkCollision(player);
 
-  		  			
-		if(up.isDown()) {
-		
+  		if(player.getX() < (game.gameWidth() /2))  			
+			player.moveX(1);
+  		
+  		if(up.isDown()) 		
 			player.moveY(-10);
-		
-			//player.playAnimation('right');
-		
-		} else if(left.isDown()) {
-
-  			
-  			player.moveX(-2);
-  			
-  			player.playAnimation('left');
-  		
-  		}
-  		else if(right.isDown()) {
-  			
-  			player.moveX(2);
-  			
-  			player.playAnimation('right');
-  			
-  		} else {
-  			
-  			player.stop();
-  		
-  		}
-  		
 		
 	}
 

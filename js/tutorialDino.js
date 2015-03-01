@@ -9,6 +9,8 @@ var keys;
 var player;
 var left, right, up, down;
 
+var trees;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -19,12 +21,14 @@ var left, right, up, down;
 		
 		player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/mario-sprite.png", 17, 32);
 				
+    trees = new Bullet(game, 'tree', "img/tree.png", 20000);
     
 	}
 	
 	function create() {
 		game.setBackgroundImage(0,0,1920,400);
 
+    trees.createBullets();
     
 		keys = new Keys(game);
 		left = keys.left;

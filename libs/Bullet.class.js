@@ -30,7 +30,7 @@ function Bullet(game, name, image, timeDelay){
 		this.group.setAll('checkWorldBounds', true);
 	}
 
-	this.moveUp = function(x, y, velocity) {
+	this.moveUp = function(x, y) {
 		
 		if(this.game.time.now > this.lastMoved) {
 
@@ -40,11 +40,19 @@ function Bullet(game, name, image, timeDelay){
 	        {
 	            //  And fire it
 	            bullet.reset(x, y);
-	            bullet.body.velocity.y = velocity;
+	            
 	            this.lastMoved = this.game.time.now + this.timeDelay;
 	        }
 
+	        return new GroupChild(bullet);
+
 		}
+
+		return new GroupChild(null);
+
+	}
+
+	this.setVelocityX = function(x) {
 
 	}
 
