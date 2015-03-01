@@ -55,9 +55,22 @@ function Game(width, height,  name){
 
 	* @param {String} key The name of the reference to give the image
 	* @param {String} image String reference of the image to use for the player
+	* CHANGEEEEEEEEE WIDTHSSSSSSSSSS
 	*/ 
-    this.setBackgroundImage = function() {
-    	return this.world.add.tileSprite(0, 0, 400, 300, 'background', 0);
+    this.setBackgroundImage = function(x, y, width, height) {
+    	this.background = this.world.add.tileSprite(x, y, width, height, 'background', 0);
+    }
+
+    this.scrollBackgroundX = function(x) {
+    	this.background.tilePosition.x += x;
+    }
+
+    this.scrollBackgroundY = function(y) {
+    	this.background.tilePosition.y += y;
+    }
+
+    this.getGameTime = function() {
+    	return this.world.time.now;
     }
    
     

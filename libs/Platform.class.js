@@ -3,7 +3,7 @@ function Platform(name, image, game) {
 	this.name = name;
 	this.image = image;
 	this.game = game.world;
-
+  
   this.game.load.image(this.name, this.image);
 	
 	this.children = new Array();
