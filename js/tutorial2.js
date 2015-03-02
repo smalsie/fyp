@@ -22,7 +22,7 @@ var platforms;
 		
 		player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
 		
-		platforms = new Platform("platforms", "img/platform.png", game);
+		platforms = new ReusableObject(game, 'platforms', "img/platform.png");
 
 		//enemy = new Enemy(game);
 
@@ -39,18 +39,17 @@ var platforms;
 		up = keys.up;
 		
 		down = new Key(keys.down);
-    	player.createSprite();
+    player.createSprite();
     	
-    	player.addAnimation('right', [0,1,2,3], 10);
+    player.addAnimation('right', [0,1,2,3], 10);
     	player.addAnimation('left', [7,8,9,10], 10);
     	
     	player.setStopFrame(5);
     	
     	player.setGravity(100);
     	
-    	platforms.createPlatform("0", "100", "100", "5");
-    	
-    	platforms.setImmovable(true);
+    	platforms.createWidthHeight(0, "100", "100", 32)
+      platforms.setAllImmovable(true);  
     	
     	
     	
@@ -59,12 +58,12 @@ var platforms;
 	
 	function update() {
 
-		platforms.checkCollision(player);
+		platforms.checkSimpleCollision(player);
 
   		  			
-		if(up.isDown()) {
+		if(up.isDown() && player.onGround()) {
 		
-			player.moveY(-10);
+			player.moveY(-100);
 		
 			//player.playAnimation('right');
 		

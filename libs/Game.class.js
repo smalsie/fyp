@@ -72,6 +72,10 @@ function Game(width, height,  name){
     this.getGameTime = function() {
     	return this.world.time.now;
     }
+
+    this.setPaused = function(paused) {
+    	this.world.paused = paused;
+    }
    
     
 };

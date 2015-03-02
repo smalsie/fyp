@@ -8,8 +8,10 @@ var game = new Game(600, 400, "Dino 2");
 var keys;
 var player;
 var left, right, up, down;
-
+var platforms;
 var trees;
+
+var lastTreeSpawn = 0;
 
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
@@ -19,16 +21,19 @@ var trees;
 	 
     game.loadBackgroundImage('background', "img/dino.png");
 		
-		player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/mario-sprite.png", 17, 32);
+		player = new Player(50,game.gameHeight()-100, game, "img/mario-sprite.png", 17, 32);
 				
-    trees = new Bullet(game, 'tree', "img/tree.png", 20000);
+    trees = new ReusableObject(game, 'tree', "img/tree.png");
+
+    platforms = new ReusableObject(game, 'platforms', "img/platform_dino.png");
     
 	}
 	
 	function create() {
 		game.setBackgroundImage(0,0,1920,400);
 
-    trees.createBullets();
+    trees.createReusables();
+    platforms.createReusables();
     
 		keys = new Keys(game);
 		left = keys.left;
@@ -41,52 +46,50 @@ var trees;
       player.createSprite();
     	
     	player.addAnimation('right', [0,1,2,3], 10);
-    	player.addAnimation('left', [7,8,9,10], 10);
-
      
     	player.setStopFrame(5);
     	
-    	//player.setGravity(100);
-    	    	   	
+    	player.setGravity(100);
+    	
+      player.playAnimation('right');  
+
+      platforms.createWidthHeight(0, "100", "100", 32).setImmovable(true);  	   	
+      //platforms.setImmovable(true);
 	}
 
 	
 	function update() {
 
-		
+
     game.scrollBackgroundX(-1);
 
-   
-    
-  		  			
-		if(up.isDown()) {
+    platforms.checkSimpleCollision(player);
+
+    trees.checkCollision(player, hitTree);
+
+    if(game.getGameTime() > lastTreeSpawn) {
+
+      var tree = trees.create(game.gameWidth()+10, game.gameHeight()-50);
+      tree.setVelocityX(-100);
+      
+      lastTreeSpawn = game.getGameTime() + 1000;
+  	}
+
+		if((up.isDown()) && (player.onGround())) {
 		
-			
+		  	player.moveY(-100);
 		
 		}
 
-    if(left.isDown()) {
-
-  			
-  			player.moveX(-2);
-  			
-  			player.playAnimation('left');
-  		
-  		}
-  		else if(right.isDown()) {
-  			
-  			player.moveX(2);
-  			
-  			player.playAnimation('right');
-  			
-  		} else {
-  			
-  			player.stop();
-  		
-  		}
   		
 		
 	}
+
+  function hitTree(tree, player) {
+
+    game.setPaused(true);
+
+  }
 
 
 	

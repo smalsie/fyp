@@ -15,7 +15,10 @@ var enemy;
 
 var enemyMovingRight = true;
 
-var ourBullets;
+var ourBullets, enemyBullets;
+
+var lastShotTime = 0;
+var enemyLastShotTime = 0;
 
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
@@ -33,7 +36,8 @@ var ourBullets;
 
     enemy.loadSpriteSheet('invader', "img/space_invader_sprite.png", 24, 16);
 
-    ourBullets = new Bullet(game, 'bullet', "img/bullet.png", 200);
+    ourBullets = new ReusableObject(game, 'bullet', "img/bullet.png");
+    enemyBullets = new ReusableObject(game, 'enemyBullet', "img/bullet.png");
 
 
 		
@@ -43,8 +47,9 @@ var ourBullets;
 	function create() {
 		game.setBackgroundImage(0, 0, 500, 350);
 
-    ourBullets.createBullets();
-    //
+    ourBullets.createReusables();
+    enemyBullets.createReusables();
+
     for(var i = 0; i < 10; i++) {
 
       for(var j = 0; j < 4; j++) {
@@ -64,9 +69,6 @@ var ourBullets;
 		left = keys.left;
 		right = keys.right;
 		up = keys.up;
-
-		
-		down = new Key(keys.down);
     	
       player.createSprite();
     	
@@ -91,6 +93,8 @@ var ourBullets;
     enemy.playAnimationOnAll('move');
 
     ourBullets.checkCollision(enemy, hitEnemy);
+
+    enemyBullets.checkCollision(player, hitPlayer);
 
     if(enemyMovingRight) {
 
@@ -122,10 +126,12 @@ var ourBullets;
 
     }
   		  			
-		if(up.isDown()) {
+		if((up.isDown()) && (game.getGameTime() > lastShotTime)) {
 		
-			var currentBullet = ourBullets.moveUp(player.getX(), player.getY()+10);
+			var currentBullet = ourBullets.create(player.getX(), player.getY()-20);
       currentBullet.setVelocityY(-400);
+
+      lastShotTime = game.getGameTime() + 200;
 		
 		}
 
@@ -148,7 +154,16 @@ var ourBullets;
   			player.stop();
   		
   		}
-  		
+
+      if(game.getGameTime() > enemyLastShotTime) {
+        
+        var randomEnemy = enemy.getRandom();
+        var enemyBullet = enemyBullets.create(randomEnemy.getX(), randomEnemy.getY()+20);
+        enemyBullet.moveTowards(player, 120);
+  		  
+        enemyLastShotTime = game.getGameTime() + 1500;
+
+      }
 		
 	}
 
@@ -156,6 +171,15 @@ var ourBullets;
 
     bullet.kill();
     enemy.kill();
+
+ } 
+
+  function hitPlayer(bullet, player) {
+
+    bullet.kill();
+    player.kill();
+
+    game.setPaused(true);
 
  } 
 

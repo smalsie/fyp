@@ -141,4 +141,9 @@ function Enemy(game){
 
   }
 
+  this.getRandom = function() {
+
+    return new GroupChild(this.group.getFirstAlive());
+  }
+
 };
