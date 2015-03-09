@@ -6,13 +6,15 @@
 * @constructor
 * @param {Game} game The created game object
 */
-function Enemy(game){
+function Enemy(game, name, spriteSheet, spriteX, spriteY){
 
    this.game = game.world;
 
    this.group = this.game.add.group(null, '', true, false, 0);
 
    this.children = new Array();
+
+   
 
    /**
    * Load in a new image for the enemy, use this if you don't want them to be animated
@@ -145,5 +147,7 @@ function Enemy(game){
 
     return new GroupChild(this.group.getFirstAlive());
   }
+  
+  this.loadSpriteSheet(name, spriteSheet, spriteX, spriteY);
 
 };

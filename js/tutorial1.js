@@ -17,6 +17,7 @@ function preload() {
 	
 		
 		player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
+    
 
 		
 
@@ -33,7 +34,7 @@ function preload() {
     	
     	player.addAnimation('right', [0,1,2,3], 10);
     	player.addAnimation('left', [7,8,9,10], 10);
-    	
+    	player.setScale(2,2);
     	player.setStopFrame(5);
     	
 	}

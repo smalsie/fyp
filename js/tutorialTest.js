@@ -28,13 +28,11 @@ var enemyLastShotTime = 0;
 	 
     game.loadBackgroundImage('background', "img/space-background.png");
 		
-		player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/mario-sprite.png", 17, 32);
+		player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/ship.png", 60, 32);
 		
 		platforms = new Platform('platforms', "img/platform.png", game);
 
-    enemy = new Enemy(game);
-
-    enemy.loadSpriteSheet('invader', "img/space_invader_sprite.png", 24, 16);
+    enemy = new Enemy(game, 'invader', "img/space_invader_sprite.png", 24, 16);
 
     ourBullets = new ReusableObject(game, 'bullet', "img/bullet.png");
     enemyBullets = new ReusableObject(game, 'enemyBullet', "img/bullet.png");
@@ -45,24 +43,21 @@ var enemyLastShotTime = 0;
 	}
 	
 	function create() {
-		game.setBackgroundImage(0, 0, 500, 350);
+		//game.setBackgroundImage(0, 0, 500, 350);
 
-    ourBullets.createReusables();
-    enemyBullets.createReusables();
+    for(var i = 0; i < 4; i++) {
 
-    for(var i = 0; i < 10; i++) {
+      for(var j = 0; j < 10; j++) {
 
-      for(var j = 0; j < 4; j++) {
-
-        var x = (i * 40);
-        var y = (j * 30);
+        var x = (j * 40);
+        var y = (i * 30);
 
         enemy.createEnemySpriteSheet('invader', x, y);
       }
 
     }
 
-    enemy.setGroupCoordinates(50,50);
+    //enemy.setGroupCoordinates(50,50);
    
 
 		keys = new Keys(game);
@@ -72,12 +67,10 @@ var enemyLastShotTime = 0;
     	
       player.createSprite();
     	
-    	player.addAnimation('right', [0,1,2,3], 10);
-    	player.addAnimation('left', [7,8,9,10], 10);
-
+    	
       enemy.addAnimationToAll('move', [0,1], 5);
     	
-    	player.setStopFrame(5);
+    	
     	
     	//player.setGravity(100);
     	    	   	
@@ -88,7 +81,7 @@ var enemyLastShotTime = 0;
 
 		platforms.checkCollision(player);
 
-    game.scrollBackgroundY(1);
+    //game.scrollBackgroundY(1);
 
     enemy.playAnimationOnAll('move');
 
@@ -129,9 +122,9 @@ var enemyLastShotTime = 0;
 		if((up.isDown()) && (game.getGameTime() > lastShotTime)) {
 		
 			var currentBullet = ourBullets.create(player.getX(), player.getY()-20);
-      currentBullet.setVelocityY(-400);
+      		currentBullet.setVelocityY(-400);
 
-      lastShotTime = game.getGameTime() + 200;
+      		lastShotTime = game.getGameTime() + 200;
 		
 		}
 
@@ -140,14 +133,11 @@ var enemyLastShotTime = 0;
   			
   			player.moveX(-2);
   			
-  			player.playAnimation('left');
   		
   		}
   		else if(right.isDown()) {
   			
-  			player.moveX(2);
-  			
-  			player.playAnimation('right');
+  			player.moveX(2); 
   			
   		} else {
   			
@@ -171,6 +161,8 @@ var enemyLastShotTime = 0;
 
     bullet.kill();
     enemy.kill();
+    
+    console.log(enemy);
 
  } 
 

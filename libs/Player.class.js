@@ -52,13 +52,17 @@ function Player(startX, startY, game, spriteSheet, spriteX, spriteY) {
 
 		this.character = this.world.add.sprite(this.startX, this.startY, 'player');
 		this.character.anchor.setTo(0.5, 0.5);
-		this.character.scale.setTo(2,2);
+		
 		this.world.physics.enable(this.character, Phaser.Physics.ARCADE);
 		
 		this.character.body.collideWorldBounds = true;
 		
 		this.character.body.gravity.y = 0;
 
+	}
+
+	this.setScale = function(x, y) {
+		this.character.scale.setTo(x,y);
 	}
 
 	/**
