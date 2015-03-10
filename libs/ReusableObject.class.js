@@ -205,6 +205,12 @@ function ReusableObject(game, name, image){
 	this.setImmovable = function(index, immovable) {
 		this.children[index].setImmovable(immovable);
 	}
+	
+	this.setAngle = function(angle) {
+	
+	
+	
+	}
 
 	this.createReusables();
 

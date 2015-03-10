@@ -20,6 +20,11 @@ var ourBullets, enemyBullets;
 var lastShotTime = 0;
 var enemyLastShotTime = 0;
 
+var fireSound;
+
+var explosions;
+
+var text;
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -38,12 +43,19 @@ var enemyLastShotTime = 0;
     enemyBullets = new ReusableObject(game, 'enemyBullet', "img/bullet.png");
 
 
+		fireSound = new Sound(game, "firesound", "sounds/phaser.mp3");
 		
+		explosions = new Animation(game, "explosion", "img/explode.png", 128,  128, 30);
+		
+		text = new UI(game, "Hello", 10, 10, "34px", "Arial", "#FFFFFF");
+//a = new Animation(game, "explosion", "img/explode.png", 128,128);
 
 	}
 	
 	function create() {
 		//game.setBackgroundImage(0, 0, 500, 350);
+		
+	fireSound.allowMultiple(true);
 
     for(var i = 0; i < 4; i++) {
 
@@ -70,7 +82,7 @@ var enemyLastShotTime = 0;
     	
       enemy.addAnimationToAll('move', [0,1], 5);
     	
-    	
+    	explosions.createAnimation();
     	
     	//player.setGravity(100);
     	    	   	
@@ -125,6 +137,11 @@ var enemyLastShotTime = 0;
       		currentBullet.setVelocityY(-400);
 
       		lastShotTime = game.getGameTime() + 200;
+      		
+      		fireSound.playAudio();
+      		
+      		
+      		
 		
 		}
 
@@ -160,11 +177,15 @@ var enemyLastShotTime = 0;
  function hitEnemy(bullet, enemy) {
 
     bullet.kill();
+    
+  explosions.playAnimation(enemy.body.x, enemy.body.y, false);
+    
     enemy.kill();
     
     console.log(enemy);
 
  } 
+
 
   function hitPlayer(bullet, player) {
 
