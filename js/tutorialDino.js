@@ -13,6 +13,8 @@ var trees;
 
 var lastTreeSpawn = 0;
 
+var jumpSound, bgNoise;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -21,11 +23,14 @@ var lastTreeSpawn = 0;
 	 
     game.loadBackgroundImage('background', "img/dino.png");
 		
-		player = new Player(50,game.gameHeight()-100, game, "img/mario-sprite.png", 17, 32);
+		player = new Player(50,game.gameHeight()-100, game, "img/dinosaur.png", 32, 32);
 				
     trees = new ReusableObject(game, 'tree', "img/tree.png");
 
     platforms = new ReusableObject(game, 'platforms', "img/platform_dino.png");
+    
+    jumpSound = new Sound(game, "jumpsound", "sounds/jump.mp3");
+    bgNoise = new Sound(game, "bgsound", "sounds/bg.mp3", 0.1, true);
     
 	}
 	
@@ -45,7 +50,7 @@ var lastTreeSpawn = 0;
     	
       player.createSprite();
     	
-    	player.addAnimation('right', [0,1,2,3], 10);
+    	player.addAnimation('right', [0,1,2], 10);
      
     	player.setStopFrame(5);
     	
@@ -53,8 +58,10 @@ var lastTreeSpawn = 0;
     	
       player.playAnimation('right');  
 
-      platforms.createWidthHeight(0, "100", "100", 32).setImmovable(true);  	   	
+      platforms.createWidthHeight(0, "100", "100", 35).setImmovable(true);  	   	
       //platforms.setImmovable(true);
+      
+      bgNoise.playAudio();
 	}
 
 	
@@ -69,15 +76,16 @@ var lastTreeSpawn = 0;
 
     if(game.getGameTime() > lastTreeSpawn) {
 
-      var tree = trees.create(game.gameWidth()+10, game.gameHeight()-50);
+      var tree = trees.create(game.gameWidth()+10, game.gameHeight()-70);
       tree.setVelocityX(-100);
       
-      lastTreeSpawn = game.getGameTime() + 1000;
+      lastTreeSpawn = game.getGameTime() + 2500;
   	}
 
 		if((up.isDown()) && (player.onGround())) {
 		
-		  	player.moveY(-100);
+		  	player.moveY(-125);
+		  	jumpSound.playAudio();
 		
 		}
 
