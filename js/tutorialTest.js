@@ -180,7 +180,7 @@ var text;
     
   explosions.playAnimation(enemy.body.x, enemy.body.y, false);
     
-    enemy.kill();
+   // enemy.kill();
     
     console.log(enemy);
 
@@ -190,7 +190,7 @@ var text;
   function hitPlayer(bullet, player) {
 
     bullet.kill();
-    player.kill();
+    //player.kill();
 
     game.setPaused(true);
 

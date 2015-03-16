@@ -8,13 +8,14 @@
 * @param {int} height Height of the game
 * @param {String} name The name of the game
 */
-function UI(game, string, x, y, size, font, colour) {
+function Text(game, string, x, y, size, font, colour) {
 
 
 	this.game = game.world;
 	this.size = size;
-	this
 	this.text = this.game.add.text(x, y, string, { font: size + " " + font, fill: colour });
+	
+	this.text.z = 0;
 	
 	this.changeColour = function(colour) {
 	
@@ -49,6 +50,12 @@ function UI(game, string, x, y, size, font, colour) {
 	this.setVisible = function(visible) {
 	
 		this.text.visible = visible;
+	
+	}
+	
+	this.changeText = function(text) {
+	
+		this.text.setText(text)
 	
 	}
 }

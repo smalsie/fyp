@@ -70,14 +70,16 @@ function ReusableObject(game, name, image){
 	}
 
 	this.checkCollision = function(obj, functionToUse) {
-
-  		if(obj instanceof Player)
+	
+		if(obj instanceof Player)  		
   			obj = obj.character;
-
+		
   		if(obj instanceof Enemy)
   			obj = obj.group;
 
 		this.game.physics.arcade.overlap(this.group, obj, functionToUse, null, this);
+			
+		
 	}
 
 	this.checkSimpleCollision = function(obj) {
@@ -85,7 +87,7 @@ function ReusableObject(game, name, image){
   		if(obj instanceof Player)
   			obj = obj.character;
   			
-  		this.game.physics.arcade.collide(obj, this.group);
+  		this.game.physics.arcade.collide(this.group, obj);
   	
   	}
 
