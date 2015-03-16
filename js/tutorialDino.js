@@ -41,12 +41,7 @@ var jumpSound, bgNoise;
     platforms.createReusables();
     
 		keys = new Keys(game);
-		left = keys.left;
-		right = keys.right;
-		up = keys.up;
-
-		
-		down = new Key(keys.down);
+		up = keys.createKey('A');
     	
       player.createSprite();
     	

@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////
 
 
-var game = new Game(600, 400, "Dino 2");
+var game = new Game(600, 400, "Dino 22");
 	
 var keys;
 var player;
@@ -51,12 +51,7 @@ var score = 0;
     platforms.createReusables();
     
 		keys = new Keys(game);
-		left = keys.left;
-		right = keys.right;
-		up = keys.up;
-
-		
-		down = new Key(keys.down);
+		up = keys.createKey('A');
     	
       player.createSprite();
     	

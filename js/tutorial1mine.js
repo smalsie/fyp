@@ -25,10 +25,8 @@ function preload() {
 	function create() {
 		
 		keys = new Keys(game);
-		left = keys.left;
-		right = keys.right;
-		
-		down = new Key(keys.down);
+		left = keys.createLeftKey();
+		right = keys.createRightKey();
     	player.createSprite();
     	
     	player.addAnimation('right', [0,1,2,3], 10);
