@@ -1,12 +1,15 @@
 /**
-* Game class which is at the core of the project
+* Animation class allowing you to put in random animations
 * @author Joshua Small [smalljh@aston.ac.uk]
 * @version 1.0
 *
 * @constructor
-* @param {int} width Width of the game
-* @param {int} height Height of the game
-* @param {String} name The name of the game
+* @param {Game} game The created game object
+* @param {String} name Name of the animation
+* @param {String} spriteSheet String reference of the spritesheet to use for the animation
+* @param {int} spriteX Width of one image of each frame in the spritesheet
+* @param {int} spriteY Height of one image of each frame in the spritesheet
+* @param {int} fps The frames per second to play the animation
 */
 function Animation(game, name, spritesheet, spriteX,  spriteY, fps) {
 

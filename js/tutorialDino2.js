@@ -71,7 +71,7 @@ var score = 0;
       platforms.createWidthHeight(0, "100", "100", 35).setImmovable(true);  	   	
       platforms.setAllImmovable(true);
       
-      text = new UI(game, "Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
+      text = new Text(game, "Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
       
       bgNoise.playAudio();
 	}
