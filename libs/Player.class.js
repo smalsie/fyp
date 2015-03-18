@@ -202,6 +202,8 @@ function Player(startX, startY, game, spriteSheet, spriteX, spriteY) {
 	
 	/**
 	* Allows you to specifically set the x coordinate of the player
+	*
+	* @param {int} x The x coordinate to set the player
 	*/
 	this.setX = function(x) {
 	
@@ -211,6 +213,8 @@ function Player(startX, startY, game, spriteSheet, spriteX, spriteY) {
 	
 	/**
 	* Allows you to specifically set the y coordinate of the player
+	*
+	* @param {int} y The y coordinate to set the player
 	*/
 	this.setY = function(y) {
 	
@@ -218,6 +222,7 @@ function Player(startX, startY, game, spriteSheet, spriteX, spriteY) {
 		
 	}
 	
+	//automatically load in the spritesheet
 	this.loadSpriteSheet(spriteSheet, spriteX, spriteY);
   
   

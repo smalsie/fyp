@@ -5,149 +5,287 @@
 *
 * @constructor
 * @param {Game} game The created game object
+* @param {String} name Name of the animation
+* @param {String} spriteSheet String reference of the spritesheet to use for the animation
+* @param {int} spriteX Width of one image of each frame in the spritesheet
+* @param {int} spriteY Height of one image of each frame in the spritesheet
 */
 function Enemy(game, name, spriteSheet, spriteX, spriteY){
+	/** @member {Phaser.Game} */
+	this.game = game.world;
+	/** @member {Phaser.Group} */
+	this.group = this.game.add.group(null, '', true, false, 0);
+	/** @member {Array} */
+	this.children = new Array();
+	/** @member {String} */
+	this.name = name;
+	/** @member {String} */
+	this.spriteSheet = spriteSheet;
+	/** @member {int} */
+	this.spriteX = spriteX;
+	/** @member {int} */
+	this.spriteY = spriteY;
 
-   this.game = game.world;
-
-   this.group = this.game.add.group(null, '', true, false, 0);
-
-   this.children = new Array();
-
-   
-
-   /**
-   * Load in a new image for the enemy, use this if you don't want them to be animated
-   *
-   * @param {String} name The name of the image for later reference
-   * @param {String} image String reference of the image to be used
-   */
-   this.loadImage = function(name, image) {
-       this.game.load.image(name, image);
-   }
-   /**
-   * Load in a new spritesheet
-   *    
-   * @param {String} name The name of the spriteSheet for later reference
-   * @param {String} spriteSheet String reference of the spritesheet to use for the player
-   * @param {int} spriteX Width of one image of the character in the spritesheet @see blahh
-   * @param {int} spriteY Height of one image of the character in the spritesheet @see blahh
-   */
-   this.loadSpriteSheet = function(name, spriteSheet, spriteX, spriteY) {
-
-       this.game.load.spritesheet(name, spriteSheet, spriteX, spriteY);
-
-   }
-
-   this.createEnemyImage = function(name, x, y) {
-
-   }   
-
-   this.createEnemySpriteSheet = function(name, x, y) {
-
-       
-       //this.enemy = this.game.add.sprite(this.startX, this.startY, name);
-        
-      this.children.push(this.group.create(x, y, name));
-      var index = this.children.length - 1;
-
-      this.children[index].anchor.setTo(0.5, 0.5);
-       //this.character.scale.setTo(2,2);
-      this.game.physics.enable(this.children[index], Phaser.Physics.ARCADE);
-       
-
-   }
+	//load in the image
+	this.game.load.spritesheet(this.name, this.spriteSheet, this.spriteX, this.spriteY);
 
 
-  /**
-  * Add an animation to the player
-  * 
-  * @param {String} name The name of an animation, required for referencing later.
-  * @param {int[]} frames An array of the frames thae animation playes in the order that they are played
-  * @param {int} fps The frame rate of the animetion, higher plays the animation faster
-  */
-  this.addAnimation = function(name, frames, fps, index) {
+	/**
+	* Create an enemy at a given position
+	* 
+	* @param {String} name The name of an animation, required for referencing later.
+	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
+	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	*/
+	this.createEnemySpriteSheet = function(x, y) {
+	  
+	  //add the enemy to the group
+	  var enemy = this.group.create(x, y, this.name);
+	  //add the new enemy into the arroay 
+	  this.children.push(enemy);
+		    
+	  //set the anchor of the enemy to its centre?	
+	  enemy.anchor.setTo(0.5, 0.5);
+	  //Set physics on the enemy
+	  this.game.physics.enable(enemy, Phaser.Physics.ARCADE);       
+
+	}
+
+	/**
+	* Add an animation to a specific enemy, for all enemies @see addAnimationToAll
+	* 
+	* @param {String} name The name of an animation, required for referencing later.
+	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
+	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {int} index the specific enemy to add the animation to
+	*/
+	this.addAnimation = function(name, frames, fps, index) {
+
+		this.children[index].animations.add(name, frames, fps, true);
+
+	}
+	
+	/**
+	* Add an animation to all enemies 
+	* 
+	* @param {String} name The name of an animation, required for referencing later.
+	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
+	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	*/
+	this.addAnimationToAll = function(name, frames, fps) {
+
+		//go through each enemy in the array and add an animation to it
+		for(var i = 0; i < this.children.length; i++)
+		  this.addAnimation(name, frames, fps, i);
+
+	}
+
+	/**
+	* Plays a predefined animation
+	*
+	* @param {String} name The name of the animation to play, 
+	* this animation must have been created with {@link Player#addAnimation} beforehand
+	*/
+	this.playAnimation = function(name, index) {
+
+		this.children[index].animations.play(name);
+
+	}
+
+	/**
+	* Plays a predefined animation
+	*
+	* @param {String} name The name of the animation to play, 
+	* this animation must have been created with {@link Player#addAnimation} beforehand
+	*/
+	this.playAnimationOnAll = function(name) {
+
+		for(var i = 0; i < this.children.length; i++)
+	  		this.playAnimation(name, i);
+
+	}
+
+	/**
+	* Get the Left X coordinate of the whole group
+	* Allows you to find how far over the group is
+	*
+	* @return {int} The left x coordinate of the group
+	*/
+	this.getGroupLeftX = function() {
+
+		var x = this.group.x;
+		
+		var halfWidth = this.getSpriteX /2;
+
+		return x - halfWidth;
+
+	}
+
+	/**
+	* Get the Right X coordinate of the whole group
+	* Allows you to find how far over the group is
+	*
+	* @return {int} The right x coordinate of the group
+	*/
+	this.getGroupRightX = function() {
+		
+		//TODO add explination!
+		var x = this.getGroupX();
+		
+		var halfWidth = this.getSpriteX /2;
+
+		var width = this.group.width;
+
+		return (x - halfWidth) + width;
+
+	}
+	
+	/**
+	* Get the Top Y coordinate of the whole group
+	* Allows you to find how high the group is
+	*
+	* @return {int} The top y coordinate of the group
+	*/
+	this.getGroupTopY = function() {
+	
+		var halfHeight = this.spriteY / 2;
+		
+		return this.group.y - halfHeight;	
+	
+	}
+	
+	
+	/**
+	* Get the Bottom Y coordinate of the whole group
+	* Allows you to find how low the group is
+	*
+	* @return {int} The bottom y coordinate of the group
+	*/
+	this.getGroupBottomY = function() {
+	
+		var halfHeight = this.spriteY / 2;
+		
+		var groupHeight = this.group.height;
+		
+		return (this.group.y - halfHeight) + groupHeight;
+	
+	
+	}
+
+		
+	/**
+	* Move the whole group along the x axis
+	*
+	* @param {int} x the amount to move the group along
+	*/
+	this.moveGroupX = function(x) {
+
+		this.group.x += x;
+		
+	}
+	
+	/**
+	* Move the whole group along the y axis
+	*
+	* @param {int} y the amount to move the group along
+	*/
+	this.moveGroupY = function(y) {
+
+		this.group.y += y;
+
+	}
+
+	/**
+	* Get the x coordinate of the group
+	*
+	* @return {int} the x coordinate of the group
+	*/
+	this.getGroupX = function() {
+	
+		return this.group.x;
+	
+	}
+
+	/**
+	* Get the y coordinate of the group
+	*
+	* @return {int} the y coordinate of the group
+	*/
+	this.getGroupY = function() {
+	
+		return this.group.y;
+	
+	}
+	
+	/**
+	* Sets the groups coordinates
+	*
+	* @param {int} x the x coordinate of the group
+	* @param {int} y the y coordinate of the group
+	*/
+	this.setGroupCoordinates = function(x, y) {
+
+		this.setGroupX(x);
+		this.setGroupY(y);
+
+	}
+	
+	/**
+	* Sets the groups x coordinate
+	*
+	* @param {int} x the x coordinate of the group
+	*/
+	this.setGroupX = function(x) {
+	
+		this.group.x = x;
+	
+	}
+	
+	/**
+	* Sets the groups y coordinate
+	*
+	* @param {int} y the y coordinate of the group
+	*/	
+	this.setGroupY = function(y) {
+	
+		this.group.y = y;
+	
+	}
+	
+	/**
+	* Get a random enemy, only works whilst 
+	* there are still enemies alive
+	*
+	* @return {GroupChild} A random enemy
+	*/
+	this.getRandom = function() {
+
+		return new GroupChild(this.group.getFirstAlive());
+		
+	}
+	
+	/**
+	* Get a specific enemy 
+	*
+	* @param {int} index The index number of the child to get
+	* @return {GroupChild} The selected enemy
+	*/	
+	this.getSpecificEnemy = function(index) {
+	
+		return new GroupChild(this.children[index]);
+	
+	}
+	
+	/**
+	* Set the angle of the group
+	*
+	* @param {int} angle the angle to set the group
+	*/		
+	this.setAngle = function(angle) {
+	
+		this.group.angle = angle;
+	
+	}
   
-    this.children[index].animations.add(name, frames, fps, true);
-  
-  }
-
-  this.addAnimationToAll = function(name, frames, fps) {
-
-    for(var i = 0; i < this.children.length; i++)
-      this.addAnimation(name, frames, fps, i);
-
-  }
-  
-  /**
-  * Plays a predefined animation
-  *
-  * @param {String} name The name of the animation to play, 
-  * this animation must have been created with {@link Player#addAnimation} beforehand
-  */
-  this.playAnimation = function(name, index) {
-  
-    this.children[index].animations.play(name);
-  
-  }
-
-  /**
-  * Plays a predefined animation
-  *
-  * @param {String} name The name of the animation to play, 
-  * this animation must have been created with {@link Player#addAnimation} beforehand
-  */
-  this.playAnimationOnAll = function(name) {
-  
-    for(var i = 0; i < this.children.length; i++)
-      this.playAnimation(name, i);
-  
-  }
-
-  this.getGroupLeftX = function() {
-
-    var x = this.group.x;
-
-    //var width = this.group.getLocalBounds().width;
-
-    return x + (this.group.getLocalBounds().x);
-
-  }
-
-  this.getGroupRightX = function() {
-
-    var x = this.group.x;
-
-    var width = this.group.width;
-
-    return x + width + (this.group.getLocalBounds().x);
-
-  }
-
-  this.moveGroupX = function(x) {
-
-    this.group.x += x;
-
-  }
-
-  this.moveGroupY = function(y) {
-
-    this.group.y += y;
-
-  }
-
-  this.setGroupCoordinates = function(x, y) {
-
-    this.group.x = x;
-    this.group.y = y;
-
-  }
-
-  this.getRandom = function() {
-
-    return new GroupChild(this.group.getFirstAlive());
-  }
-  
-  this.loadSpriteSheet(name, spriteSheet, spriteX, spriteY);
 
 };

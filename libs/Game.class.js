@@ -55,24 +55,45 @@ function Game(width, height,  name){
 
 	* @param {String} key The name of the reference to give the image
 	* @param {String} image String reference of the image to use for the player
-	* CHANGEEEEEEEEE WIDTHSSSSSSSSSS
+	* @param {int} width The width of the image, should be bigger then the canvas if scrolling
+	* @param {int} height The height of the image, should be bigger then the canvas if scrolling
 	*/ 
     this.setBackgroundImage = function(x, y, width, height) {
     	this.background = this.world.add.tileSprite(x, y, width, height, 'background', 0);
     }
-
+	
+	/**
+	* Scoll the background along the x axis
+	*
+	* @param {int} x the amount to scroll the background by along the x axis
+	*/
     this.scrollBackgroundX = function(x) {
     	this.background.tilePosition.x += x;
     }
 
+	/**
+	* Scoll the background along the y axis
+	*
+	* @param {int} y the amount to scroll the background by along the y axis
+	*/
     this.scrollBackgroundY = function(y) {
     	this.background.tilePosition.y += y;
     }
 
+	/**
+	* Get the current game time in miliseconds
+	*
+	* @return {int} the current game time in miliseconds
+	*/
     this.getGameTime = function() {
     	return this.world.time.now;
     }
-
+	
+	/**
+	* Set if the game should be paused or not
+	* 
+	* @param {boolean} if the game should be paused
+	*/
     this.setPaused = function(paused) {
     	this.world.paused = paused;
     }

@@ -47,7 +47,7 @@ var text;
 		
 		explosions = new Animation(game, "explosion", "img/explode.png", 128,  128, 30);
 		
-		text = new UI(game, "Hello", 10, 10, "34px", "Arial", "#FFFFFF");
+		text = new Text(game, "Hello", 10, 10, "34px", "Arial", "#FFFFFF");
 //a = new Animation(game, "explosion", "img/explode.png", 128,128);
 
 	}
@@ -64,12 +64,12 @@ var text;
         var x = (j * 40);
         var y = (i * 30);
 
-        enemy.createEnemySpriteSheet('invader', x, y);
+        enemy.createEnemySpriteSheet(x, y);
       }
 
     }
 
-    //enemy.setGroupCoordinates(50,50);
+    enemy.setGroupCoordinates(50,50);
    
 
 		keys = new Keys(game);
@@ -164,7 +164,7 @@ var text;
 
       if(game.getGameTime() > enemyLastShotTime) {
         
-        var randomEnemy = enemy.getRandom();
+        var randomEnemy = enemy.getSpecificEnemy(0);
         var enemyBullet = enemyBullets.create(randomEnemy.getX(), randomEnemy.getY()+20);
         enemyBullet.moveTowards(player, 120);
   		  

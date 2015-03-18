@@ -5,19 +5,22 @@
 *
 * @constructor
 * @param {Game} game The created game object
+* @param {String} name The name of the ReusableObject
+* @param {String} image String reference of an image to use
 */
 function ReusableObject(game, name, image){
 
+	/** @member {Phaser.Game} */
 	this.game = game.world;
-
+	/** @member {Game} */
 	this.parentGame = game;
-
+	/** @member {Phaser.Group} */
 	this.group = this.game.add.group(null, '', true, false, 0);
-
+	/** @member {String} */
 	this.name = name;
-
+	/** Load the image */
 	this.game.load.image(this.name, image);
-
+	/** @member {Array} */
 	this.children = new Array();
 
 
@@ -208,14 +211,19 @@ function ReusableObject(game, name, image){
 		this.children[index].setImmovable(immovable);
 	}
 	
-	this.setAngle = function(angle) {
+	this.setAngle = function(index, angle) {
 	
+		this.children[index].angle = angle;
 	
+	}
+	
+	this.setAllAngle = function(angle) {
+	
+		for(var i = 0; i < this.children.length; i++)
+			this.setAngle(i, angle);
 	
 	}
 
 	this.createReusables();
-
-
 
 }

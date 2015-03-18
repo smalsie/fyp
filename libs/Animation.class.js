@@ -13,34 +13,58 @@
 */
 function Animation(game, name, spritesheet, spriteX,  spriteY, fps) {
 
-
+	/** @member {Phaser.Game} **/
 	this.game = game.world;
+	/** @member {String} **/
 	this.name = name;
+	/** @member {int} **/
 	this.fps = fps;
+	/** @member {Phaser.Group} **/
 	this.group;
 	
-	this.animation = this.game.load.spritesheet(this.name, spritesheet, spriteX, spriteY);
+	//load in the spritesheet
+	this.game.load.spritesheet(this.name, spritesheet, spriteX, spriteY);
 	
+   /**
+   * Create the animations and load them into memory
+   */
 	this.createAnimation = function() {
 	
+		//create a group to store the animations, this aids performance
 		this.group = game.world.add.group();
+		//create multiple to store in memory, helps when many are used at once
 		this.group.createMultiple(30, this.name);
-		this.group.forEach(this.setupInvader, this);
+		//call the setupAnimation on each one
+		this.group.forEach(this.setupAnimation, this);
 	
 	}
 	
-	this.playAnimation = function(x, y, loop) {
+	/**
+	* Play the animation
+	*
+	* @param {int} x the x position to place the animation
+	* @param {int} y the y position to place the animation
+	* @param {boolean} loop if the animation should loop endlessly
+	*
+	* @return {Phaser. Animation} The animation
+	*/
+	this.playAnimation = function(x, y, loop) {		
 	
-		
-	
+		//get an animation from the group
 		var an = this.group.getFirstExists(false);
+		//set its position
 		an.reset(x, y);
-		an.play(this.name, 30, loop, true);
+		//play the animation
+		an.play(this.name, this.fps, loop, true);
+		
+		return an;
 	
 	} 
 
-
-	this.setupInvader = function (invader) {
+	/**
+	* Set up the animation
+	*/
+	this.setupAnimation = function (invader) {
 
 		invader.anchor.x = 0.5;
 		invader.anchor.y = 0.5;
