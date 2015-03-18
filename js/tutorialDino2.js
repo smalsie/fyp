@@ -63,7 +63,7 @@ var score = 0;
     	
       player.playAnimation('right');  
 
-      platforms.createWidthHeight(0, "100", "100", 35).setImmovable(true);  	   	
+      platforms.create(0, "100", "100", 35).setImmovable(true);  	   	
       platforms.setAllImmovable(true);
       
       text = new Text(game, "Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");

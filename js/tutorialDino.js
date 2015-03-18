@@ -53,7 +53,7 @@ var jumpSound, bgNoise;
     	
       player.playAnimation('right');  
 
-      platforms.createWidthHeight(0, "100", "100", 35).setImmovable(true);  	   	
+      platforms.create(0, "100", "100", 35).setImmovable(true);  	   	
       //platforms.setImmovable(true);
       
       bgNoise.playAudio();
