@@ -33,9 +33,8 @@ function Enemy(game, name, spriteSheet, spriteX, spriteY){
 	/**
 	* Create an enemy at a given position
 	* 
-	* @param {String} name The name of an animation, required for referencing later.
-	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
-	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {int} x X position of the enemy
+	* @param {int} y Y position of the enemy
 	*/
 	this.createEnemySpriteSheet = function(x, y) {
 	  

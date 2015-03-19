@@ -2,7 +2,7 @@
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
 //main game object
-var game = new Game(800, 600, "Tutorial 2");
+var game = new Game(800, 600, "Tutorial 1");
 //player object
 var player;
 //input keys

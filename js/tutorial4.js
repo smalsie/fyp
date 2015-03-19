@@ -2,7 +2,7 @@
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
 //main game object
-var game = new Game(800, 600, "Tutorial 2");
+var game = new Game(800, 600, "Tutorial 4");
 //player object
 var player;
 //input keys
@@ -14,12 +14,12 @@ var right;
 ///////////////////////////////////////////////////////////////
 
 function preload() {
+	 
+    //load in the player		
+	player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/ship.png", 60, 32);
 	
-	//load in the player
-	player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
-
 }
-
+	
 function create() {
 	
 	//create the player
@@ -28,12 +28,11 @@ function create() {
 	keys = new Keys(game);
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
-
+	
 }
 
-
+	
 function update() {
-
 	//move left
 	if(left.isDown()) {
 		
@@ -46,8 +45,5 @@ function update() {
 		player.moveX(2);
 		
 	}
-	
+		
 }
-
-	
-

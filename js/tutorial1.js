@@ -11,17 +11,17 @@ function preload() {
 	
 	
 
-	}
-	
-	function create() {
-		
-	
-	}
+}
 
+function create() {
 	
-	function update() {
 
-	}
+}
+
+
+function update() {
+
+}
 
 	
 
