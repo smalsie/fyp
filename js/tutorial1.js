@@ -3,6 +3,8 @@
 ///////////////////////////////////////////////////////////////
 var game = new Game(800, 600, "Tu");
 
+var bg1 = true;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -12,7 +14,8 @@ function preload() {
 
 player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
 
-
+game.loadBackgroundImage('background', "img/dino.png");
+game.loadBackgroundImage('space', "img/space-background.png");
 }
 
 function create() {
@@ -36,7 +39,7 @@ function create() {
 
 	e = keys.createKey("e");
 
-
+	game.setBackgroundImage(0,0,1920,400, 'background');
 
 
 }
@@ -59,7 +62,16 @@ function update() {
 	else
 		player2.setVelocityX(0);
 
-	if(e.isDown())
-		game.swap(player,  player2);
+	if(e.onClick()) {
 
+		if(bg1) {
+
+			game.setBackgroundImage(0,0,1920,400, 'space');
+			bg1 = false;
+		} else {
+			game.setBackgroundImage(0,0,1920,400, 'background');
+			bg1 = true;
+		}
+
+	}
 }

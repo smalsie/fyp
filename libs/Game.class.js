@@ -58,8 +58,8 @@ function Game(width, height,  name){
 	* @param {int} width The width of the image, should be bigger then the canvas if scrolling
 	* @param {int} height The height of the image, should be bigger then the canvas if scrolling
 	*/
-    this.setBackgroundImage = function(x, y, width, height) {
-    	this.background = this.world.add.tileSprite(x, y, width, height, 'background', 0);
+    this.setBackgroundImage = function(x, y, width, height, key) {
+    	this.background = this.world.add.tileSprite(x, y, width, height, key, 0);
     }
 
 	/**
