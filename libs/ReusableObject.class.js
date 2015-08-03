@@ -29,7 +29,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	/** @member {String} */
 	this.name = "ReusableObject" + ReusableObject.counter;
 	/** Load the image */
-	this.game.load.spritesheet(this.name, image, spriteX, spriteY);
+	this.body = this.game.load.spritesheet(this.name, image, spriteX, spriteY);
 	/** @member {Array} */
 	this.children = new Array();
 
