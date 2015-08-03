@@ -19,6 +19,8 @@ function Game(width, height,  name){
 	/** @member {Phaser.Game} */
     this.background;
 
+    this.backgrounds = [];
+
     /**
 	* Game Height function that returns the height of the game, useful when
 	* a percentage is give as the size in pixels will be returned
@@ -47,7 +49,14 @@ function Game(width, height,  name){
 	* @param {String} image String reference of the image to use for the player
 	*/
     this.loadBackgroundImage = function(key, image) {
-    	this.world.load.image(key, image);
+
+        if(this.backgrounds.indexOf(key) != -1) {
+            throw "Error";
+        } else {
+            this.backgrounds.push(key);
+        }
+
+        this.world.load.image(key, image);
     };
 
     /**

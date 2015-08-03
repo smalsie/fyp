@@ -15,7 +15,7 @@ function preload() {
 player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
 
 game.loadBackgroundImage('background', "img/dino.png");
-game.loadBackgroundImage('space', "img/space-background.png");
+game.loadBackgroundImage('background', "img/space-background.png");
 }
 
 function create() {
