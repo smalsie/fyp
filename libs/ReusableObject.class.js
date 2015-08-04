@@ -61,8 +61,6 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	*/
 	this.create = function(x, y, width, height) {
 
-
-
 		width = width || 0;
 		height = height || 0;
 
@@ -239,7 +237,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
   		if(obj instanceof Player)
   			obj = obj.character;
 
-  		if(obj instanceof Enemy)
+  		if(obj instanceof ReusableObject)
   			obj = obj.group;
 
   		this.game.physics.arcade.collide(this.group, obj);

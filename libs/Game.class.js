@@ -51,7 +51,9 @@ function Game(width, height,  name){
     this.loadBackgroundImage = function(key, image) {
 
         if(this.backgrounds.indexOf(key) != -1) {
-            throw "Error";
+
+            throw new Error("You have already used the key \"" + key + "\"! Please use another one!\nCalled from your funtion: " + arguments.callee.caller.name);
+
         } else {
             this.backgrounds.push(key);
         }
@@ -114,11 +116,11 @@ function Game(width, height,  name){
 	*/
    this.swap = function(obj1, obj2) {
 
-       var obj1ZIndex = obj1.group.z;
-       var obj2ZIndex = obj2.group.z;
+        var obj1ZIndex = obj1.group.z;
+        var obj2ZIndex = obj2.group.z;
 
-       var obj1Index = obj1ZIndex - 1;
-       var obj2Index = obj2ZIndex - 1;
+        var obj1Index = obj1ZIndex - 1;
+        var obj2Index = obj2ZIndex - 1;
 
         var childA = game.world.stage.children[obj1Index];
         var childB = game.world.stage.children[obj2Index];

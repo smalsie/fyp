@@ -15,7 +15,7 @@ function preload() {
 player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
 
 game.loadBackgroundImage('background', "img/dino.png");
-game.loadBackgroundImage('background', "img/space-background.png");
+game.loadBackgroundImage('space', "img/space-background.png");
 }
 
 function create() {
@@ -25,14 +25,16 @@ function create() {
 	player.create(10,10);
 
 	//player.setStopFrame(5);
-	//player.create(10,100);
-	//player.create(100,100);
+	player.create(10,100);
+	player.create(100,100);
 	//player.addAnimation('left', [7,8,9,10], 10);
 
 	keys = new Keys(game);
 
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
+	up = keys.createUpKey();
+	down = keys.createDownKey();
 
 	a = keys.createKey("a");
 	d = keys.createKey("d");
@@ -48,6 +50,8 @@ function create() {
 function update() {
 	//player.playAnimation('left');
 
+	player.checkSimpleCollision(player2);
+
 	if(right.isDown())
 		player.setVelocityX(10);
 	else if(left.isDown())
@@ -55,12 +59,21 @@ function update() {
 	else
 		player.setVelocityX(0);
 
+	if(up.isDown())
+		player.setVelocityY(-10);
+	else if(down.isDown())
+		player.setVelocityY(10);
+	else
+		player.setVelocityY(0);
+
 	if(d.isDown())
 		player2.setVelocityX(10);
 	else if(a.isDown())
 		player2.setVelocityX(-10);
 	else
 		player2.setVelocityX(0);
+
+	player2.setVelocityY(0);
 
 	if(e.onClick()) {
 

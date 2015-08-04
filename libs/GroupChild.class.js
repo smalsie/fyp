@@ -37,6 +37,15 @@ function GroupChild(child){
 			this.child.body.velocity.y = y;
 	}
 
+	this.setGravityX = function(gravityX) {
+		this.child.body.gravity.x = gravityX;
+	}
+
+	this.setGravityY = function(gravityY) {
+		this.child.body.gravity.y = gravityY;
+
+	}
+
 	/**
 	* Stops the animation that is currently being played
 	* and shows the stop frame for the character.
