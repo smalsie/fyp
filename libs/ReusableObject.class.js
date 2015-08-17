@@ -408,7 +408,11 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	this.setAllAngle = function(angle) {
 
 		for(var i = 0; i < this.children.length; i++)
+<<<<<<< HEAD
 			this.children[0].setAngle(angle);
+=======
+			this.children[i].setAngle(angle);
+>>>>>>> 6e9e2df75dda490c88b37bc7a9d226fc6739bfde
 
 	}
 
