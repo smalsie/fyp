@@ -174,4 +174,8 @@ function GroupChild(child){
 		this.child.alpha = 1;
 	}
 
+	this.setAngle = function(angle) {
+		this.child.angle = angle;
+	}
+
 }

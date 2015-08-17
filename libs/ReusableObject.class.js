@@ -400,18 +400,6 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Sets a specified childs angle
-	*
-	* @param {int} index The child to change
-	* @param {int} angle The angle to set them to
-	*/
-	this.setAngle = function(index, angle) {
-
-		this.children[index].angle = angle;
-
-	}
-
-	/**
 	* Sets all the childrens angle
 	* @see setAngle
 	*
@@ -420,7 +408,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	this.setAllAngle = function(angle) {
 
 		for(var i = 0; i < this.children.length; i++)
-			this.setAngle(i, angle);
+			this.children[0].setAngle(angle);
 
 	}
 
