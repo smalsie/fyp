@@ -12,10 +12,14 @@ var bg1 = true;
 function preload() {
 	player2 = new ReusableObject(game, "img/dinosaur.png", 17, 32);
 
-player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
+	player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
 
-game.loadBackgroundImage('background', "img/dino.png");
-game.loadBackgroundImage('space', "img/space-background.png");
+	game.loadBackgroundImage('background', "img/dino.png");
+	game.loadBackgroundImage('space', "img/space-background.png");
+
+	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, null, 50, 100);
+
+
 }
 
 function create() {
@@ -43,6 +47,9 @@ function create() {
 
 	game.setBackgroundImage(0,0,1920,400, 'background');
 
+	button.createButton();
+
+	button.addDownAction(function() { player.setVelocityX(10); });
 
 }
 
@@ -87,4 +94,10 @@ function update() {
 		}
 
 	}
+}
+
+
+
+function actionOnClick() {
+	alert();
 }
