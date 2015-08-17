@@ -8,7 +8,7 @@
 * @param {int} height Height of the game
 * @param {String} name The name of the game
 */
-function Game(width, height,  name){
+function Game(width, height, name){
 
     document.title = name
 

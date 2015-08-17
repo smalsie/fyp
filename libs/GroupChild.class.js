@@ -166,4 +166,12 @@ function GroupChild(child){
 
 	}
 
+	this.setInvisible = function() {
+		this.child.alpha = 0;
+	}
+
+	this.setVisible = function() {
+		this.child.alpha = 1;
+	}
+
 }
