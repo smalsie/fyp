@@ -55,11 +55,12 @@ function HighScore(type, name){
             }
 
         }
-        
+
         this.setCookie();
     }
 
     this.reset = function() {
+
         this.highScore = [];
 
         this.setCookie();
