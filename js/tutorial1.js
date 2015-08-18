@@ -57,12 +57,12 @@ function create() {
 function update() {
 	//player.playAnimation('left');
 
-	player.checkSimpleCollision(player2);
+	game.checkOverlap(player,player2, aa, {'name' : "Josh"});
 
 	if(right.isDown())
-		player.setVelocityX(10);
+		player.setVelocityX(100);
 	else if(left.isDown())
-		player.setVelocityX(-10);
+		player.setVelocityX(-100);
 	else
 		player.setVelocityX(0);
 
@@ -96,7 +96,9 @@ function update() {
 	}
 }
 
-
+function aa(p1, p2, name) {
+	console.log(name);
+}
 
 function actionOnClick() {
 	alert();

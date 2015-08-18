@@ -116,27 +116,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		return obj;
 	}
-
-	/**
-	* Check collisions between this object and another object
-	*
-	* @param {Object} obj The object to check a collision against
-	* @param {function} functionToUse The function to use
-	*/
-	this.checkCollision = function(obj, functionToUse) {
-
-		if(obj instanceof ReusableObject)
-  			obj = obj.group;
-
-		if(obj instanceof GroupChild)
-  			obj = obj.child;
-
-		this.game.physics.arcade.overlap(this.group, obj, functionToUse, null, this);
-
-
-	}
-
-
+	
 	/**
 	* Add an animation to all enemies
 	*
@@ -224,27 +204,6 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	  		this.children[i].setStopFrame(frame);
 
 	}
-
-
-	/**
-	* Check simple collisions between this object and another object
-	* Only deals with collision, so prevents overlapping
-	*
-	* @param {Object} obj The object to check a collision against
-	*/
-	this.checkSimpleCollision = function(obj) {
-
-		if(obj instanceof ReusableObject)
-  			obj = obj.group;
-
-		if(obj instanceof GroupChild)
-  			obj = obj.child;
-
-  		this.game.physics.arcade.collide(this.group, obj);
-
-  	}
-
-
 
 	/**
 	* Return a value of x, useful if specified as a string (percentage)
@@ -408,11 +367,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	this.setAllAngle = function(angle) {
 
 		for(var i = 0; i < this.children.length; i++)
-<<<<<<< HEAD
-			this.children[0].setAngle(angle);
-=======
 			this.children[i].setAngle(angle);
->>>>>>> 6e9e2df75dda490c88b37bc7a9d226fc6739bfde
 
 	}
 
