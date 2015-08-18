@@ -125,11 +125,11 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	*/
 	this.checkCollision = function(obj, functionToUse) {
 
-		if(obj instanceof Player)
-  			obj = obj.character;
-
-  		if(obj instanceof Enemy)
+		if(obj instanceof ReusableObject)
   			obj = obj.group;
+
+		if(obj instanceof GroupChild)
+  			obj = obj.child;
 
 		this.game.physics.arcade.overlap(this.group, obj, functionToUse, null, this);
 
@@ -234,11 +234,11 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	*/
 	this.checkSimpleCollision = function(obj) {
 
-  		if(obj instanceof Player)
-  			obj = obj.character;
-
-  		if(obj instanceof ReusableObject)
+		if(obj instanceof ReusableObject)
   			obj = obj.group;
+
+		if(obj instanceof GroupChild)
+  			obj = obj.child;
 
   		this.game.physics.arcade.collide(this.group, obj);
 
