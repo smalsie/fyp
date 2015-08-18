@@ -21,6 +21,10 @@ function Game(width, height, name){
 
     this.backgrounds = [];
 
+    this.functionToUse = null;
+
+    this.args = null;
+
     /**
 	* Game Height function that returns the height of the game, useful when
 	* a percentage is give as the size in pixels will be returned
@@ -133,5 +137,85 @@ function Game(width, height, name){
 
 
    }
+
+    /**
+    * Check collisions between this object and another object
+    *
+    * @param {Object} obj The object to check a collision against
+    * @param {function} functionToUse The function to use
+    */
+    this.collision = function(obj1, obj2, overlap, functionToUse, args, additionalFunctionToUse) {
+
+        obj1 = objectType(obj1);
+        obj2 = objectType(obj2);
+
+       if(typeof functionToUse === 'undefined')
+           functionToUse = null;
+
+       if(typeof additionalFunctionToUse === 'undefined')
+           additionalFunctionToUse = null;
+
+       if(typeof overlap === 'undefined')
+           overlap = false;
+
+           this.functionToUse = functionToUse;
+
+           this.args = args;
+
+        var collided = false;
+
+        if(overlap) {
+            collided = this.world.physics.arcade.overlap(obj1, obj2, this.callBack, additionalFunctionToUse, this);
+        } else {
+            collided = this.world.physics.arcade.collide(obj1, obj2, this.callBack, additionalFunctionToUse, this);
+        }
+
+        //This function is called every frame so args and functionToUse will always be set
+        //This does not really matter as its just a placeholder and is re written each time
+        if(!collided) {
+            this.args = null;
+            this.functionToUse = null;
+        }
+
+        return collided;
+
+    }
+
+    this.checkCollision = function(obj1, obj2, functionToUse, args, additionalFunctionToUse) {
+
+        return this.collision(obj1, obj2, false, functionToUse, args, additionalFunctionToUse);
+
+    }
+
+    this.checkOverlap = function(obj1, obj2, functionToUse, args, additionalFunctionToUse) {
+
+        return this.collision(obj1, obj2, true, functionToUse, args, additionalFunctionToUse);
+
+    }
+
+    objectType = function(obj) {
+
+        if(obj instanceof ReusableObject)
+            obj = obj.group;
+
+        if(obj instanceof GroupChild)
+            obj = obj1.child;
+
+        return obj;
+
+    }
+
+    this.callBack = function(p1, p2) {
+
+        var a = [p1, p2].concat(this.args);
+
+        this.args = null;
+
+        var functionToUseNow = this.functionToUse;
+
+        this.functionToUse = null;
+
+        functionToUseNow.apply(functionToUseNow, a);
+    }
 
 };

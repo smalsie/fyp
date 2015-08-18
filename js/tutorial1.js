@@ -11,6 +11,7 @@ var bg1 = true;
 
 function preload() {
 	player2 = new ReusableObject(game, "img/dinosaur.png", 17, 32);
+		player3 = new ReusableObject(game, "img/dinosaur.png", 17, 32);
 
 	player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
 
@@ -26,6 +27,7 @@ function create() {
 
 
 	player2.create(100,10);
+		player3.create(110,10);
 	player.create(10,10);
 
 	//player.setStopFrame(5);
@@ -57,12 +59,14 @@ function create() {
 function update() {
 	//player.playAnimation('left');
 
-	player.checkSimpleCollision(player2);
+	game.checkOverlap(player,player2, aa, ["Player2"]);
+
+	game.checkOverlap(player,player3, aa, ["Player3"]);
 
 	if(right.isDown())
-		player.setVelocityX(10);
+		player.setVelocityX(100);
 	else if(left.isDown())
-		player.setVelocityX(-10);
+		player.setVelocityX(-100);
 	else
 		player.setVelocityX(0);
 
@@ -96,7 +100,9 @@ function update() {
 	}
 }
 
-
+function aa(p1, p2, name) {
+	console.log(name);
+}
 
 function actionOnClick() {
 	alert();
