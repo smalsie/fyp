@@ -158,17 +158,26 @@ function Game(width, height, name){
        if(typeof overlap === 'undefined')
            overlap = false;
 
-        this.functionToUse = functionToUse;
+           this.functionToUse = functionToUse;
 
-        this.args = args;
+           this.args = args;
+
+        var collided = false;
 
         if(overlap) {
-            return this.world.physics.arcade.overlap(obj1, obj2, this.callBack, additionalFunctionToUse, this);
+            collided = this.world.physics.arcade.overlap(obj1, obj2, this.callBack, additionalFunctionToUse, this);
         } else {
-            return this.world.physics.arcade.collide(obj1, obj2, this.callBack, additionalFunctionToUse, this);
+            collided = this.world.physics.arcade.collide(obj1, obj2, this.callBack, additionalFunctionToUse, this);
         }
 
+        //This function is called every frame so args and functionToUse will always be set
+        //This does not really matter as its just a placeholder and is re written each time
+        if(!collided) {
+            this.args = null;
+            this.functionToUse = null;
+        }
 
+        return collided;
 
     }
 
@@ -197,11 +206,16 @@ function Game(width, height, name){
     }
 
     this.callBack = function(p1, p2) {
-        this.functionToUse.call(this, p1, p2, this.args);
+
+        var a = [p1, p2].concat(this.args);
+
+        this.args = null;
+
+        var functionToUseNow = this.functionToUse;
 
         this.functionToUse = null;
 
-        this.args = null;
+        functionToUseNow.apply(functionToUseNow, a);
     }
 
 };
