@@ -33,7 +33,7 @@ function create() {
 	player.create(100,100);
 	//player.addAnimation('left', [7,8,9,10], 10);
 
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
