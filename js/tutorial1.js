@@ -5,6 +5,8 @@ var game = new Game(800, 600, "Tu");
 
 var bg1 = true;
 
+var dino;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -19,13 +21,15 @@ function preload() {
 
 	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, null, 50, 100);
 
+	mouse = new Mouse(game);
+
 
 }
 
 function create() {
 
 
-	player2.create(100,10);
+	dino = player2.create(100,10);
 	player.create(10,10);
 
 	//player.setStopFrame(5);
@@ -51,6 +55,8 @@ function create() {
 
 	button.addDownAction(function() { player.setVelocityX(10); });
 
+	mouse.onClick(aa);
+
 }
 
 
@@ -58,6 +64,8 @@ function update() {
 	//player.playAnimation('left');
 
 	player.checkSimpleCollision(player2);
+
+	//dino.moveTowardPointer();
 
 	if(right.isDown())
 		player.setVelocityX(10);
@@ -98,6 +106,6 @@ function update() {
 
 
 
-function actionOnClick() {
-	alert();
+function aa() {
+	console.log("clicked");
 }

@@ -7,11 +7,13 @@
 * @constructor
 * @param {PIXI.DisplayObject} child The child object
 */
-function GroupChild(child){
+function GroupChild(child, game){
 	/** @member {PIXI.DisplayObject} */
 	this.child = child;
 	/** @member {int} */
 	this.stillFrame = 0;
+
+	this.game = game || null;
 
 	/**
 	* Set the x velocity of the child
@@ -35,6 +37,30 @@ function GroupChild(child){
 		//ensure the child is not null
 		if(this.child != null)
 			this.child.body.velocity.y = y;
+	}
+
+	/**
+	* Set the x velocity of the child
+	*
+	* @param {int} x the x velocity to give the child
+	*/
+	this.setX = function(x) {
+
+		//ensure the child is not null
+		if(this.child != null)
+			this.child.body.x = x;
+	}
+
+	/**
+	* Set the y velocity of the child
+	*
+	* @param {int} y the y velocity to give the child
+	*/
+	this.setY = function(y) {
+
+		//ensure the child is not null
+		if(this.child != null)
+			this.child.body.y = y;
 	}
 
 	this.setGravityX = function(gravityX) {
@@ -81,6 +107,7 @@ function GroupChild(child){
 	* @see http://docs.phaser.io/Phaser.Physics.Arcade.html#moveToObject
 	* @param {Player} player the player to move towards
 	* @param {int} speed the speed to move the child
+	* Needs updating
 	*/
 	this.moveTowards = function(player, speed) {
 		this.child.game.physics.arcade.moveToObject(this.child,player.character,speed);
@@ -176,6 +203,34 @@ function GroupChild(child){
 
 	this.setAngle = function(angle) {
 		this.child.angle = angle;
+	}
+
+	this.setDraggable = function(draggable) {
+
+		if(draggable) {
+
+			this.child.inputEnabled = true;
+			this.child.input.enableDrag();
+
+		} else {
+
+			this.child.inputEnabled = false;
+			this.child.input.disableDrag();
+
+		}
+
+	}
+
+	this.setCollisionsOnDrag = function(collisionOnDrag) {
+
+		if(this.child.input != null) {
+
+			this.child.body.moves = !collisionOnDrag;
+
+		} else {
+			console.log("You need to call setDraggable(true) first!")
+		}
+
 	}
 
 }
