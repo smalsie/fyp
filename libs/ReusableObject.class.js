@@ -81,7 +81,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		var rndObj = this.group.create(x, y, this.name);
 
-		this.children.push(new GroupChild(rndObj));
+		this.children.push(new GroupChild(rndObj, this.game));
 
 		var index = this.children.length - 1;
 
@@ -116,7 +116,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		return obj;
 	}
-	
+
 	/**
 	* Add an animation to all enemies
 	*
@@ -179,6 +179,28 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		for(var i = 0; i < this.children.length; i++)
 	  		this.children[i].setVelocityX(x);
+	}
+
+	/**
+	* Set the y velocity of the child
+	*
+	* @param {int} y the y velocity to give the child
+	*/
+	this.setY = function(y) {
+
+		for(var i = 0; i < this.children.length; i++)
+	  		this.children[i].setY(y);
+	}
+
+	/**
+	* Set the y velocity of the child
+	*
+	* @param {int} y the y velocity to give the child
+	*/
+	this.setX = function(x) {
+
+		for(var i = 0; i < this.children.length; i++)
+	  		this.children[i].setX(x);
 	}
 
 	/**
@@ -368,6 +390,19 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		for(var i = 0; i < this.children.length; i++)
 			this.children[i].setAngle(angle);
+	}
+
+	this.setDraggable = function(draggable) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setDraggable(draggable);
+
+	}
+
+	this.setCollisionsOnDrag = function(collisionOnDrag) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setCollisionsOnDrag(collisionOnDrag);
 
 	}
 

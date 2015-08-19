@@ -34,6 +34,8 @@ function Button(game, image, spriteX, spriteY, actionOnClick, x, y){
         //need to sort the 2, 1, 0
         this.button = this.game.add.button(x, y, buttonName, this.actionOnClick, this, 2, 1, 0);
 
+        this.button.name = buttonName;
+
     }
 
     this.addUpAction = function(action) {

@@ -5,6 +5,8 @@ var game = new Game(800, 600, "Tu");
 
 var bg1 = true;
 
+var dino;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -20,6 +22,8 @@ function preload() {
 
 	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, null, 50, 100);
 
+	mouse = new Mouse(game);
+
 
 }
 
@@ -27,7 +31,8 @@ function create() {
 
 
 	player2.create(100,10);
-		player3.create(110,10);
+		
+	dino = player2.create(100,10);
 	player.create(10,10);
 
 	//player.setStopFrame(5);
@@ -35,7 +40,7 @@ function create() {
 	player.create(100,100);
 	//player.addAnimation('left', [7,8,9,10], 10);
 
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
@@ -53,6 +58,8 @@ function create() {
 
 	button.addDownAction(function() { player.setVelocityX(10); });
 
+	mouse.onClick(aa);
+
 }
 
 
@@ -62,6 +69,8 @@ function update() {
 	game.checkOverlap(player,player2, aa, ["Player2"]);
 
 	game.checkOverlap(player,player3, aa, ["Player3"]);
+
+	//dino.moveTowardPointer();
 
 	if(right.isDown())
 		player.setVelocityX(100);
@@ -104,6 +113,6 @@ function aa(p1, p2, name) {
 	console.log(name);
 }
 
-function actionOnClick() {
-	alert();
+function aa() {
+	console.log("clicked");
 }

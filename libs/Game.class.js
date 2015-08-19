@@ -15,7 +15,7 @@ function Game(width, height, name){
     if (typeof phaserType === 'undefined') { phaserType = Phaser.AUTO; }
 
     /** @member {Phaser.Game} */
-    this.world = new Phaser.Game(width, height, phaserType, '', { preload: preload, create: create, update: update });
+    this.world = new Phaser.Game(width, height, phaserType, name, { preload: preload, create: create, update: update });
 	/** @member {Phaser.Game} */
     this.background;
 
@@ -137,7 +137,6 @@ function Game(width, height, name){
 
 
    }
-
     /**
     * Check collisions between this object and another object
     *
@@ -217,5 +216,8 @@ function Game(width, height, name){
 
         functionToUseNow.apply(functionToUseNow, a);
     }
+   this.setBackgroundColour = function(colour) {
+       this.world.stage.backgroundColor = colour;
+   }
 
 };

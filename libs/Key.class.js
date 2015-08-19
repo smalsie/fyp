@@ -25,6 +25,7 @@ function Key(key) {
 	}
 
     this.onClick = function() {
+
         if(this.isDown() && !this.justClicked) {
 
             this.justClicked = true;
