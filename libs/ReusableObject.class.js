@@ -8,7 +8,7 @@
 * @param {String} name The name of the ReusableObject
 * @param {String} image String reference of an image to use
 */
-function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
+function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true, name){
 
 	if ( typeof ReusableObject.counter == 'undefined' ) {
         // It has not... perform the initialization
@@ -27,7 +27,12 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	/** @member {Phaser.Group} */
 	this.group = this.game.add.group(null, '', true, false, 0);
 	/** @member {String} */
-	this.name = "ReusableObject" + ReusableObject.counter;
+
+	if(typeof name === 'undefined' )
+		this.name = "ReusableObject" + ReusableObject.counter;
+	else
+		this.name = name;
+
 	/** Load the image */
 	this.body = this.game.load.spritesheet(this.name, image, spriteX, spriteY);
 	/** @member {Array} */
@@ -137,7 +142,7 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		//go through each enemy in the array and add an animation to it
 		for(var i = 0; i < this.children.length; i++)
-		 addAnimationToChild(i, index);
+			this.children[i].addAnimation(name, frames, fps);
 
 	}
 
