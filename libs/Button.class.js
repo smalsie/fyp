@@ -10,12 +10,6 @@
 */
 function Button(game, image, spriteX, spriteY, actionOnClick, x, y){
 
-    this.game = game.world;
-
-    this.actionOnClick = actionOnClick;
-
-    this.button;
-
     if ( typeof Button.counter == 'undefined' ) {
         // It has not... perform the initialization
         Button.counter = 1;
@@ -26,33 +20,129 @@ function Button(game, image, spriteX, spriteY, actionOnClick, x, y){
 
 	}
 
-    var buttonName = 'button' + Button.counter;
+    var created = false;
 
-    this.game.load.spritesheet(buttonName, image, spriteX, spriteY);
+    var buttonName = 'button' + Button.counter;
+    //similar to super();
+    this.button = new ReusableObject(game, image, spriteX, spriteY, false, buttonName);
+
+    this.game = game.world;
+
+    this.actionOnClick = actionOnClick;
+
+    this.buttonEvents;
+    this.buttonChild;
+
+    var x = x;
+    var y = y;
+
 
     this.createButton = function() {
+
+        if(created)
+            return;
+
         //need to sort the 2, 1, 0
-        this.button = this.game.add.button(x, y, buttonName, this.actionOnClick, this, 2, 1, 0);
+        this.button.create(x, y);
 
-        this.button.name = buttonName;
+        this.buttonChild = this.button.children[0].child;
 
-    }
+        this.buttonChild.inputEnabled = true;
 
-    this.addUpAction = function(action) {
+        this.buttonEvents = this.buttonChild.events;
 
-        this.button.onInputUp.add(action, this);
-
-    }
-
-    this.addDownAction = function(action) {
-
-        this.button.onInputOver.add(action, this);
+        created = true;
 
     }
 
-    this.addOutAction = function(action) {
+    this.addUpAction = function(frame, action) {
 
-        this.button.onInputOut.add(action, this);
+        var animationName = this.addInputAction("UpAction", frame);
+
+        this.buttonEvents.onInputUp.add(
+
+            function() {
+
+                this.playAction(animationName, action);
+
+            }
+
+        , this);
+
+
+    }
+
+    this.addOverAction = function(frame, action) {
+
+        var animationName = this.addInputAction("OverAction", frame);
+
+        this.buttonEvents.onInputOver.add(
+
+            function() {
+
+                this.playAction(animationName, action);
+
+            }
+
+        , this);
+
+
+    }
+
+    this.addDownAction = function(frame, action) {
+
+        var animationName = this.addInputAction("DownAction", frame);
+
+        this.buttonEvents.onInputDown.add(
+
+            function() {
+
+                this.playAction(animationName, action);
+
+            }
+
+        , this);
+
+    }
+
+    this.addOutAction = function(frame, action) {
+
+        var animationName = this.addInputAction("OutAction", frame);
+
+        this.buttonEvents.onInputOut.add(
+
+            function() {
+
+                this.playAction(animationName, action);
+
+            }
+
+        , this);
+
+    }
+
+    this.addInputAction = function(type, frame) {
+
+        if(typeof frame !== 'object')
+            frame = [frame];
+
+        var animationName = buttonName + type;
+
+        this.button.addAnimation(animationName, frame, 10);
+
+        return animationName;
+
+
+    }
+
+    this.playAction = function(animationName, action) {
+
+        //swap the frame of the button
+        this.button.playAnimation(animationName);
+
+        //play the users desired action
+        if(action != null)
+            action.apply(action, null);
 
     }
 
