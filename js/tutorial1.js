@@ -30,8 +30,6 @@ function preload() {
 function create() {
 
 
-	player2.create(100,10);
-		
 	dino = player2.create(100,10);
 	player.create(10,10);
 
@@ -58,7 +56,7 @@ function create() {
 
 	button.addDownAction(function() { player.setVelocityX(10); });
 
-	mouse.onClick(aa);
+	mouse.onClick(aaa);
 
 }
 
@@ -113,6 +111,6 @@ function aa(p1, p2, name) {
 	console.log(name);
 }
 
-function aa() {
+function aaa() {
 	console.log("clicked");
 }

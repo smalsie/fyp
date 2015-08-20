@@ -157,9 +157,9 @@ function Game(width, height, name){
        if(typeof overlap === 'undefined')
            overlap = false;
 
-           this.functionToUse = functionToUse;
+       this.functionToUse = functionToUse;
 
-           this.args = args;
+       this.args = args;
 
         var collided = false;
 
@@ -213,8 +213,9 @@ function Game(width, height, name){
         var functionToUseNow = this.functionToUse;
 
         this.functionToUse = null;
-
-        functionToUseNow.apply(functionToUseNow, a);
+        
+        if(functionToUseNow != null)
+            functionToUseNow.apply(functionToUseNow, a);
     }
    this.setBackgroundColour = function(colour) {
        this.world.stage.backgroundColor = colour;
