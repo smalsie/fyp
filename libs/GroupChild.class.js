@@ -291,4 +291,4 @@ function GroupChild(child, game){
 	//set everything up when the object is instansiated.
 	this.constructor();
 
-}
+};
