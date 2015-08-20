@@ -7,6 +7,8 @@
 * @version 2.0
 *
 * @constructor
+* Calls on this.constructor
+*
 * @param {number} width The width of the game
 * @param {number} height The height of the game
 * @param {String} name The name of the game
