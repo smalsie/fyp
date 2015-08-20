@@ -1,7 +1,7 @@
 /**
-* GroupChild class class
-* These are the actual objects created when the ReusableObject.create
-* is called. This allows for specific control over each object
+* GroupChild class, these are the actual objects created when
+* the ReusableObject.create is called. This allows for specific
+* control over each object.
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
 * @version 2.0
