@@ -16,7 +16,7 @@ function GroupChild(child, game){
 
 	/** @member {PIXI.DisplayObject} */
 	this.child = child;
-	/** @member {int} */
+	/** @member {number} */
 	this.stillFrame;
 	/** @member {Game} */
 	this.game;
@@ -39,7 +39,7 @@ function GroupChild(child, game){
 	/**
 	* Set the x velocity of the child
 	*
-	* @param {int} velocityX The x velocity to give the child
+	* @param {number} velocityX The x velocity to give the child
 	*/
 	this.setVelocityX = function(velocityX) {
 
@@ -50,7 +50,7 @@ function GroupChild(child, game){
 	/**
 	* Set the y velocity of the child
 	*
-	* @param {int} velocityY The y velocity to give the child
+	* @param {number} velocityY The y velocity to give the child
 	*/
 	this.setVelocityY = function(velocityY) {
 
@@ -61,7 +61,7 @@ function GroupChild(child, game){
 	/**
 	* Set the x position of the child
 	*
-	* @param {int} x The x position to give the child
+	* @param {number} x The x position to give the child
 	*/
 	this.setX = function(x) {
 
@@ -72,7 +72,7 @@ function GroupChild(child, game){
 	/**
 	* Set the y position of the child
 	*
-	* @param {int} y The y position to give the child
+	* @param {number} y The y position to give the child
 	*/
 	this.setY = function(y) {
 
@@ -83,7 +83,7 @@ function GroupChild(child, game){
 	/**
 	* Set the x gravity on the child
 	*
-	* @param {int} gravityX The x gravity to give the child
+	* @param {number} gravityX The x gravity to give the child
 	*/
 	this.setGravityX = function(gravityX) {
 
@@ -94,7 +94,7 @@ function GroupChild(child, game){
 	/**
 	* Set the y gravity on the child
 	*
-	* @param {int} gravityY The y gravity to give the child
+	* @param {number} gravityY The y gravity to give the child
 	*/
 	this.setGravityY = function(gravityY) {
 
@@ -116,7 +116,7 @@ function GroupChild(child, game){
 	/**
 	* Get the x position of the child
 	*
-	* @return {int} x The x position of the child
+	* @return {number} x The x position of the child
 	*/
 	this.getX = function() {
 
@@ -127,7 +127,7 @@ function GroupChild(child, game){
 	/**
 	* Get the y position of the child
 	*
-	* @return {int} y The y position of the child
+	* @return {number} y The y position of the child
 	*/
 	this.getY = function() {
 
@@ -140,7 +140,7 @@ function GroupChild(child, game){
 	*
 	* @see http://docs.phaser.io/Phaser.Physics.Arcade.html#moveToObject
 	* @param {Player} player the player to move towards
-	* @param {int} speed the speed to move the child
+	* @param {number} speed the speed to move the child
 	* Needs updating
 	*/
 	this.moveTowards = function(player, speed) {
@@ -150,7 +150,7 @@ function GroupChild(child, game){
 	/**
 	* Set the width of the child
 	*
-	* @param {int} width the width of the child
+	* @param {number} width the width of the child
 	*/
 	this.setWidth = function(width) {
 
@@ -162,7 +162,7 @@ function GroupChild(child, game){
 	/**
 	* Set the height of the child
 	*
-	* @param {int} height the height of the child
+	* @param {number} height the height of the child
 	*/
 	this.setHeight = function(height) {
 
@@ -184,8 +184,8 @@ function GroupChild(child, game){
 	* Add an animation to the child
 	*
 	* @param {String} name The name of an animation, required for referencing later.
-	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
-	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {number[]} frames An array of the frames thae animation playes in the order that they are played
+	* @param {number} fps The frame rate of the animetion, higher plays the animation faster
 	*/
 	this.addAnimation = function(name, frames, fps) {
 
@@ -197,7 +197,7 @@ function GroupChild(child, game){
 	* Sets the stop frame for the player,
 	* this is the frame that is shown when the player is stopped
 	*
-	* @param {int} frame The number of the frame to be set as the stop frame
+	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
 
@@ -240,7 +240,7 @@ function GroupChild(child, game){
 	/**
 	* Sets the childs angle
 	*
-	* @param {int} angle The angle to set the child
+	* @param {number} angle The angle to set the child
 	*/
 	this.setAngle = function(angle) {
 		this.child.angle = angle;

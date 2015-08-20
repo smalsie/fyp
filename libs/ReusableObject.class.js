@@ -110,10 +110,10 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Create your object at the given x and y coordinates
 	* Width and height is used from the image if not specified
 	*
-	* @param {int} x The x coordinate of the object
-	* @param {int} y The y coordinate of the object
-	* @param {int|string} width The width of the object
-	* @param {int|string} height The height of the object
+	* @param {number} x The x coordinate of the object
+	* @param {number} y The y coordinate of the object
+	* @param {number|string} width The width of the object
+	* @param {number|string} height The height of the object
 	*/
 	this.create = function(x, y, width, height) {
 
@@ -153,10 +153,10 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Create your object at the given x and y coordinates
 	*
-	* @param {int} x The x coordinate of the object
-	* @param {int} y The y coordinate of the object
-	* @param {int|string} width The width of the object
-	* @param {int|string} height The height of the object
+	* @param {number} x The x coordinate of the object
+	* @param {number} y The y coordinate of the object
+	* @param {number|string} width The width of the object
+	* @param {number|string} height The height of the object
 	*/
 	this.createWidthHeight = function(x, y, width, height) {
 
@@ -177,8 +177,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Add an animation to all enemies
 	*
 	* @param {String} name The name of an animation, required for referencing later.
-	* @param {int[]} frames An array of the frames that the animation plays
-	* @param {int} fps The frame rate of the animation, a higher value plays the animation faster
+	* @param {number[]} frames An array of the frames that the animation plays
+	* @param {number} fps The frame rate of the animation, a higher value plays the animation faster
 	*/
 	this.addAnimation = function(name, frames, fps) {
 
@@ -214,7 +214,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the y velocity of all of the children
 	*
-	* @param {int} y The y velocity to give the children
+	* @param {number} y The y velocity to give the children
 	*/
 	this.setVelocityY = function(y) {
 
@@ -225,7 +225,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the x velocity of all of the children
 	*
-	* @param {int} x The x velocity to give the children
+	* @param {number} x The x velocity to give the children
 	*/
 	this.setVelocityX = function(x) {
 
@@ -236,7 +236,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the y position of all of the children
 	*
-	* @param {int} y The y position to give the children
+	* @param {number} y The y position to give the children
 	*/
 	this.setY = function(y) {
 
@@ -247,7 +247,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the y velocity of the child
 	*
-	* @param {int} y the y velocity to give the child
+	* @param {number} y the y velocity to give the child
 	*/
 	this.setX = function(x) {
 
@@ -270,7 +270,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Sets the stop frame for the children, this is the frame that is
 	* shown when the children are stopped.
 	*
-	* @param {int} frame The number of the frame to be set as the stop frame
+	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
 
@@ -283,8 +283,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Return a value of x, useful if specified as a string (percentage)
 	* Requires the width of the object to work out
 	*
-	* @param {int} x The x value
-	* @param {int} width The width of the object
+	* @param {number} x The x value
+	* @param {number} width The width of the object
 	*/
 	this.parseX = function(x, width) {
 
@@ -319,8 +319,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Return a value of y, useful if specified as a string (percentage)
 	* Requires the height of the object to work out
 	*
-	* @param {int} y The y value
-	* @param {int} height The height of the object
+	* @param {number} y The y value
+	* @param {number} height The height of the object
 	*/
 	this.parseY = function(y, height) {
 
@@ -354,7 +354,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Return a value of the width, useful if specified as a string (percentage)
 	*
-	* @param {int} width The width value
+	* @param {number} width The width value
 	*/
 	this.parseWidth = function(width) {
 
@@ -383,7 +383,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Return a value of the height, useful if specified as a string (percentage)
 	*
-	* @param {int} height The height value
+	* @param {number} height The height value
 	*/
 	this.parseHeight = function(height) {
 
@@ -424,7 +424,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Sets teh angle on all of the children
 	*
-	* @param {int} angle The angle to set the children
+	* @param {number} angle The angle to set the children
 	*/
 	this.setAngle = function(angle) {
 
@@ -460,7 +460,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the x gravity on the child
 	*
-	* @param {int} gravityX The x gravity to give the children
+	* @param {number} gravityX The x gravity to give the children
 	*/
 	this.setGravityX = function(gravityX) {
 
@@ -472,7 +472,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	/**
 	* Set the y gravity on the child
 	*
-	* @param {int} gravityY The y gravity to give the children
+	* @param {number} gravityY The y gravity to give the children
 	*/
 	this.setGravityY = function(gravityY) {
 
