@@ -1,9 +1,13 @@
 /**
-* Text Class used to add information to the screen
-* @author Joshua Small [smalljh@aston.ac.uk]
-* @version 1.0
+* Text Class used to add text to the screen with the ability to
+* change its values at run time.
+*
+* @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
+* @version 2.0
 *
 * @constructor
+* Calls on this.constructor
+*
 * @param {Game} game The game object
 * @param {String} message The message to display on the screen
 * @param {int} x X position of the text
@@ -15,87 +19,105 @@
 function Text(game, message, x, y, size, font, colour) {
 
 	/** @member {Phaser.Game} */
-	this.game = game.world;
-	/** @member {int} */	
-	this.size = size;
-	/** @member {Phaser.Text} */	
-	this.text = this.game.add.text(x, y, message, { font: size + " " + font, fill: colour });
-	
+	this.game;
+	/** @member {int} */
+	this.size;
+	/** @member {Phaser.Text} */
+	this.text;
+
+	/**
+	* The constructor used to encapsulate the code run when the object
+	* is first instanciated. It is called at the botttom of the file.
+	* So it does not need to be called as it has already been called.
+	*/
+	this.constructor = function() {
+
+		this.game = game.world;
+
+		this.size = size;
+
+		this.text = this.game.add.text(x, y, message, { font: size + " " + font, fill: colour });
+
+	}
+
 	/**
 	* Change the colour of the text
 	*
-	* @param {String} colour String hex representation of a colour
+	* @param {String} colour String hexadecimal representation of a colour
 	*/
 	this.changeColour = function(colour) {
-	
+
 		this.text.fill = colour;
-	
+
 	}
-	
+
 	/**
 	* Set the x position of the text
 	*
-	* @param {int} x X position to set the text
-	*/	
+	* @param {int} x he x position to set the text
+	*/
 	this.changeX = function(x) {
-	
+
 		this.text.x = x;
-	
+
 	}
-	
+
 	/**
 	* Set the y position of the text
 	*
-	* @param {int} y Y position to set the text
-	*/	
+	* @param {int} y The y position to set the text
+	*/
 	this.changeY = function(y) {
-	
+
 		this.text.y = y;
-	
+
 	}
-	
+
 	/**
-	* Change the colour of the text
+	* Change the size of the text
 	*
-	* @param {int} size Size of the text
-	*/	
+	* @param {int} size The size of the text
+	*/
 	this.changeFontSize = function(size) {
-	
+
 		this.text.fontSize = size + "px";
-	
+
 	}
-	
+
 	/**
 	* Change the text font
 	*
-	* @param {String} font Font to change to
-	*/	
+	* @param {String} font The font to change to
+	*/
 	this.changeFont = function(font) {
-	
+
 		this.text.font = font;
-	
+
 	}
-	
+
 	/**
 	* Set if the text is visible
 	*
 	* @param {boolean} visible If the text should be visible
-	*/	
+	*/
 	this.setVisible = function(visible) {
-	
+
 		this.text.visible = visible;
-	
+
 	}
-	
+
 	/**
 	* Change the text to display
 	*
 	* @param {String} text The text to change to
-	*/	
+	*/
 	this.changeText = function(text) {
-	
-		this.text.setText(text)
-	
-	}
-}
 
+		this.text.setText(text)
+
+	}
+
+	//set everything up when the object is instansiated.
+	this.constructor();
+
+};
