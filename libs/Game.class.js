@@ -1,122 +1,186 @@
 /**
-* Game class which is at the core of the project
-* @author Joshua Small [smalljh@aston.ac.uk]
-* @version 1.0
+* Game class which is at the core of the project, this is the first
+* class that should be initalised as all of the other classes rely
+* on it as an interface to the Phaser Library.
+*
+* @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
+* @version 2.0
 *
 * @constructor
-* @param {int} width Width of the game
-* @param {int} height Height of the game
+* Calls on this.constructor
+*
+* @param {number} width The width of the game
+* @param {number} height The height of the game
 * @param {String} name The name of the game
 */
 function Game(width, height, name){
 
-    document.title = name
-
-    if (typeof phaserType === 'undefined') { phaserType = Phaser.AUTO; }
-
     /** @member {Phaser.Game} */
-    this.world = new Phaser.Game(width, height, phaserType, name, { preload: preload, create: create, update: update });
-	/** @member {Phaser.Game} */
+    this.world;
+	/** @member {Phaser.Background} */
     this.background;
+	/** @member {Phaser.Background[]} */
+    this.backgrounds;
+	/** @member {function} */
+    this.functionToUse;
+	/** @member {args[]} */
+    this.args;
+	/** @member {Utils} */
+    this.utils;
 
-    this.backgrounds = [];
+    /**
+	* The constructor used to encapsulate the code run when the object
+	* is first instanciated. It is called at the botttom of the file.
+	* So it does not need to be called as it has already been called.
+	*/
+    this.constructor = function() {
 
-    this.functionToUse = null;
+        if (typeof name === 'undefined') {
 
-    this.args = null;
+            this.name = "My Headstart Game";
+
+        } else {
+
+            this.name = name;
+
+        }
+
+        document.title = this.name
+
+        this.world = new Phaser.Game(width, height, Phaser.AUTO, name, { preload: preload, create: create, update: update });
+
+        this.backgrounds = [];
+
+        this.utils = new Utils();
+
+    }
 
     /**
 	* Game Height function that returns the height of the game, useful when
-	* a percentage is give as the size in pixels will be returned
+	* a percentage is given as the size in pixels will be returned
 	*
-	* @return {Int} Returns the height of the game in pixels
+	* @return {number} Returns the height of the game in pixels
 	*/
     this.gameHeight = function(){
+
         return this.world.world.height;
+
     };
 
     /**
 	* Game Width function that returns the height of the game, useful when
 	* a percentage is give as the size in pixels will be returned
 	*
-	* @return {Int} Returns the width of the game in pixels
+	* @return {number} Returns the width of the game in pixels
 	*/
     this.gameWidth = function(){
+
         return this.world.world.width;
+
     };
 
     /**
 	* Load an image to use as the background, can be used multiple times
 	* if you want different backgrounds in your game
 	*
-	* @param {String} key The name of the reference to give the image
+	* @param {String} key The name of the reference to give the image for future use
 	* @param {String} image String reference of the image to use for the player
 	*/
     this.loadBackgroundImage = function(key, image) {
 
+        //if this key has already been used
         if(this.backgrounds.indexOf(key) != -1) {
 
-            throw new Error("You have already used the key \"" + key + "\"! Please use another one!\nCalled from your funtion: " + arguments.callee.caller.name);
+            throw new Error("You have already used the key \"" + key + "\ for your background images! Please use another one!");
 
-        } else {
+        }
+        //add the key to the array
+        else {
+
             this.backgrounds.push(key);
+
         }
 
+        /*if(!utils.imageExists(image)) {
+
+            throw new Error("The image \"" + image + "\" does not exist!");
+        }*/
+        //load the image into memory
         this.world.load.image(key, image);
     };
 
     /**
 	* Set the specified image as the background
-
-	* @param {String} key The name of the reference to give the image
-	* @param {String} image String reference of the image to use for the player
-	* @param {int} width The width of the image, should be bigger then the canvas if scrolling
-	* @param {int} height The height of the image, should be bigger then the canvas if scrolling
+    *
+	* @param {String} key The name of the background to load
+	* @param {number} width The width of the background, should be bigger then the canvas if scrolling
+	* @param {number} height The height of the background, should be bigger then the canvas if scrolling
+	* @param {number} x The x position to start the background from the top left hand corner
+	* @param {number} y The y position to start the background from the top left hand corner
 	*/
-    this.setBackgroundImage = function(x, y, width, height, key) {
+    this.setBackgroundImage = function(key, width, height, x, y) {
+
+        x = x || 0;
+        y = y || 0;
+
+        var image = this.world.cache.getImage(key);
+
+        width = width || image.width;
+        height = height || image.height;
+
     	this.background = this.world.add.tileSprite(x, y, width, height, key, 0);
+
     }
 
 	/**
 	* Scoll the background along the x axis
 	*
-	* @param {int} x the amount to scroll the background by along the x axis
+	* @param {number} x The amount to scroll the background by along the x axis
 	*/
     this.scrollBackgroundX = function(x) {
+
     	this.background.tilePosition.x += x;
+
     }
 
 	/**
 	* Scoll the background along the y axis
 	*
-	* @param {int} y the amount to scroll the background by along the y axis
+	* @param {number} y The amount to scroll the background by along the y axis
 	*/
     this.scrollBackgroundY = function(y) {
+
     	this.background.tilePosition.y += y;
+
     }
 
 	/**
 	* Get the current game time in miliseconds
 	*
-	* @return {int} the current game time in miliseconds
+	* @return {number} time The current game time in miliseconds
 	*/
     this.getGameTime = function() {
+
     	return this.world.time.now;
+
     }
 
 	/**
 	* Set if the game should be paused or not
 	*
-	* @param {boolean} if the game should be paused
+	* @param {boolean} If the game should be paused
 	*/
     this.setPaused = function(paused) {
+
     	this.world.paused = paused;
+
     }
 
     /**
 	* Used to swap the z index's of two objects
 	*
-	* @param {boolean} if the game should be paused
+	* @param {Object} obj1 The first object to swap
+	* @param {Object} obj2 The second object to swap
 	*/
    this.swap = function(obj1, obj2) {
 
@@ -135,13 +199,20 @@ function Game(width, height, name){
         game.world.stage.children[obj1Index] = childB;
         game.world.stage.children[obj2Index] = childA;
 
-
    }
+
     /**
-    * Check collisions between this object and another object
+    * Check collisions between two objects
     *
-    * @param {Object} obj The object to check a collision against
-    * @param {function} functionToUse The function to use
+    * Used Internally
+    *
+    * @param {Object} obj1 The first object to check a collision against
+    * @param {Object} obj2 The second object to check a collision against
+    * @param {boolean} overlap If overlap or collision should be used
+    * @param {function} functionToUse The function to call when a collision is detected
+    * @param {args[]} args Array of arguments to pass through to functionToUse
+    * @param {function} additionalFunctionToUse A function to call before calling functionToUse, will only
+    * call functionToUse is additionalFunctionToUse returns true
     */
     this.collision = function(obj1, obj2, overlap, functionToUse, args, additionalFunctionToUse) {
 
@@ -180,18 +251,48 @@ function Game(width, height, name){
 
     }
 
+    /**
+    * Check collisions between two objects
+    *
+    * @param {Object} obj1 The first object to check a collision against
+    * @param {Object} obj2 The second object to check a collision against
+    * @param {function} functionToUse The function to call when a collision is detected
+    * @param {args[]} args Array of arguments to pass through to functionToUse
+    * @param {function} additionalFunctionToUse A function to call before calling functionToUse, will only
+    * call functionToUse is additionalFunctionToUse returns true
+    */
     this.checkCollision = function(obj1, obj2, functionToUse, args, additionalFunctionToUse) {
 
         return this.collision(obj1, obj2, false, functionToUse, args, additionalFunctionToUse);
 
     }
 
+    /**
+    * Check overlapping between two objects
+    *
+    * @param {Object} obj1 The first object to check a collision against
+    * @param {Object} obj2 The second object to check a collision against
+    * @param {function} functionToUse The function to call when a collision is detected
+    * @param {args[]} args Array of arguments to pass through to functionToUse
+    * @param {function} additionalFunctionToUse A function to call before calling functionToUse, will only
+    * call functionToUse is additionalFunctionToUse returns true
+    */
     this.checkOverlap = function(obj1, obj2, functionToUse, args, additionalFunctionToUse) {
 
         return this.collision(obj1, obj2, true, functionToUse, args, additionalFunctionToUse);
 
     }
 
+    /**
+    * Gets the object type to check against, could be a group
+    * or could be a child
+    *
+    * Used Internally.
+    *
+    * @param {Object} obj The object to check
+    *
+    * @return {Object} obj The object type thats being checked
+    */
     objectType = function(obj) {
 
         if(obj instanceof ReusableObject)
@@ -204,21 +305,52 @@ function Game(width, height, name){
 
     }
 
-    this.callBack = function(p1, p2) {
+    /**
+    * Custom callback function that allows parameters to be added to the function.
+    * This is currently not available in the Phaser API.
+    *
+    * Used Internally via @see collision
+    *
+    * The arguments and function to call are stored in the field variables and are changed
+    * each time a collision is true. This is a very hacky way of doing it but it currently works
+    * and is currently the only solution.
+    *
+    * @param {Object} obj1 The first object that is part of the collision, it is passed through
+    * by the Phaser Collision method.
+    * @param {Object} obj2 The second object that is part of the collision, it is passed through
+    * by the Phaser Collision method.
+    */
+    this.callBack = function(obj1, obj2) {
 
-        var a = [p1, p2].concat(this.args);
+        //add these two passed through parameters to our parameters array
+        var argsArray = [obj1, obj2].concat(this.args);
 
+        //set the field value to null so its not used next time
         this.args = null;
 
+        //set the field value to null so its not used next time
         var functionToUseNow = this.functionToUse;
-
         this.functionToUse = null;
-        
+
+        //fire the desired function with the additional parameters
         if(functionToUseNow != null)
-            functionToUseNow.apply(functionToUseNow, a);
+            functionToUseNow.apply(functionToUseNow, argsArray);
     }
-   this.setBackgroundColour = function(colour) {
-       this.world.stage.backgroundColor = colour;
-   }
+
+    /**
+    * Set the background colour of the game, this is shown if
+    * there is no image currently loaded.
+    *
+    * @param {String} colour The colour to set the background
+    * must be a hexadecimal colour.
+    */
+    this.setBackgroundColour = function(colour) {
+
+        this.world.stage.backgroundColor = colour;
+
+    }
+
+   //set everything up when the object is instansiated.
+   this.constructor();
 
 };

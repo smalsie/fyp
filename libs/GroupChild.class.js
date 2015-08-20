@@ -1,73 +1,103 @@
 /**
-* GroupChild class class
-* A helper class used to allow functions on a child of a group
-* @author Joshua Small [smalljh@aston.ac.uk]
-* @version 1.0
+* GroupChild class, these are the actual objects created when
+* the ReusableObject.create is called. This allows for specific
+* control over each object.
+*
+* @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
+* @version 2.0
 *
 * @constructor
+* Calls on this.constructor
+*
 * @param {PIXI.DisplayObject} child The child object
+* @param {Game} The game object
 */
 function GroupChild(child, game){
+
 	/** @member {PIXI.DisplayObject} */
 	this.child = child;
-	/** @member {int} */
-	this.stillFrame = 0;
+	/** @member {number} */
+	this.stillFrame;
+	/** @member {Game} */
+	this.game;
 
-	this.game = game || null;
+	/**
+	* The constructor used to encapsulate the code run when the object
+	* is first instanciated. It is called at the botttom of the file.
+	* So it does not need to be called as it has already been called.
+	*/
+	this.constructor = function() {
+
+		this.child = child;
+
+		this.stillFrame = 0;
+
+		this.game = game;
+
+	}
 
 	/**
 	* Set the x velocity of the child
 	*
-	* @param {int} x the x velocity to give the child
+	* @param {number} velocityX The x velocity to give the child
 	*/
-	this.setVelocityX = function(x) {
+	this.setVelocityX = function(velocityX) {
 
-		//ensure the child is not null
-		if(this.child != null)
-			this.child.body.velocity.x = x;
+		this.child.body.velocity.x = velocityX;
+
 	}
 
 	/**
 	* Set the y velocity of the child
 	*
-	* @param {int} y the y velocity to give the child
+	* @param {number} velocityY The y velocity to give the child
 	*/
-	this.setVelocityY = function(y) {
+	this.setVelocityY = function(velocityY) {
 
-		//ensure the child is not null
-		if(this.child != null)
-			this.child.body.velocity.y = y;
+		this.child.body.velocity.y = velocityY;
+
 	}
 
 	/**
-	* Set the x velocity of the child
+	* Set the x position of the child
 	*
-	* @param {int} x the x velocity to give the child
+	* @param {number} x The x position to give the child
 	*/
 	this.setX = function(x) {
 
-		//ensure the child is not null
-		if(this.child != null)
-			this.child.body.x = x;
+		this.child.body.x = x;
+
 	}
 
 	/**
-	* Set the y velocity of the child
+	* Set the y position of the child
 	*
-	* @param {int} y the y velocity to give the child
+	* @param {number} y The y position to give the child
 	*/
 	this.setY = function(y) {
 
-		//ensure the child is not null
-		if(this.child != null)
-			this.child.body.y = y;
+		this.child.body.y = y;
+
 	}
 
+	/**
+	* Set the x gravity on the child
+	*
+	* @param {number} gravityX The x gravity to give the child
+	*/
 	this.setGravityX = function(gravityX) {
+
 		this.child.body.gravity.x = gravityX;
+
 	}
 
+	/**
+	* Set the y gravity on the child
+	*
+	* @param {number} gravityY The y gravity to give the child
+	*/
 	this.setGravityY = function(gravityY) {
+
 		this.child.body.gravity.y = gravityY;
 
 	}
@@ -86,19 +116,23 @@ function GroupChild(child, game){
 	/**
 	* Get the x position of the child
 	*
-	* @return {int} x position of the child
+	* @return {number} x The x position of the child
 	*/
 	this.getX = function() {
+
 		return this.child.body.x;
+
 	}
 
 	/**
 	* Get the y position of the child
 	*
-	* @return {int} y position of the child
+	* @return {number} y The y position of the child
 	*/
 	this.getY = function() {
+
 		return this.child.body.y;
+
 	}
 
 	/**
@@ -106,7 +140,7 @@ function GroupChild(child, game){
 	*
 	* @see http://docs.phaser.io/Phaser.Physics.Arcade.html#moveToObject
 	* @param {Player} player the player to move towards
-	* @param {int} speed the speed to move the child
+	* @param {number} speed the speed to move the child
 	* Needs updating
 	*/
 	this.moveTowards = function(player, speed) {
@@ -116,7 +150,7 @@ function GroupChild(child, game){
 	/**
 	* Set the width of the child
 	*
-	* @param {int} width the width of the child
+	* @param {number} width the width of the child
 	*/
 	this.setWidth = function(width) {
 
@@ -128,7 +162,7 @@ function GroupChild(child, game){
 	/**
 	* Set the height of the child
 	*
-	* @param {int} height the height of the child
+	* @param {number} height the height of the child
 	*/
 	this.setHeight = function(height) {
 
@@ -140,19 +174,18 @@ function GroupChild(child, game){
 	/**
 	* Set if the child can move
 	*
-	* @param {boolean} immovable if the child is immovable, true means the child won't move
+	* @param {boolean} immovable If the child is immovable, true means the child won't move
 	*/
-	this.setImmovable = function(immovable) {
+	this.setImovable = function(immovable) {
 		this.child.body.immovable = immovable;
 	}
 
 	/**
-	* Add an animation to a specific enemy, for all enemies @see addAnimationToAll
+	* Add an animation to the child
 	*
 	* @param {String} name The name of an animation, required for referencing later.
-	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
-	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
-	* @param {int} index the specific enemy to add the animation to
+	* @param {number[]} frames An array of the frames thae animation playes in the order that they are played
+	* @param {number} fps The frame rate of the animetion, higher plays the animation faster
 	*/
 	this.addAnimation = function(name, frames, fps) {
 
@@ -164,7 +197,7 @@ function GroupChild(child, game){
 	* Sets the stop frame for the player,
 	* this is the frame that is shown when the player is stopped
 	*
-	* @param {int} frame The number of the frame to be set as the stop frame
+	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
 
@@ -175,8 +208,8 @@ function GroupChild(child, game){
 	/**
 	* Plays a predefined animation
 	*
-	* @param {String} name The name of the animation to play,
-	* this animation must have been created with {@link Player#addAnimation} beforehand
+	* @param {String} name The name of the animation to play, this animation
+	* must have been created with {@link Player#addAnimation} beforehand.
 	*/
 	this.playAnimation = function(name) {
 
@@ -185,7 +218,7 @@ function GroupChild(child, game){
 	}
 
 	/**
-	* Kill the child
+	* Kill the child, removing it from the game
 	*/
 	this.kill = function() {
 
@@ -193,18 +226,31 @@ function GroupChild(child, game){
 
 	}
 
-	this.setInvisible = function() {
-		this.child.alpha = 0;
+	/**
+	* Set the alpha(transparency) of the child.
+	*
+	* @param alpha The alpha value to set between 0 and 1.
+	*/
+	this.setAlpha = function(alpha) {
+
+		this.child.alpha = alpha;
+
 	}
 
-	this.setVisible = function() {
-		this.child.alpha = 1;
-	}
-
+	/**
+	* Sets the childs angle
+	*
+	* @param {number} angle The angle to set the child
+	*/
 	this.setAngle = function(angle) {
 		this.child.angle = angle;
 	}
 
+	/**
+	* Sets if the child should be dragged with the mouse.
+	*
+	* @param draggable If the child can be dragged
+	*/
 	this.setDraggable = function(draggable) {
 
 		if(draggable) {
@@ -221,16 +267,28 @@ function GroupChild(child, game){
 
 	}
 
+	/**
+	* Sets if the child will collide with over objects (only ones that were
+	* already set with setCollision).
+	*
+	* @param collisionOnDrag If the child should collide when being dragged
+	*/
 	this.setCollisionsOnDrag = function(collisionOnDrag) {
 
 		if(this.child.input != null) {
 
+			//setting the body.moves to false causes collisions to work
 			this.child.body.moves = !collisionOnDrag;
 
 		} else {
-			console.log("You need to call setDraggable(true) first!")
+
+			console.log("You need to call setDraggable(true) first!");
+
 		}
 
 	}
 
-}
+	//set everything up when the object is instansiated.
+	this.constructor();
+
+};

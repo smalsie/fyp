@@ -20,7 +20,7 @@ function preload() {
 	game.loadBackgroundImage('background', "img/dino.png");
 	game.loadBackgroundImage('space', "img/space-background.png");
 
-	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, null, 100, 100);
+	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, 100, 100);
 
 	mouse = new Mouse(game);
 
@@ -50,12 +50,12 @@ function create() {
 
 	e = keys.createKey("e");
 
-	game.setBackgroundImage(0,0,1920,400, 'background');
+	game.setBackgroundImage('background');
 
 	button.createButton();
 
-	button.addOverAction(2, swapBG);
-	button.addOutAction(0, null);
+	button.addOverAction(swapBG);
+	button.addOutAction(null, 1);
 
 	mouse.onClick(aaa);
 
@@ -112,10 +112,10 @@ function aaa() {
 function swapBG() {
 	if(bg1) {
 
-		game.setBackgroundImage(0,0,1920,400, 'space');
+		game.setBackgroundImage('space');
 		bg1 = false;
 	} else {
-		game.setBackgroundImage(0,0,1920,400, 'background');
+		game.setBackgroundImage('background');
 		bg1 = true;
 	}
 
