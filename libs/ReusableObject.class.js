@@ -422,7 +422,7 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	}
 
 	/**
-	* Sets all the of all of the children
+	* Sets teh angle on all of the children
 	*
 	* @param {int} angle The angle to set the children
 	*/
@@ -454,6 +454,41 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 
 		for(var i = 0; i < this.children.length; i++)
 			this.children[i].setCollisionsOnDrag(collisionOnDrag);
+
+	}
+
+	/**
+	* Set the x gravity on the child
+	*
+	* @param {int} gravityX The x gravity to give the children
+	*/
+	this.setGravityX = function(gravityX) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setGravityX(gravityX);
+
+	}
+
+	/**
+	* Set the y gravity on the child
+	*
+	* @param {int} gravityY The y gravity to give the children
+	*/
+	this.setGravityY = function(gravityY) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setGravityY(gravityY);
+
+	}
+
+	/**
+	* Set the alpha(transparency) of the children.
+	*
+	* @param alpha The alpha value to set between 0 and 1.
+	*/
+	this.setAlpha = function(alpha) {
+
+		this.child.alpha = alpha;
 
 	}
 
