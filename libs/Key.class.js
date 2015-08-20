@@ -1,46 +1,77 @@
 /**
 * Standard key class See {@link www.phaser.io|Phaser}
 *
-* @author Joshua Small
-* @version 1.0
+* @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
+* @version 2.0
 
 * @constructor
+* Calls on this.constructor
+*
 * @param {Phaser.Key} key The key to listen to events on
 */
 function Key(key) {
 
   	/** @member {Phaser.Key} */
-   	this.inputHandler = key;
+   	this.inputHandler;
+    /** @member {boolean} */
+    this.justClicked;
 
-    this.justClicked = false;
+    /**
+    * The constructor used to encapsulate the code run when the object
+    * is first instanciated. It is called at the botttom of the file.
+    * So it does not need to be called as it has already been called.
+    */
+    this.constructor = function() {
+
+        this.inputHandler = key;
+
+        this.justClicked = false;
+
+    }
 
 	/**
 	* Is Down function that returns if the key is currently held down or not
 	*
-	* @return {boolean} Returns if the key is currently held down or not
+	* @return {boolean} isDown Returns if the key is currently held down or not
 	*/
 	this.isDown = function() {
 
 		return (this.inputHandler.isDown);
 	}
 
+    /**
+    * Returns true if the key has just been clicked, useful of you want to do
+    * something on a click and not continiously when the key is held down.
+    *
+    * @return {boolean} justClicked If the key was just clicked
+    */
     this.onClick = function() {
+
+        //key is pressed and has not been clicked yet
         if(this.isDown() && !this.justClicked) {
 
             this.justClicked = true;
 
             return true;
 
-        } else if(this.isDown() && this.justClicked) {
+        }
+        //Key is still down and not released yet
+        else if(this.isDown() && this.justClicked) {
 
             return false;
 
-        } else if(!this.isDown() && this.justClicked) {
+        }
+        //Key has just been released so reset justClicked
+        else if(!this.isDown() && this.justClicked) {
 
             this.justClicked = false;
 
             return false;
         }
+
     }
+
+	//set everything up when the object is instansiated.
+	this.constructor();
 
 };

@@ -1,44 +1,99 @@
 /**
-* Enemy class which is at the core of the project
-* @author Joshua Small [smalljh@aston.ac.uk]
-* @version 1.0
+* ReusableObject class which is at the core of the project
+* It is a class that is used to create all of the elements on the screen
+* apart from the background which is handled by the game object.
+*
+* The ReusableObjec Class creates and stores ChildObjects which are the actual
+* object that is created on screen. Each function here invokes a function on the
+* child object, this allows the manipulation of multiple objects with just one
+* function call.
+*
+* @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
+* @version 2.0
 *
 * @constructor
+* Calls on this.constructor
+*
 * @param {Game} game The created game object
-* @param {String} name The name of the ReusableObject
 * @param {String} image String reference of an image to use
+* @param {number} spriteWidth The width of one frame of the sprite
+* @param {number} spriteHeight The height of one frame of the sprite
+* @param {boolean} autoManage If the object should be managed. By having the object managed all children
+* are given the same values such as animations even if they are created after an animation is set. By
+* default it is set to true.
+* @param {String} name The name to give the object, by default it is ReusableObject plus the number so far created
 */
-function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
+function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name){
 
-	if ( typeof ReusableObject.counter == 'undefined' ) {
-        // It has not... perform the initialization
-        ReusableObject.counter = 1;
+	/** @member {Phaser.Game} */
+	this.game;
+	/** @member {Game} */
+	this.parentGame;
+	/** @member {Phaser.Group} */
+	this.group;
+	/** @member {String} */
+	this.name;
+	/** Load the image */
+	this.body;
+	/** @member {Array} */
+	this.children;
+	/** @member {boolean} */
+	this.autoManage;
+	/** @member {Array} */
+	this.animations;
 
-	} else {
+	/**
+	* The constructor used to encapsulate the code run when the object
+	* is first instanciated. It is called at the botttom of the file.
+	* So it does not need to be called as it has already been called.
+	*/
+	this.constructor = function() {
 
-		ReusableObject.counter++;
+		//Set up a counter to give unique names to each object
+		if ( typeof ReusableObject.counter == 'undefined' ) {
+
+			ReusableObject.counter = 1;
+
+		} else {
+
+			ReusableObject.counter++;
+
+		}
+
+		//set game to game.world which is the Phaser.Game
+		this.game = game.world;
+		//store a reference to our custom game object
+		this.parentGame = game;
+		//create a group to store the child object, this is used internally to
+		//decide the group z position
+		this.group = this.game.add.group(null, '', true, false, 0);
+
+		//set up a default name if one is not given
+		if(typeof name === 'undefined' )
+			this.name = "ReusableObject" + ReusableObject.counter;
+		else
+			this.name = name;
+
+		//load the spritesheet used into memory.
+		this.body = this.game.load.spritesheet(this.name, image, spriteWidth, spriteHeight);
+
+		this.children = [];
+		this.animations = [];
+
+		//by default set automanage to true
+		if(typeof autoManage === 'undefined')
+			this.autoManage = true;
+		else
+			this.autoManage = autoManage;
+
+		this.createReusables();
 
 	}
 
-	/** @member {Phaser.Game} */
-	this.game = game.world;
-	/** @member {Game} */
-	this.parentGame = game;
-	/** @member {Phaser.Group} */
-	this.group = this.game.add.group(null, '', true, false, 0);
-	/** @member {String} */
-	this.name = "ReusableObject" + ReusableObject.counter;
-	/** Load the image */
-	this.body = this.game.load.spritesheet(this.name, image, spriteX, spriteY);
-	/** @member {Array} */
-	this.children = new Array();
-
-	var needsBetterName = needsBetterName;
-
-	this.animations = [];
-
 	/**
 	* Create the reusable objects for use, called automatically
+	* Theses are common settings that are always used and do
+	* not matter too much
 	*/
 	this.createReusables = function() {
 
@@ -48,16 +103,19 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 		this.group.setAll('anchor.y', 1);
 		this.group.setAll('outOfBoundsKill', true);
 		this.group.setAll('checkWorldBounds', true);
+
 	}
 
 	/**
 	* Create your object at the given x and y coordinates
 	* Width and height is used from the image if not specified
 	*
-	* @param {int} x The x coordinate of the object
-	* @param {int} y The y coordinate of the object
-	* @param {int|string} width The width of the object
-	* @param {int|string} height The height of the object
+	* @param {number} x The x coordinate of the object
+	* @param {number} y The y coordinate of the object
+	* @param {number|string} width The width of the object
+	* @param {number|string} height The height of the object
+	*
+	* @return {GroupChild} child The created GroupChild Object
 	*/
 	this.create = function(x, y, width, height) {
 
@@ -66,26 +124,26 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 		if(width == 0 || height == 0) {
 
-		var image = this.game.cache.getImage(this.name);
+			//get the image from cache so we can get its dimensions
+			var image = this.game.cache.getImage(this.name);
 
-		width = image.width;
-		height = image.height;
+			width = image.width;
+			height = image.height;
 
-		width = this.parseWidth(width);
-		height = this.parseHeight(height);
+			//custom functions to ensure values are okay
+			width = this.parseWidth(width);
+			height = this.parseHeight(height);
+			x = this.parseX(x, width);
+			y = this.parseY(y, height);
 
-		x = this.parseX(x, width);
-		y = this.parseY(y, height);
+			//create our new child
+			var child = this.group.create(x, y, this.name);
+			this.children.push(new GroupChild(child, this.game));
 
+			var index = this.children.length - 1;
 
-
-		var rndObj = this.group.create(x, y, this.name);
-
-		this.children.push(new GroupChild(rndObj));
-
-		var index = this.children.length - 1;
-
-		return this.children[index];
+			//return the child incase the user wants to store it in a var
+			return this.children[index];
 
 		} else {
 			//quick fix for now
@@ -97,10 +155,12 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	/**
 	* Create your object at the given x and y coordinates
 	*
-	* @param {int} x The x coordinate of the object
-	* @param {int} y The y coordinate of the object
-	* @param {int|string} width The width of the object
-	* @param {int|string} height The height of the object
+	* @param {number} x The x coordinate of the object
+	* @param {number} y The y coordinate of the object
+	* @param {number|string} width The width of the object
+	* @param {number|string} height The height of the object
+	*
+	* @return {GroupChild} child The created child
 	*/
 	this.createWidthHeight = function(x, y, width, height) {
 
@@ -118,56 +178,32 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Check collisions between this object and another object
-	*
-	* @param {Object} obj The object to check a collision against
-	* @param {function} functionToUse The function to use
-	*/
-	this.checkCollision = function(obj, functionToUse) {
-
-		if(obj instanceof Player)
-  			obj = obj.character;
-
-  		if(obj instanceof Enemy)
-  			obj = obj.group;
-
-		this.game.physics.arcade.overlap(this.group, obj, functionToUse, null, this);
-
-
-	}
-
-
-	/**
 	* Add an animation to all enemies
 	*
 	* @param {String} name The name of an animation, required for referencing later.
-	* @param {int[]} frames An array of the frames thae animation playes in the order that they are played
-	* @param {int} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {number[]} frames An array of the frames that the animation plays
+	* @param {number} fps The frame rate of the animation, a higher value plays the animation faster
 	*/
 	this.addAnimation = function(name, frames, fps) {
 
 		var index = this.animations.length;
 
+		//create our 2D array
 		this.animations[index] = {};
 
+		//add to our array for the autoManager
 		this.animations[index]['name'] = name;
 		this.animations[index]['frames'] = frames;
 		this.animations[index]['fps'] = fps;
 
-
 		//go through each enemy in the array and add an animation to it
 		for(var i = 0; i < this.children.length; i++)
-		 addAnimationToChild(i, index);
+			this.children[i].addAnimation(name, frames, fps);
 
 	}
-
-	addAnimationToChild = function(childIndex, animationIndex) {
-		this.children[i].addAnimation(name, frames, fps);
-	}
-
 
 	/**
-	* Plays a predefined animation
+	* Plays a predefined animation on all of the children
 	*
 	* @param {String} name The name of the animation to play,
 	* this animation must have been created with {@link Player#addAnimation} beforehand
@@ -180,9 +216,9 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Set the y velocity of the child
+	* Set the y velocity of all of the children
 	*
-	* @param {int} y the y velocity to give the child
+	* @param {number} y The y velocity to give the children
 	*/
 	this.setVelocityY = function(y) {
 
@@ -191,9 +227,9 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Set the y velocity of the child
+	* Set the x velocity of all of the children
 	*
-	* @param {int} y the y velocity to give the child
+	* @param {number} x The x velocity to give the children
 	*/
 	this.setVelocityX = function(x) {
 
@@ -202,8 +238,30 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
+	* Set the y position of all of the children
+	*
+	* @param {number} y The y position to give the children
+	*/
+	this.setY = function(y) {
+
+		for(var i = 0; i < this.children.length; i++)
+	  		this.children[i].setY(y);
+	}
+
+	/**
+	* Set the y velocity of the child
+	*
+	* @param {number} y the y velocity to give the child
+	*/
+	this.setX = function(x) {
+
+		for(var i = 0; i < this.children.length; i++)
+	  		this.children[i].setX(x);
+	}
+
+	/**
 	* Stops the animation that is currently being played
-	* and shows the stop frame for the character.
+	* and shows the stop frame for all of the children.
 	*/
 	this.stop = function() {
 
@@ -213,10 +271,10 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Sets the stop frame for the player,
-	* this is the frame that is shown when the player is stopped
+	* Sets the stop frame for the children, this is the frame that is
+	* shown when the children are stopped.
 	*
-	* @param {int} frame The number of the frame to be set as the stop frame
+	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
 
@@ -225,33 +283,14 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 
 	}
 
-
-	/**
-	* Check simple collisions between this object and another object
-	* Only deals with collision, so prevents overlapping
-	*
-	* @param {Object} obj The object to check a collision against
-	*/
-	this.checkSimpleCollision = function(obj) {
-
-  		if(obj instanceof Player)
-  			obj = obj.character;
-
-  		if(obj instanceof ReusableObject)
-  			obj = obj.group;
-
-  		this.game.physics.arcade.collide(this.group, obj);
-
-  	}
-
-
-
 	/**
 	* Return a value of x, useful if specified as a string (percentage)
 	* Requires the width of the object to work out
 	*
-	* @param {int} x The x value
-	* @param {int} width The width of the object
+	* @param {number} x The x value
+	* @param {number} width The width of the object
+	*
+	* @return {number} x
 	*/
 	this.parseX = function(x, width) {
 
@@ -286,8 +325,10 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	* Return a value of y, useful if specified as a string (percentage)
 	* Requires the height of the object to work out
 	*
-	* @param {int} y The y value
-	* @param {int} height The height of the object
+	* @param {number} y The y value
+	* @param {number} height The height of the object
+	*
+	* @return {number} y
 	*/
 	this.parseY = function(y, height) {
 
@@ -321,7 +362,9 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	/**
 	* Return a value of the width, useful if specified as a string (percentage)
 	*
-	* @param {int} width The width value
+	* @param {number} width The width value
+	*
+	* @return {number} width
 	*/
 	this.parseWidth = function(width) {
 
@@ -350,7 +393,9 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	/**
 	* Return a value of the height, useful if specified as a string (percentage)
 	*
-	* @param {int} height The height value
+	* @param {number} height The height value
+	*
+	* @return {number} height
 	*/
 	this.parseHeight = function(height) {
 
@@ -377,53 +422,89 @@ function ReusableObject(game, image, spriteX, spriteY, needsBetterName = true){
 	}
 
 	/**
-	* Sets all of the objects children to immovable or not
-	* @see setImmovable
+	* Sets all of the children to immovable or not
 	*
-	* @param {boolean} immovable If they should be immovable
+	* @param {boolean} immovable If they should be able to move, true means the children won't move
 	*/
 	this.setAllImmovable = function(immovable) {
 
 		for(var i = 0; i < this.children.length; i++)
-			this.setImmovable(i, immovable);
+			this.children[i].setImmovable(immovable);
 
 	}
 
 	/**
-	* Sets a specified children to immovable or not
+	* Sets teh angle on all of the children
 	*
-	* @param {int} index The child to change
-	* @param {boolean} immovable If they should be immovable
+	* @param {number} angle The angle to set the children
 	*/
-	this.setImmovable = function(index, immovable) {
-		this.children[index].setImmovable(immovable);
-	}
-
-	/**
-	* Sets a specified childs angle
-	*
-	* @param {int} index The child to change
-	* @param {int} angle The angle to set them to
-	*/
-	this.setAngle = function(index, angle) {
-
-		this.children[index].angle = angle;
-
-	}
-
-	/**
-	* Sets all the childrens angle
-	* @see setAngle
-	*
-	* @param {int} angle The angle to set them to
-	*/
-	this.setAllAngle = function(angle) {
+	this.setAngle = function(angle) {
 
 		for(var i = 0; i < this.children.length; i++)
-			this.setAngle(i, angle);
+			this.children[i].setAngle(angle);
+	}
+
+	/**
+	* Allows all of the children to be dragged with the mouse.
+	*
+	* @param draggable If the children can be dragged
+	*/
+	this.setDraggable = function(draggable) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setDraggable(draggable);
 
 	}
 
-	this.createReusables();
+	/**
+	* Sets if the children collide with over object (only ones that were
+	* already set with setCollision).
+	*
+	* @param collisionOnDrag If the children should collide when being dragged
+	*/
+	this.setCollisionsOnDrag = function(collisionOnDrag) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setCollisionsOnDrag(collisionOnDrag);
+
+	}
+
+	/**
+	* Set the x gravity on the child
+	*
+	* @param {number} gravityX The x gravity to give the children
+	*/
+	this.setGravityX = function(gravityX) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setGravityX(gravityX);
+
+	}
+
+	/**
+	* Set the y gravity on the child
+	*
+	* @param {number} gravityY The y gravity to give the children
+	*/
+	this.setGravityY = function(gravityY) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setGravityY(gravityY);
+
+	}
+
+	/**
+	* Set the alpha(transparency) of the children.
+	*
+	* @param alpha The alpha value to set between 0 and 1.
+	*/
+	this.setAlpha = function(alpha) {
+
+		this.child.alpha = alpha;
+
+	}
+
+	//set everything up when the object is instansiated.
+	this.constructor();
 
 }
