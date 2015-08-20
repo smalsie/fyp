@@ -25,6 +25,8 @@ function Game(width, height, name){
 
     this.args = null;
 
+    var utils = new Utils();
+
     /**
 	* Game Height function that returns the height of the game, useful when
 	* a percentage is give as the size in pixels will be returned
@@ -56,11 +58,18 @@ function Game(width, height, name){
 
         if(this.backgrounds.indexOf(key) != -1) {
 
-            throw new Error("You have already used the key \"" + key + "\"! Please use another one!\nCalled from your funtion: " + arguments.callee.caller.name);
+            throw new Error("You have already used the key \"" + key + "\ for your background images! Please use another one!");
 
         } else {
+
             this.backgrounds.push(key);
+
         }
+
+        /*if(!utils.imageExists(image)) {
+
+            throw new Error("The image \"" + image + "\" does not exist!");
+        }*/
 
         this.world.load.image(key, image);
     };
@@ -213,7 +222,7 @@ function Game(width, height, name){
         var functionToUseNow = this.functionToUse;
 
         this.functionToUse = null;
-        
+
         if(functionToUseNow != null)
             functionToUseNow.apply(functionToUseNow, a);
     }

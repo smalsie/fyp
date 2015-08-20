@@ -142,7 +142,7 @@ function GroupChild(child, game){
 	*
 	* @param {boolean} immovable if the child is immovable, true means the child won't move
 	*/
-	this.setImmovable = function(immovable) {
+	this.setImovable = function(immovable) {
 		this.child.body.immovable = immovable;
 	}
 
