@@ -251,7 +251,8 @@ function Button(game, image, spriteWidth, spriteHeight, x, y){
             action.apply(action, null);
 
     }
-
+    
+    //set everything up when the object is instansiated.
     this.constructor();
 
 }

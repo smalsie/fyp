@@ -50,7 +50,7 @@ function create() {
 
 	e = keys.createKey("e");
 
-	game.setBackgroundImage(0,0,1920,400, 'background');
+	game.setBackgroundImage('background');
 
 	button.createButton();
 
@@ -112,10 +112,10 @@ function aaa() {
 function swapBG() {
 	if(bg1) {
 
-		game.setBackgroundImage(0,0,1920,400, 'space');
+		game.setBackgroundImage('space');
 		bg1 = false;
 	} else {
-		game.setBackgroundImage(0,0,1920,400, 'background');
+		game.setBackgroundImage('background');
 		bg1 = true;
 	}
 
