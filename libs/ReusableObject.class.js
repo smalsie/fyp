@@ -114,6 +114,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* @param {number} y The y coordinate of the object
 	* @param {number|string} width The width of the object
 	* @param {number|string} height The height of the object
+	*
+	* @return {GroupChild} child The created GroupChild Object
 	*/
 	this.create = function(x, y, width, height) {
 
@@ -157,6 +159,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* @param {number} y The y coordinate of the object
 	* @param {number|string} width The width of the object
 	* @param {number|string} height The height of the object
+	*
+	* @return {GroupChild} child The created child
 	*/
 	this.createWidthHeight = function(x, y, width, height) {
 
@@ -285,6 +289,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	*
 	* @param {number} x The x value
 	* @param {number} width The width of the object
+	*
+	* @return {number} x
 	*/
 	this.parseX = function(x, width) {
 
@@ -321,6 +327,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	*
 	* @param {number} y The y value
 	* @param {number} height The height of the object
+	*
+	* @return {number} y
 	*/
 	this.parseY = function(y, height) {
 
@@ -355,6 +363,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Return a value of the width, useful if specified as a string (percentage)
 	*
 	* @param {number} width The width value
+	*
+	* @return {number} width
 	*/
 	this.parseWidth = function(width) {
 
@@ -384,6 +394,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Return a value of the height, useful if specified as a string (percentage)
 	*
 	* @param {number} height The height value
+	*
+	* @return {number} height
 	*/
 	this.parseHeight = function(height) {
 
