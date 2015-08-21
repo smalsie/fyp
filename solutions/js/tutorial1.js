@@ -16,7 +16,7 @@ var right;
 function preload() {
 
 	//load in the player
-	player = new ReusableObject(game, "../img/mario-sprite.png", 17, 32);
+	player = new ReusableObject("../img/mario-sprite.png", 17, 32);
 
 }
 
@@ -25,7 +25,7 @@ function create() {
 	//create the player
 	player.create(50,50);
 
-	keys = new Keyboard(game);
+	keys = new Keyboard();
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
 

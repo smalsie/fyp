@@ -10,9 +10,8 @@
 * Calls on this.constructor
 *
 * @param {PIXI.DisplayObject} child The child object
-* @param {Game} The game object
 */
-function GroupChild(child, game){
+function GroupChild(child){
 
 	/** @member {PIXI.DisplayObject} */
 	this.child = child;
@@ -32,7 +31,7 @@ function GroupChild(child, game){
 
 		this.stillFrame = 0;
 
-		this.game = game;
+		this.game = Game.GET_INSTANCE();
 
 	}
 
@@ -334,7 +333,7 @@ function GroupChild(child, game){
 	this.onGround = function() {
 
 		return this.child.body.touching.down;
-		
+
 	}
 
 	//set everything up when the object is instansiated.

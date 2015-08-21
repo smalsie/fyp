@@ -8,7 +8,6 @@
 * @constructor
 * Calls on this.constructor
 *
-* @param {Game} game The game object
 * @param {String} message The message to display on the screen
 * @param {int} x X position of the text
 * @param {int} y Y position of the text
@@ -16,7 +15,7 @@
 * @param {String} font Font of the text in string format
 * @param {String} colour The hex value of a colour in string format (e.g. #FFFFFF)
 */
-function Text(game, message, x, y, size, font, colour) {
+function Text(message, x, y, size, font, colour) {
 
 	/** @member {Phaser.Game} */
 	this.game;
@@ -32,7 +31,7 @@ function Text(game, message, x, y, size, font, colour) {
 	*/
 	this.constructor = function() {
 
-		this.game = game.world;
+		this.game = Game.GET_INSTANCE().world;
 
 		this.size = size;
 

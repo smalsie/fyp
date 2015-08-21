@@ -8,13 +8,12 @@
 * @constructor
 * Calls on this.constructor
 *
-* @param {Game} game The created game object
 * @param {String} sound The string reference of the sound to use
 * @param {number} volume Optional Value between 0 and 1, the default is 1
 * @param {boolean} loop Optional boolean value stating if the audio should loop, default is false
 * @param {String} name Name of the sound
 */
-function Sound(game, sound, volume, loop, name){
+function Sound(sound, volume, loop, name){
 
 	/** @member {Phaser.Game} **/
 	this.game;
@@ -43,7 +42,7 @@ function Sound(game, sound, volume, loop, name){
 
 		}
 
-		this.game = game.world;
+		this.game = Game.GET_INSTANCE().world;
 
 		if(typeof name === 'undefined')
 		 	this.name = "Sound" + Sound.counter;

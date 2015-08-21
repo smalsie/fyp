@@ -27,14 +27,14 @@ var explosions;
 function preload() {
 
 	//load in the player
-	player = new ReusableObject(game, "../img/ship.png", 60, 32);
+	player = new ReusableObject("../img/ship.png", 60, 32);
 	//load in the enemy
-	enemy = new ReusableObject(game, "../img/space_invader_sprite.png", 24, 16, true, "enemy");
+	enemy = new ReusableObject("../img/space_invader_sprite.png", 24, 16, true, "enemy");
 
-	explosions = new ReusableObject(game, "../img/explode.png", 64, 64);
+	explosions = new ReusableObject("../img/explode.png", 64, 64);
 
 	//load bullets
-	playerBullets = new ReusableObject(game, "../img/bullet.png");
+	playerBullets = new ReusableObject("../img/bullet.png");
 
 }
 
@@ -42,7 +42,7 @@ function create() {
 
 	currentPlayer = player.create((game.gameWidth()/2),(game.gameHeight() - 50));
 	//create the input
-	keys = new Keyboard(game);
+	keys = new Keyboard();
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
 	up = keys.createUpKey();
@@ -116,7 +116,7 @@ function hitEnemy(bullet, enemy) {
 
 	var e = explosions.create(enemy.getX() - 25, enemy.getY() - 25);
 
-	e.addAnimation('explosion', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], 10, false);
+	e.addAnimation('explosion', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], 30, false);
 
 	e.addActionOnAnimationComplete(function() { e.kill(); });
 
