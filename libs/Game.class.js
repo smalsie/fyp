@@ -35,23 +35,29 @@ function Game(width, height, name){
 	*/
     this.constructor = function() {
 
-        if (typeof name === 'undefined') {
+        if ( typeof Game.INSTANCE == 'undefined' ) {
 
-            this.name = "My Headstart Game";
+            if (typeof name === 'undefined') {
 
-        } else {
+                this.name = "My Headstart Game";
 
-            this.name = name;
+            } else {
+
+                this.name = name;
+
+            }
+
+            document.title = this.name
+
+            this.world = new Phaser.Game(width, height, Phaser.AUTO, name, { preload: preload, create: create, update: update });
+
+            this.backgrounds = [];
+
+            this.utils = new Utils();
+
+            Game.INSTANCE = this;
 
         }
-
-        document.title = this.name
-
-        this.world = new Phaser.Game(width, height, Phaser.AUTO, name, { preload: preload, create: create, update: update });
-
-        this.backgrounds = [];
-
-        this.utils = new Utils();
 
     }
 
@@ -323,7 +329,7 @@ function Game(width, height, name){
     this.callBack = function(obj1, obj2) {
 
         //add these two passed through parameters to our parameters array
-        var argsArray = [obj1, obj2].concat(this.args);
+        var argsArray = [new GroupChild(obj1, this), new GroupChild(obj2, this)].concat(this.args);
 
         //set the field value to null so its not used next time
         this.args = null;
@@ -347,6 +353,12 @@ function Game(width, height, name){
     this.setBackgroundColour = function(colour) {
 
         this.world.stage.backgroundColor = colour;
+
+    }
+
+    Game.GET_INSTANCE = function() {
+
+        return Game.INSTANCE;
 
     }
 

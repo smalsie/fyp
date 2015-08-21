@@ -7,10 +7,8 @@
 *
 * @constructor
 * Calls on this.constructor
-*
-* @param {Game} The game object
 */
-function Mouse(game){
+function Mouse(){
 
     /** @member {Game} */
     this.game;
@@ -24,7 +22,7 @@ function Mouse(game){
 	*/
 	this.constructor = function() {
 
-        this.game = game.world;
+        this.game = Game.GET_INSTANCE().world;
 
         this.input = this.game.input;
 
@@ -59,7 +57,7 @@ function Mouse(game){
     this.onClick = function(functionToUse) {
 
         this.input.onDown.add(functionToUse, this);
-        
+
     }
 
     //set everything up when the object is instansiated.
