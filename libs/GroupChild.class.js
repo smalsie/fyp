@@ -186,10 +186,14 @@ function GroupChild(child, game){
 	* @param {String} name The name of an animation, required for referencing later.
 	* @param {number[]} frames An array of the frames thae animation playes in the order that they are played
 	* @param {number} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {boolean} loop If the animation should loop
 	*/
-	this.addAnimation = function(name, frames, fps) {
+	this.addAnimation = function(name, frames, fps, loop) {
 
-		this.child.animations.add(name, frames, fps, true);
+		if(typeof loop === 'undefined')
+			loop = true;
+
+		this.child.animations.add(name, frames, fps, loop);
 
 	}
 
@@ -286,6 +290,51 @@ function GroupChild(child, game){
 
 		}
 
+	}
+
+	/**
+	* Sets the child to immovable or not
+	*
+	* @param {boolean} immovable If they should be able to move, true means the children won't move
+	*/
+	this.setImmovable = function(immovable) {
+
+		this.child.body.immovable = immovable;
+
+	}
+
+	/**
+	* If the object should collide with the world boundaries.
+	*
+	* @param {boolean} collide If it should collide
+	*/
+	this.collideWorldBounds = function(collide) {
+
+		this.child.body.collideWorldBounds = collide;
+
+	}
+
+	/**
+	* Add a function to call when an animation has finished playing.
+	* Note: This will only work if loop is set to false on the animation!
+	*
+	* @param {function} action The function to call
+	*/
+	this.addActionOnAnimationComplete = function(action) {
+
+		this.child.events.onAnimationComplete.add(action, this);
+
+	}
+
+	/**
+	* States if the object is touching the ground.
+	*
+	* @return {boolen} onGround
+	*/
+	this.onGround = function() {
+
+		return this.child.body.touching.down;
+		
 	}
 
 	//set everything up when the object is instansiated.

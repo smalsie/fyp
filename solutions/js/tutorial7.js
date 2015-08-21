@@ -2,7 +2,7 @@
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
 var game = new Game(600, 400, "Tutorial 7");
-//player	
+//player
 var player;
 //input
 var keys;
@@ -30,94 +30,90 @@ var score = 0;
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	
+
 	//set the background image
-    game.loadBackgroundImage('background', "img/dino.png");
+    game.loadBackgroundImage('background', "../img/dino.png");
 	//load in the player
-	player = new Player(50,game.gameHeight()-100, game, "img/dinosaur.png", 32, 32);
+	player = new ReusableObject(game, "../img/dinosaur.png", 32, 32);
 	//load in the trees
-    trees = new ReusableObject(game, 'tree', "img/tree.png");
+    trees = new ReusableObject(game, "../img/tree.png");
 	//load in the platform
-    platform = new ReusableObject(game, 'platforms', "img/platform_dino.png");
-    //load in colliders
-    colliders = new ReusableObject(game, 'colliders', "img/treeCollider.png"); 
+    platform = new ReusableObject(game, "../img/platform_dino.png");
     //load in the jump sound
-    jumpSound = new Sound(game, "jumpsound", "sounds/jump.mp3");
+    jumpSound = new Sound(game, "../sounds/jump.mp3");
+    //load in colliders
+    colliders = new ReusableObject(game, "../img/treeCollider.png");
 
 }
-	
+
 function create() {
 
 	//set the background image
-	game.setBackgroundImage(0,0,1920,400);
-	
-	//create the trees and the platform and colliders
-	trees.createReusables();
-	platform.createReusables();
-	colliders.createReusables();
+	game.setBackgroundImage('background');
 
 	//input
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 	space = keys.createSpaceKey();
 
 	//create the player
-	player.createSprite();
+	currentPlayer = player.create(50, game.gameHeight()-100);
 	//create running animation
-	player.addAnimation('right', [0,1,2], 10);
+	currentPlayer.addAnimation('right', [0,1,2], 10);
 	//make the player fall
-	player.setGravity(100);
+	currentPlayer.setGravityY(100);
 	//play the running animation
-	player.playAnimation('right');  
+	currentPlayer.playAnimation('right');
 	//create a platform at the bottom
-	platform.create(0, "100", "100", 35);  	   	
+	platform.create(0, "90", "100", 35);
 	//prevent it from moving
-	platform.setAllImmovable(true);
-	
-	//text to display the score	
+	platform.setImmovable(true);
+
+	//text to display the score
 	scoreText = new Text(game, "Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
 
 
-	
+
 }
 
-	
+
 function update() {
 
 	//scroll the background
     game.scrollBackgroundX(-1);
 
 	//allow the player to be on top of the platform
-    platform.checkSimpleCollision(player);
-	
+    game.checkCollision(platform, player);
+
 	//check if player hit a tree
-    trees.checkCollision(player, hitTree);
-    //check if player jumped over a tree
-    colliders.checkCollision(player, hitOverTree);
+    game.checkCollision(trees, player, hitTree);
+
+	//check if player jumped over a tree
+    game.checkOverlap(colliders, player, hitOverTree);
 
 	//spawn a tree
     if(game.getGameTime() > lastTreeSpawn) {
 
-          
+
       //create tree
       var tree = trees.create(game.gameWidth()+10, game.gameHeight()-70);
-      tree.setVelocityX(-100);      
+      tree.setVelocityX(-100);
       //create collider over tree
       var collider = colliders.create(game.gameWidth()+10, game.gameHeight()-180);
       collider.setVelocityX(-100);
-      
+
       lastTreeSpawn = game.getGameTime() + 2500;
-      
+
   	}
-	
+
 	//only jump is the player is on the ground
-	if( ( ( game.world.input.pointer1.isDown) || (space.isDown()) ) && (player.onGround())) {
-	
-	  	player.moveY(-125);
+	if((space.isDown()) && (currentPlayer.onGround())) {
+
+	  	player.setVelocityY(-125);
 	  	//play the sound
-	  	jumpSound.playAudio();
-	
-	}  		
-		
+	  	//jumpSound.play();
+
+	}
+
 }
 
 //pause the game when the player hits a tree
@@ -127,13 +123,13 @@ function hitTree(tree, player) {
 
 }
 
-function hitOverTree(player, collider) {
+function hitOverTree(collider, player) {
 
 	//used to prevent multiple collisions causing higher scores
 	collider.kill();
 	//increase score
 	score++;
-	
+
 	//update the score text
 	scoreText.changeText("Score: " + score);
 }

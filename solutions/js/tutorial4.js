@@ -16,54 +16,62 @@ var enemy;
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	 
-    //load in the player		
-	player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/ship.png", 60, 32);
+
+    //load in the player
+	player = new ReusableObject(game, "../img/ship.png", 60, 32);
 	//load in the enemy
-	enemy = new Enemy(game, 'invader', "img/space_invader_sprite.png", 24, 16);
-	
+	enemy = new ReusableObject(game, "../img/space_invader_sprite.png", 24, 16);
+
 }
-	
+
 function create() {
-	
+
 	//create the player
-	player.createSprite();
+	player.create((game.gameWidth()/2),(game.gameHeight() - 50));
 	//create the input
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
-	
-	 for(var i = 0; i < 4; i++) {
 
-     	for(var j = 0; j < 10; j++) {
+	var xOffset = 50;
+	var yOffset = 50;
 
-			var x = (j * 40);
-       		var y = (i * 30);
 
-        	enemy.createEnemySpriteSheet(x, y);
+	for(var i = 0; i < 4; i++) {
 
-		  }
+    	for(var j = 0; j < 10; j++) {
 
-	 }
-	 
-	 //recentre the group
-	 enemy.setGroupCoordinates(50,50);
-	
+			var x = (j * 40) + xOffset;
+			var y = (i * 30) + yOffset;
+
+        	enemy.create(x, y);
+
+		}
+
+	}
+
+
 }
 
-	
+
 function update() {
 	//move left
 	if(left.isDown()) {
-		
-		player.moveX(-2);
-		
-	} 
+
+		player.setVelocityX(-100);
+
+	}
 	//move right
 	else if(right.isDown()) {
-	
-		player.moveX(2);
-		
+
+		player.setVelocityX(100);
+
 	}
-		
+	//no keys pressed
+	else {
+
+		player.setVelocityX(0);
+
+  	}
+
 }

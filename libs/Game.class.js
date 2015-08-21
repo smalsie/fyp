@@ -323,7 +323,7 @@ function Game(width, height, name){
     this.callBack = function(obj1, obj2) {
 
         //add these two passed through parameters to our parameters array
-        var argsArray = [obj1, obj2].concat(this.args);
+        var argsArray = [new GroupChild(obj1, this), new GroupChild(obj2, this)].concat(this.args);
 
         //set the field value to null so its not used next time
         this.args = null;

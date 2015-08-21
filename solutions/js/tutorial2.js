@@ -14,21 +14,23 @@ var right;
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	
+
 	//load in the player
-	player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
+	player = new ReusableObject(game, "../img/mario-sprite.png", 17, 32);
 
 }
 
 function create() {
-	
+
 	//create the player
-	player.createSprite();
-	
-	keys = new Keys(game);
+	player.create(50,50);
+
+	player.create(50,100);
+
+	keys = new Keyboard(game);
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
-	
+
 	//add the left animation
     player.addAnimation('left', [7,8,9,10], 10);
 	//add the right animation
@@ -42,31 +44,25 @@ function create() {
 
 function update() {
 
-	//move left
-	if(left.isDown()) {
-		
-		player.moveX(-2);
-		//play the left animation
-    	player.playAnimation('left');
-		
-	} 
-	//move right
-	else if(right.isDown()) {
-	
-		player.moveX(2);
-		//play the right animation
-    	player.playAnimation('right');
-		
+	if(right.isDown()) {
+
+		player.setVelocityX(100);
+
+		player.playAnimation('right');
+
+	} else if(left.isDown()) {
+
+		player.setVelocityX(-100);
+
+		player.playAnimation('left');
+
+	} else {
+
+
+		player.setVelocityX(0);
+
+		player.stop();
+
 	}
-	//no keys pressed
-	else {
-  	
-  		//stop the animation
-  		player.stop();	
-  		
-  	}
-	
+
 }
-
-	
-

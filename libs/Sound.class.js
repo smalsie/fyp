@@ -9,12 +9,12 @@
 * Calls on this.constructor
 *
 * @param {Game} game The created game object
-* @param {String} name Name of the sound
 * @param {String} sound The string reference of the sound to use
 * @param {number} volume Optional Value between 0 and 1, the default is 1
 * @param {boolean} loop Optional boolean value stating if the audio should loop, default is false
+* @param {String} name Name of the sound
 */
-function Sound(game, name, sound, volume, loop){
+function Sound(game, sound, volume, loop, name){
 
 	/** @member {Phaser.Game} **/
 	this.game;
@@ -32,12 +32,35 @@ function Sound(game, name, sound, volume, loop){
 	*/
 	this.constructor = function() {
 
+		//Set up a counter to give unique names to each object
+		if ( typeof Sound.counter == 'undefined' ) {
+
+			Sound.counter = 1;
+
+		} else {
+
+			Sound.counter++;
+
+		}
+
 		this.game = game.world;
-		this.name = name;
+
+		if(typeof name === 'undefined')
+		 	this.name = "Sound" + Sound.counter;
+		else
+			this.name = name;
+
 		this.sound = sound;
+
+		if(typeof volume === 'undefined')
+			volume = 1;
+
+		if(typeof loop === 'undefined')
+			loop = false;
 
 		/** load in the audio file **/
 		this.game.load.audio(this.name, this.sound);
+
 		this.audio = this.game.add.audio(this.name, volume, loop);
 
 	}
@@ -104,5 +127,6 @@ function Sound(game, name, sound, volume, loop){
 
 	//set everything up when the object is instansiated.
 	this.constructor();
+	this.allowMultiple(true);
 
 };

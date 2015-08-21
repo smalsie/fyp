@@ -16,90 +16,115 @@ var enemy;
 var playerBullets;
 //get the last shot time
 var lastShotTime = 0;
+
+var currentPlayer;
+
+var explosions;
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	 
-    //load in the player		
-	player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/ship.png", 60, 32);
+
+	//load in the player
+	player = new ReusableObject(game, "../img/ship.png", 60, 32);
 	//load in the enemy
-	enemy = new Enemy(game, 'invader', "img/space_invader_sprite.png", 24, 16);
-	
+	enemy = new ReusableObject(game, "../img/space_invader_sprite.png", 24, 16, true, "enemy");
+
+	explosions = new ReusableObject(game, "../img/explode.png", 64, 64);
+
 	//load bullets
-	playerBullets = new ReusableObject(game, 'bullets', "img/bullet.png");
-	
+	playerBullets = new ReusableObject(game, "../img/bullet.png");
+
 }
-	
+
 function create() {
-	
-	//create the player
-	player.createSprite();
+
+	currentPlayer = player.create((game.gameWidth()/2),(game.gameHeight() - 50));
 	//create the input
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
 	up = keys.createUpKey();
-	
-	 for(var i = 0; i < 4; i++) {
 
-     	for(var j = 0; j < 10; j++) {
+	var xOffset = 50;
+	var yOffset = 50;
 
-			var x = (j * 40);
-       		var y = (i * 30);
 
-        	enemy.createEnemySpriteSheet(x, y);
+	for(var i = 0; i < 4; i++) {
 
-		  }
+		for(var j = 0; j < 10; j++) {
 
-	 }
-	 
-	 //recentre the group
-	 enemy.setGroupCoordinates(50,50);
-	
+			var x = (j * 40) + xOffset;
+			var y = (i * 30) + yOffset;
+
+			enemy.create(x, y);
+
+		}
+
+	}
+
+
 }
 
-	
+
 function update() {
 
 	//check if the bullet hits the enemy
-	playerBullets.checkCollision(enemy, hitEnemy);
+	game.checkCollision(playerBullets, enemy, hitEnemy);
 
 	//move left
 	if(left.isDown()) {
-		
-		player.moveX(-2);
-		
-	} 
+
+		currentPlayer.setVelocityX(-100);
+
+	}
 	//move right
 	else if(right.isDown()) {
-	
-		player.moveX(2);
-		
+
+		currentPlayer.setVelocityX(100);
+
 	}
-  	
+	//no keys pressed
+	else {
+
+		currentPlayer.setVelocityX(0);
+
+  	}
+
   	//up key pressed
   	if(up.isDown()) {
-  	
+
   		if(game.getGameTime() > lastShotTime) {
-  	
-	  		var currentBullet = playerBullets.create(player.getX(), player.getY()-20);
-	  		
+
+	  		var currentBullet = playerBullets.create(currentPlayer.getX() + 28, currentPlayer.getY()-20);
+
 	  		currentBullet.setVelocityY(-400);
-	  		
+
 	  		lastShotTime = game.getGameTime() + 200;
-  		
+
   		}
-  	
+
   	}
-		
+
 }
 
 //called when a bullet hits an enemy
 function hitEnemy(bullet, enemy) {
 
+	console.log(enemy);
+
+	var e = explosions.create(enemy.getX() - 25, enemy.getY() - 25);
+
+	e.addAnimation('explosion', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], 10, false);
+
+	e.addActionOnAnimationComplete(function() { e.kill(); });
+
+	e.playAnimation('explosion');
+
 	bullet.kill();
     enemy.kill();
-    
-} 
+
+
+
+}

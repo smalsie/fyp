@@ -94,6 +94,8 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	* Create the reusable objects for use, called automatically
 	* Theses are common settings that are always used and do
 	* not matter too much
+	*
+	* Used Internally.
 	*/
 	this.createReusables = function() {
 
@@ -426,10 +428,22 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	*
 	* @param {boolean} immovable If they should be able to move, true means the children won't move
 	*/
-	this.setAllImmovable = function(immovable) {
+	this.setImmovable = function(immovable) {
 
 		for(var i = 0; i < this.children.length; i++)
 			this.children[i].setImmovable(immovable);
+
+	}
+
+	/**
+	* If the object should collide with the world boundaries.
+	*
+	* @param {boolean} collide If it should collide
+	*/
+	this.collideWorldBounds = function(collide) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].collideWorldBounds(collide);
 
 	}
 
@@ -500,7 +514,21 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 	*/
 	this.setAlpha = function(alpha) {
 
-		this.child.alpha = alpha;
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].setAlpha(alpha);
+
+	}
+
+	/**
+	* Add a function to call when an animation on the children has finished playing.
+	* Note: This will only work if loop is set to false on the animation!
+	*
+	* @param {function} action The function to call
+	*/
+	this.addActionOnAnimationComplete = function(action) {
+
+		for(var i = 0; i < this.children.length; i++)
+			this.children[i].addActionOnAnimationComplete(action);
 
 	}
 

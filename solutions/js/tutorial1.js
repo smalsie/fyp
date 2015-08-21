@@ -16,16 +16,16 @@ var right;
 function preload() {
 
 	//load in the player
-	player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
+	player = new ReusableObject(game, "../img/mario-sprite.png", 17, 32);
 
 }
 
 function create() {
 
 	//create the player
-	player.createSprite();
+	player.create(50,50);
 
-	keys = new Keys(game);
+	keys = new Keyboard(game);
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
 
@@ -34,17 +34,11 @@ function create() {
 
 function update() {
 
-	//move left
-	if(left.isDown()) {
-
-		player.moveX(-2);
-
-	}
-	//move right
-	else if(right.isDown()) {
-
-		player.moveX(2);
-
-	}
+	if(right.isDown())
+		player.setVelocityX(100);
+	else if(left.isDown())
+		player.setVelocityX(-100);
+	else
+		player.setVelocityX(0);
 
 }
