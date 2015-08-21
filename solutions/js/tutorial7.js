@@ -34,15 +34,15 @@ function preload() {
 	//set the background image
     game.loadBackgroundImage('background', "../img/dino.png");
 	//load in the player
-	player = new ReusableObject(game, "../img/dinosaur.png", 32, 32);
+	player = new ReusableObject("../img/dinosaur.png", 32, 32);
 	//load in the trees
-    trees = new ReusableObject(game, "../img/tree.png");
+    trees = new ReusableObject("../img/tree.png");
 	//load in the platform
-    platform = new ReusableObject(game, "../img/platform_dino.png");
+    platform = new ReusableObject("../img/platform_dino.png");
     //load in the jump sound
     jumpSound = new Sound(game, "../sounds/jump.mp3");
     //load in colliders
-    colliders = new ReusableObject(game, "../img/treeCollider.png");
+    colliders = new ReusableObject("../img/treeCollider.png");
 
 }
 

@@ -14,7 +14,6 @@
 * @constructor
 * Calls on this.constructor
 *
-* @param {Game} game The created game object
 * @param {String} image String reference of an image to use
 * @param {number} spriteWidth The width of one frame of the sprite
 * @param {number} spriteHeight The height of one frame of the sprite
@@ -23,7 +22,7 @@
 * default it is set to true.
 * @param {String} name The name to give the object, by default it is ReusableObject plus the number so far created
 */
-function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name){
+function ReusableObject(image, spriteWidth, spriteHeight, autoManage, name){
 
 	/** @member {Phaser.Game} */
 	this.game;
@@ -60,10 +59,11 @@ function ReusableObject(game, image, spriteWidth, spriteHeight, autoManage, name
 
 		}
 
-		//set game to game.world which is the Phaser.Game
-		this.game = game.world;
+
 		//store a reference to our custom game object
-		this.parentGame = game;
+		this.parentGame = Game.GET_INSTANCE();
+		//set game to game.world which is the Phaser.Game
+		this.game = this.parentGame.world;
 		//create a group to store the child object, this is used internally to
 		//decide the group z position
 		this.group = this.game.add.group(null, '', true, false, 0);
