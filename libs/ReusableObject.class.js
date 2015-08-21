@@ -140,7 +140,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, autoManage, name){
 
 			//create our new child
 			var child = this.group.create(x, y, this.name);
-			this.children.push(new GroupChild(child, this.game));
+			this.children.push(new GroupChild(child));
 
 			var index = this.children.length - 1;
 

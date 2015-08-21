@@ -12,15 +12,15 @@ var dino;
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	player2 = new ReusableObject(game, "img/dinosaur.png", 17, 32);
-		player3 = new ReusableObject(game, "img/dinosaur.png", 17, 32);
+	player2 = new ReusableObject("img/dinosaur.png", 17, 32);
+		player3 = new ReusableObject("img/dinosaur.png", 17, 32);
 
-	player = new ReusableObject(game, "img/mario-sprite.png", 17, 32);
+	player = new ReusableObject("img/mario-sprite.png", 17, 32);
 
 	game.loadBackgroundImage('background', "img/dino.png");
 	game.loadBackgroundImage('space', "img/space-background.png");
 
-	button = new Button(game, 'img/button_sprite_sheet.png', 193, 71, 100, 100);
+	button = new Button('img/button_sprite_sheet.png', 193, 71, 100, 100);
 
 	mouse = new Mouse(game);
 

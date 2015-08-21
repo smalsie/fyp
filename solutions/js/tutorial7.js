@@ -40,7 +40,7 @@ function preload() {
 	//load in the platform
     platform = new ReusableObject("../img/platform_dino.png");
     //load in the jump sound
-    jumpSound = new Sound(game, "../sounds/jump.mp3");
+    jumpSound = new Sound("../sounds/jump.mp3");
     //load in colliders
     colliders = new ReusableObject("../img/treeCollider.png");
 
@@ -52,7 +52,7 @@ function create() {
 	game.setBackgroundImage('background');
 
 	//input
-	keys = new Keyboard(game);
+	keys = new Keyboard();
 	space = keys.createSpaceKey();
 
 	//create the player
@@ -69,7 +69,7 @@ function create() {
 	platform.setImmovable(true);
 
 	//text to display the score
-	scoreText = new Text(game, "Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
+	scoreText = new Text("Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
 
 
 

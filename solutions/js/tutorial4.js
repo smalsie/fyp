@@ -18,9 +18,9 @@ var enemy;
 function preload() {
 
     //load in the player
-	player = new ReusableObject(game, "../img/ship.png", 60, 32);
+	player = new ReusableObject("../img/ship.png", 60, 32);
 	//load in the enemy
-	enemy = new ReusableObject(game, "../img/space_invader_sprite.png", 24, 16);
+	enemy = new ReusableObject("../img/space_invader_sprite.png", 24, 16);
 
 }
 
@@ -29,7 +29,7 @@ function create() {
 	//create the player
 	player.create((game.gameWidth()/2),(game.gameHeight() - 50));
 	//create the input
-	keys = new Keyboard(game);
+	keys = new Keyboard();
 	left = keys.createLeftKey();
 	right = keys.createRightKey();
 

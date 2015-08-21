@@ -6,10 +6,8 @@
 *
 * @constructor
 * Calls on this.constructor
-*
-* @param {Game} game The game object
 */
-function Keyboard(game) {
+function Keyboard() {
 
 	/** @member {Phaser.Game} */
 	this.game;
@@ -33,7 +31,7 @@ function Keyboard(game) {
 	*/
 	this.constructor = function() {
 
-		this.game = game.world;
+		this.game = Game.GET_INSTANCE().world;
 
 		this.phaserKeys = this.game.input.keyboard;
 

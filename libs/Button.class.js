@@ -12,14 +12,15 @@
 * @version 2.0
 *
 * @constructor
-* @param {Game} game The Game Object
+* Calls on this.constructor
+*
 * @param {String} image String reference of an image to use
 * @param {number} spriteWidth The width of one frame of the sprite
 * @param {number} spriteHeight The height of one frame of the sprite
 * @param {number} x The x coordinate of the button
 * @param {number} y The y coordinate of the button
 */
-function Button(game, image, spriteWidth, spriteHeight, x, y){
+function Button(image, spriteWidth, spriteHeight, x, y){
 
     /** @member {Boolean} */
     this.created;
@@ -60,9 +61,9 @@ function Button(game, image, spriteWidth, spriteHeight, x, y){
         this.buttonName = 'button' + Button.counter;
 
         //similar to super();
-        this.button = new ReusableObject(game, image, spriteWidth, spriteHeight, false, this.buttonName);
+        this.button = new ReusableObject(image, spriteWidth, spriteHeight, false, this.buttonName);
 
-        this.game = game.world;
+        this.game = Game.GET_INSTANCE().world;
 
         this.x = x;
         this.y = y;
@@ -251,7 +252,7 @@ function Button(game, image, spriteWidth, spriteHeight, x, y){
             action.apply(action, null);
 
     }
-    
+
     //set everything up when the object is instansiated.
     this.constructor();
 
