@@ -46,25 +46,24 @@ function Button(image, spriteWidth, spriteHeight, x, y){
 	*/
     this.constructor = function() {
 
-        //if undefined, initalise the counter
+        // If undefined, initalise the counter
+        // We use a counter to ensure the buttons have unique names
         if ( typeof Button.counter == 'undefined' ) {
-
             Button.counter = 1;
-
     	} else {
-
     		Button.counter++;
-
     	}
 
+        // Button is yet to be created
         this.created = false;
+        // A generic unique name
         this.buttonName = 'button' + Button.counter;
 
-        //similar to super();
+        // Basically super();
         this.button = new ReusableObject(image, spriteWidth, spriteHeight, false, this.buttonName);
-
         this.game = Game.GET_INSTANCE().world;
 
+        // Set its position
         this.x = x;
         this.y = y;
 
@@ -79,17 +78,18 @@ function Button(image, spriteWidth, spriteHeight, x, y){
         if(this.created)
             return;
 
-        //ReusableObject.create()
+        // ReusableObject.create()
         this.button.create(x, y);
 
-        //Reference the child(GroupChild) for later use
+        // Reference the child(GroupChild) for later use
         this.buttonChild = this.button.children[0].child;
 
-        //Allow us to capture input events
+        // Allow us to capture input events
         this.buttonChild.inputEnabled = true;
-        //Reference those events for later use
+        // Reference those events for later use
         this.buttonEvents = this.buttonChild.events;
 
+        // Ensure its only created once
         this.created = true;
 
     }
@@ -103,12 +103,8 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.addUpAction = function(action, frame) {
 
-        frame = frame || null;
+        var animationName = this.addActionAnimation("UpAction", frame);
 
-        var animationName = "";
-
-        if(frame != null)
-            animationName = this.addActionAnimation("UpAction", frame);
 
         this.buttonEvents.onInputUp.add(
 
@@ -132,12 +128,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.addOverAction = function(action, frame) {
 
-        frame = frame || null;
-
-        var animationName = "";
-
-        if(frame != null)
-            animationName = this.addActionAnimation("OverAction", frame);
+        var animationName = this.addActionAnimation("OverAction", frame);
 
         this.buttonEvents.onInputOver.add(
 
@@ -161,12 +152,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.addDownAction = function(action, frame) {
 
-        frame = frame || null;
-
-        var animationName = "";
-
-        if(frame != null)
-            animationName = this.addActionAnimation("DownAction", frame);
+        var animationName = this.addActionAnimation("DownAction", frame);
 
         this.buttonEvents.onInputDown.add(
 
@@ -189,12 +175,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.addOutAction = function(action, frame) {
 
-        frame = frame || null;
-
-        var animationName = "";
-
-        if(frame != null)
-            animationName = this.addActionAnimation("OutAction", frame);
+        var animationName = this.addActionAnimation("OutAction", frame);
 
         this.buttonEvents.onInputOut.add(
 
@@ -221,13 +202,20 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.addActionAnimation = function(type, frame) {
 
+        frame = frame || null;
+
+        // If its null theres no animation
+        if(frame === null)
+            return "";
+
         if(typeof frame !== 'object')
             frame = [frame];
 
+        // Get the name of the animation name
         var animationName = this.buttonName + type;
-
+        // Add the animation with its name
         this.button.addAnimation(animationName, frame, 10);
-
+        // Return the animation name
         return animationName;
 
     }
@@ -243,17 +231,17 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.playAction = function(animationName, action) {
 
-        //swap the frame of the button
+        // Swap the frame of the button
         if(animationName != "")
             this.button.playAnimation(animationName);
 
-        //play the users desired action
+        // Play the users desired action
         if(action != null)
             action.apply(action, null);
 
     }
 
-    //set everything up when the object is instansiated.
+    // Set everything up when the object is instansiated.
     this.constructor();
 
 }

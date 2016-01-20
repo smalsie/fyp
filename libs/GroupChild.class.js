@@ -135,18 +135,6 @@ function GroupChild(child){
 	}
 
 	/**
-	* Move the child towards the player, needs to be updated to allow moving towards other objects
-	*
-	* @see http://docs.phaser.io/Phaser.Physics.Arcade.html#moveToObject
-	* @param {Player} player the player to move towards
-	* @param {number} speed the speed to move the child
-	* Needs updating
-	*/
-	this.moveTowards = function(player, speed) {
-		this.child.game.physics.arcade.moveToObject(this.child,player.character,speed);
-	}
-
-	/**
 	* Set the width of the child
 	*
 	* @param {number} width the width of the child
@@ -165,8 +153,8 @@ function GroupChild(child){
 	*/
 	this.setHeight = function(height) {
 
-  	  	this.child.body.height = height;
-  	  	this.child.height = height;
+		this.child.body.height = height;
+		this.child.height = height;
 
 	}
 
@@ -185,7 +173,7 @@ function GroupChild(child){
 	* @param {String} name The name of an animation, required for referencing later.
 	* @param {number[]} frames An array of the frames thae animation playes in the order that they are played
 	* @param {number} fps The frame rate of the animetion, higher plays the animation faster
-	* @param {boolean} loop If the animation should loop
+	* @param {boolean} loop If the animation should loop, true by default
 	*/
 	this.addAnimation = function(name, frames, fps, loop) {
 
