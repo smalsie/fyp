@@ -25,8 +25,6 @@ function Game(width, height, name){
     this.functionToUse;
 	/** @member {args[]} */
     this.args;
-	/** @member {Utils} */
-    this.utils;
 
     /**
 	* The constructor used to encapsulate the code run when the object
@@ -51,7 +49,6 @@ function Game(width, height, name){
             this.world = new Phaser.Game(width, height, Phaser.AUTO, name, { preload: preload, create: create, update: update });
 
             this.backgrounds = [];
-            this.utils = new Utils();
             // Set up the 'static' instance
             Game.INSTANCE = this;
 
@@ -72,13 +69,9 @@ function Game(width, height, name){
         if(this.backgrounds.indexOf(key) != -1)
             throw new Error("You have already used the key \"" + key + "\ for your background images! Please use another one!");
 
-        //add the key to the array
+        // Add the key to the array
         this.backgrounds.push(key);
 
-        /*if(!utils.imageExists(image)) {
-
-            throw new Error("The image \"" + image + "\" does not exist!");
-        }*/
         // Load the image into memory
         this.world.load.image(key, image);
     };
@@ -187,14 +180,18 @@ function Game(width, height, name){
     }
 
     /**
-	* Used to swap the z index's of two objects
+	* Used to swap the z index's of two ReusableObject's
 	*
 	* @param {Object} obj1 The first object to swap
 	* @param {Object} obj2 The second object to swap
 	*/
-   this.swap = function(obj1, obj2) {
+    this.swap = function(obj1, obj2) {
 
-       // Get the objects z index's
+        if(typeof obj1.group === "undefined" || typeof obj2.group === "undefined") {
+            throw new Error("You can currenly only swap ReusableObjects");
+        }
+
+        // Get the objects z index's
         var obj1ZIndex = obj1.group.z;
         var obj2ZIndex = obj2.group.z;
 

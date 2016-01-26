@@ -13,7 +13,7 @@ function Mouse(){
     /** @member {Game} */
     this.game;
     /** @member {Phaser.Input} */
-    this.input;
+    this.mouse;
 
     /**
 	* The constructor used to encapsulate the code run when the object
@@ -21,11 +21,10 @@ function Mouse(){
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
-
+        // Get the pahser game
         this.game = Game.GET_INSTANCE().world;
-
-        this.input = this.game.input;
-
+        // The mouse
+        this.mouse = this.game.input;
     }
 
     /**
@@ -34,8 +33,7 @@ function Mouse(){
     * @return x The x position of the cursor
     */
     this.mouseX = function() {
-
-       return this.input.x;
+       return this.mouse.x;
     }
 
     /**
@@ -44,23 +42,19 @@ function Mouse(){
     * @return y The x position of the cursor
     */
     this.mouseY = function() {
-
-       return this.input.y;
-
+       return this.mouse.y;
     }
 
     /**
     * Add a function to call when the mouse is clicked
     *
-    * @param {function} functionToUse The function to use
+    * @param {function} functionToUse The function to use, will pass through the click event
     */
     this.onClick = function(functionToUse) {
-
-        this.input.onDown.add(functionToUse, this);
-
+        this.mouse.onDown.add(functionToUse, this);
     }
 
-    //set everything up when the object is instansiated.
+    // Set everything up when the object is instansiated.
 	this.constructor();
 
 };

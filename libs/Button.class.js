@@ -48,7 +48,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
 
         // If undefined, initalise the counter
         // We use a counter to ensure the buttons have unique names
-        if ( typeof Button.counter == 'undefined' ) {
+        if (typeof Button.counter == 'undefined') {
             Button.counter = 1;
     	} else {
     		Button.counter++;
@@ -60,7 +60,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
         this.buttonName = 'button' + Button.counter;
 
         // Basically super();
-        this.button = new ReusableObject(image, spriteWidth, spriteHeight, false, this.buttonName);
+        this.button = new ReusableObject(image, spriteWidth, spriteHeight, this.buttonName, this.buttonName);
         this.game = Game.GET_INSTANCE().world;
 
         // Set its position
@@ -74,16 +74,14 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     */
     this.createButton = function() {
 
-        //if already created do nothing
+        // If already created do nothing
         if(this.created)
             return;
 
         // ReusableObject.create()
-        this.button.create(x, y);
-
+        this.button.create(this.x, this.y);
         // Reference the child(GroupChild) for later use
         this.buttonChild = this.button.children[0].child;
-
         // Allow us to capture input events
         this.buttonChild.inputEnabled = true;
         // Reference those events for later use
@@ -102,9 +100,8 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     * @param {number|number[]} frame The frame(s) to show when this even is fired
     */
     this.addUpAction = function(action, frame) {
-
+        // Add an animation which swaps the frame
         var animationName = this.addActionAnimation("UpAction", frame);
-
 
         this.buttonEvents.onInputUp.add(
 
@@ -127,7 +124,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     * @param {number|number[]} frame The frame(s) to show when this even is fired
     */
     this.addOverAction = function(action, frame) {
-
+        // Add an animation which swaps the frame
         var animationName = this.addActionAnimation("OverAction", frame);
 
         this.buttonEvents.onInputOver.add(
@@ -151,7 +148,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
     * @param {number|number[]} frame The frame(s) to show when this even is fired
     */
     this.addDownAction = function(action, frame) {
-
+        // Add an animation which swaps the frame
         var animationName = this.addActionAnimation("DownAction", frame);
 
         this.buttonEvents.onInputDown.add(

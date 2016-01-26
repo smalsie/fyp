@@ -17,8 +17,8 @@ function GroupChild(child){
 	this.child = child;
 	/** @member {number} */
 	this.stillFrame;
-	/** @member {Game} */
-	this.game;
+	/** @member {Array} */
+	this.animations;
 
 	/**
 	* The constructor used to encapsulate the code run when the object
@@ -26,13 +26,12 @@ function GroupChild(child){
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
-
+		// Store the child
 		this.child = child;
-
+		// Still frame is 0 by default
 		this.stillFrame = 0;
-
-		this.game = Game.GET_INSTANCE();
-
+		// Store the animation names
+		this.animations = [];
 	}
 
 	/**
@@ -41,9 +40,7 @@ function GroupChild(child){
 	* @param {number} velocityX The x velocity to give the child
 	*/
 	this.setVelocityX = function(velocityX) {
-
 		this.child.body.velocity.x = velocityX;
-
 	}
 
 	/**
@@ -52,31 +49,29 @@ function GroupChild(child){
 	* @param {number} velocityY The y velocity to give the child
 	*/
 	this.setVelocityY = function(velocityY) {
-
 		this.child.body.velocity.y = velocityY;
-
 	}
 
 	/**
-	* Set the x position of the child
+	* Set the x position of the child.
+	* WARNING: This can sometime mess up the collision detection
+	* so it is usually best to use @see setVelocityX
 	*
 	* @param {number} x The x position to give the child
 	*/
 	this.setX = function(x) {
-
 		this.child.body.x = x;
-
 	}
 
 	/**
 	* Set the y position of the child
+	* WARNING: This can sometime mess up the collision detection
+	* so it is usually best to use @see setVelocityY
 	*
 	* @param {number} y The y position to give the child
 	*/
 	this.setY = function(y) {
-
 		this.child.body.y = y;
-
 	}
 
 	/**
@@ -85,9 +80,7 @@ function GroupChild(child){
 	* @param {number} gravityX The x gravity to give the child
 	*/
 	this.setGravityX = function(gravityX) {
-
 		this.child.body.gravity.x = gravityX;
-
 	}
 
 	/**
@@ -96,9 +89,7 @@ function GroupChild(child){
 	* @param {number} gravityY The y gravity to give the child
 	*/
 	this.setGravityY = function(gravityY) {
-
 		this.child.body.gravity.y = gravityY;
-
 	}
 
 	/**
@@ -106,10 +97,10 @@ function GroupChild(child){
 	* and shows the stop frame for the character.
 	*/
 	this.stop = function() {
-
+		// Stop any animation that is playing
 		this.child.animations.stop();
+		// Set the current frame to the stop frame
 		this.child.frame = this.stillFrame;
-
 	}
 
 	/**
@@ -118,9 +109,7 @@ function GroupChild(child){
 	* @return {number} x The x position of the child
 	*/
 	this.getX = function() {
-
 		return this.child.body.x;
-
 	}
 
 	/**
@@ -129,9 +118,7 @@ function GroupChild(child){
 	* @return {number} y The y position of the child
 	*/
 	this.getY = function() {
-
 		return this.child.body.y;
-
 	}
 
 	/**
@@ -140,10 +127,7 @@ function GroupChild(child){
 	* @param {number} width the width of the child
 	*/
 	this.setWidth = function(width) {
-
-  		this.child.body.width = width;
-  		this.child.width = width;
-
+		this.child.width = width;
 	}
 
 	/**
@@ -152,10 +136,7 @@ function GroupChild(child){
 	* @param {number} height the height of the child
 	*/
 	this.setHeight = function(height) {
-
-		this.child.body.height = height;
 		this.child.height = height;
-
 	}
 
 	/**
@@ -177,11 +158,15 @@ function GroupChild(child){
 	*/
 	this.addAnimation = function(name, frames, fps, loop) {
 
-		if(typeof loop === 'undefined')
-			loop = true;
+		// Ensure an animation with this name has not already been set
+		if(this.animations.indexOf(name) != -1) {
+			throw new Error("An animation with the name  \"" + name + "\ has already been set!");
+		}
 
+		// By default set loop to true
+		loop = loop || true;
+		// Add the animation to the child
 		this.child.animations.add(name, frames, fps, loop);
-
 	}
 
 	/**
@@ -191,9 +176,7 @@ function GroupChild(child){
 	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
-
 		this.stillFrame = frame;
-
 	}
 
 	/**
@@ -203,18 +186,19 @@ function GroupChild(child){
 	* must have been created with {@link Player#addAnimation} beforehand.
 	*/
 	this.playAnimation = function(name) {
+		// Ensure an animation with this name has been set
+		if(this.animations.indexOf(name) == -1) {
+			throw new Error("An animation with the name  \"" + name + "\ has not yet been set!");
+		}
 
 		this.child.animations.play(name);
-
 	}
 
 	/**
 	* Kill the child, removing it from the game
 	*/
 	this.kill = function() {
-
 		this.child.kill();
-
 	}
 
 	/**
@@ -223,9 +207,7 @@ function GroupChild(child){
 	* @param alpha The alpha value to set between 0 and 1.
 	*/
 	this.setAlpha = function(alpha) {
-
 		this.child.alpha = alpha;
-
 	}
 
 	/**
@@ -245,15 +227,15 @@ function GroupChild(child){
 	this.setDraggable = function(draggable) {
 
 		if(draggable) {
-
+			// Allow input from the mouse
 			this.child.inputEnabled = true;
+			// Enable drag from the mouse
 			this.child.input.enableDrag();
-
 		} else {
-
+			// Stop input from the mouse
 			this.child.inputEnabled = false;
+			// Disable drag from the mouse
 			this.child.input.disableDrag();
-
 		}
 
 	}
@@ -266,15 +248,13 @@ function GroupChild(child){
 	*/
 	this.setCollisionsOnDrag = function(collisionOnDrag) {
 
+		// If input has been set on the child
 		if(this.child.input != null) {
-
 			//setting the body.moves to false causes collisions to work
 			this.child.body.moves = !collisionOnDrag;
-
 		} else {
-
-			console.log("You need to call setDraggable(true) first!");
-
+			// Alert the user with an error
+			throw new Error("You need to call setDraggable(true) first!");
 		}
 
 	}
@@ -285,9 +265,7 @@ function GroupChild(child){
 	* @param {boolean} immovable If they should be able to move, true means the children won't move
 	*/
 	this.setImmovable = function(immovable) {
-
 		this.child.body.immovable = immovable;
-
 	}
 
 	/**
@@ -296,9 +274,7 @@ function GroupChild(child){
 	* @param {boolean} collide If it should collide
 	*/
 	this.collideWorldBounds = function(collide) {
-
 		this.child.body.collideWorldBounds = collide;
-
 	}
 
 	/**
@@ -308,9 +284,7 @@ function GroupChild(child){
 	* @param {function} action The function to call
 	*/
 	this.addActionOnAnimationComplete = function(action) {
-
 		this.child.events.onAnimationComplete.add(action, this);
-
 	}
 
 	/**
@@ -319,12 +293,10 @@ function GroupChild(child){
 	* @return {boolen} onGround
 	*/
 	this.onGround = function() {
-
 		return this.child.body.touching.down;
-
 	}
 
-	//set everything up when the object is instansiated.
+	// Set everything up when the object is instansiated.
 	this.constructor();
 
 };

@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
-var game = new Game(800, 600, "Tu");
+var game = new Game();
 
 var bg1 = true;
 
@@ -20,18 +20,30 @@ function preload() {
 	game.loadBackgroundImage('background', "img/dino.png");
 	game.loadBackgroundImage('space', "img/space-background.png");
 
-	button = new Button('img/button_sprite_sheet.png', 193, 71, 100, 100);
+	hs = new HighScore("Josh", "ASC");
 
-	mouse = new Mouse(game);
-
-
+	button = new Button("img/button_sprite_sheet.png", 193, 71, 100, 100);
 }
 
 function create() {
 
+	button.createButton();
+	hs.addScore("Josh", 12355);
+
+	button.addDownAction(null, 1);
+	button.addUpAction(null, 2);
+
 
 	dino = player2.create(100,10);
-	player.create(10,10);
+	p = player.create(10,10);
+
+	game.swap(player2, player)
+
+	/*dino.setWidth(100);
+	dino.setHeight(120);
+
+    dino.setDraggable(true);
+    dino.setCollisionsOnDrag(true);
 
 	//player.setStopFrame(5);
 	player.create(10,100);
@@ -50,14 +62,13 @@ function create() {
 
 	e = keys.createKey("e");
 
-	game.setBackgroundImage('background');
+	game.setBackgroundImage('space');
 
-	button.createButton();
+	mouse = new Mouse();
 
-	button.addOverAction(swapBG);
-	button.addOutAction(null, 1);
+	mouse.onClick(click);*/
 
-	mouse.onClick(aaa);
+
 
 }
 
@@ -65,12 +76,12 @@ function create() {
 function update() {
 	//player.playAnimation('left');
 
-	game.checkOverlap(player,player2, aa, ["Player2"]);
+	//game.checkCollision(player,player2, aa, ["Player2"], f);
 
-	game.checkOverlap(player,player3, aa, ["Player3"]);
+	//game.checkOverlap(player,player3, aa, ["Player3"]);
 
 	//dino.moveTowardPointer();
-
+/*
 	if(right.isDown())
 		player.setVelocityX(100);
 	else if(left.isDown())
@@ -96,13 +107,19 @@ function update() {
 
 	if(e.onClick()) {
 
-		swapBG();
-
+		game.swap(player, player2)
 	}
+*/
 }
 
 function aa(p1, p2, name) {
 	console.log(name);
+
+    return false;
+}
+
+function f(a, b) {
+    //console.log(b);
 }
 
 function aaa() {
@@ -119,4 +136,8 @@ function swapBG() {
 		bg1 = true;
 	}
 
+}
+
+function click(event) {
+	console.log(event);
 }

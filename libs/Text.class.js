@@ -30,11 +30,12 @@ function Text(message, x, y, size, font, colour) {
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
-
+		// Get the phaser game
 		this.game = Game.GET_INSTANCE().world;
 
+		// Store the size
 		this.size = size;
-
+		// Create the text
 		this.text = this.game.add.text(x, y, message, { font: size + " " + font, fill: colour });
 
 	}
@@ -45,9 +46,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {String} colour String hexadecimal representation of a colour
 	*/
 	this.changeColour = function(colour) {
-
 		this.text.fill = colour;
-
 	}
 
 	/**
@@ -56,9 +55,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {int} x he x position to set the text
 	*/
 	this.changeX = function(x) {
-
 		this.text.x = x;
-
 	}
 
 	/**
@@ -67,9 +64,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {int} y The y position to set the text
 	*/
 	this.changeY = function(y) {
-
 		this.text.y = y;
-
 	}
 
 	/**
@@ -78,9 +73,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {int} size The size of the text
 	*/
 	this.changeFontSize = function(size) {
-
 		this.text.fontSize = size + "px";
-
 	}
 
 	/**
@@ -89,9 +82,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {String} font The font to change to
 	*/
 	this.changeFont = function(font) {
-
 		this.text.font = font;
-
 	}
 
 	/**
@@ -100,9 +91,7 @@ function Text(message, x, y, size, font, colour) {
 	* @param {boolean} visible If the text should be visible
 	*/
 	this.setVisible = function(visible) {
-
 		this.text.visible = visible;
-
 	}
 
 	/**
@@ -111,12 +100,10 @@ function Text(message, x, y, size, font, colour) {
 	* @param {String} text The text to change to
 	*/
 	this.changeText = function(text) {
-
 		this.text.setText(text)
-
 	}
 
-	//set everything up when the object is instansiated.
+	// Set everything up when the object is instansiated.
 	this.constructor();
 
 };

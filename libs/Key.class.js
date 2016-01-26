@@ -11,8 +11,8 @@
 */
 function Key(key) {
 
-  	/** @member {Phaser.Key} */
-   	this.inputHandler;
+    /** @member {Phaser.Key} */
+    this.inputHandler;
     /** @member {boolean} */
     this.justClicked;
 
@@ -22,11 +22,10 @@ function Key(key) {
     * So it does not need to be called as it has already been called.
     */
     this.constructor = function() {
-
+        // Store this key
         this.inputHandler = key;
-
+        // Used for the on click
         this.justClicked = false;
-
     }
 
 	/**
@@ -35,9 +34,8 @@ function Key(key) {
 	* @return {boolean} isDown Returns if the key is currently held down or not
 	*/
 	this.isDown = function() {
-
-		return (this.inputHandler.isDown);
-	}
+		return this.inputHandler.isDown;
+    }
 
     /**
     * Returns true if the key has just been clicked, useful of you want to do
@@ -47,7 +45,7 @@ function Key(key) {
     */
     this.onClick = function() {
 
-        //key is pressed and has not been clicked yet
+        // Key is pressed and has not been clicked yet
         if(this.isDown() && !this.justClicked) {
 
             this.justClicked = true;
@@ -55,13 +53,13 @@ function Key(key) {
             return true;
 
         }
-        //Key is still down and not released yet
+        // Key is still down and not released yet
         else if(this.isDown() && this.justClicked) {
 
             return false;
 
         }
-        //Key has just been released so reset justClicked
+        // Key has just been released so reset justClicked
         else if(!this.isDown() && this.justClicked) {
 
             this.justClicked = false;
@@ -71,7 +69,7 @@ function Key(key) {
 
     }
 
-	//set everything up when the object is instansiated.
+	// Set everything up when the object is instansiated.
 	this.constructor();
 
 };

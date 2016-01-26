@@ -8,13 +8,13 @@
 * @constructor
 * Calls on this.constructor
 *
-* @param {String} tyoe If the scores are ascending or decending (ASC|DESC)
 * @param {String} name The name of the highscore
+* @param {String} type If the scores are ascending or decending (ASC|DESC)
 */
-function HighScore(type, name){
+function HighScore(name, type){
 
     /** @member {Array[]} */
-    this.highScore;
+    this.highscores;
     /** @member {String} */
     this.name;
     /** @member {String} */
@@ -27,26 +27,23 @@ function HighScore(type, name){
 	*/
     this.constructor = function() {
 
-        this.highScore = [];
-
-        this.name = name || "HighScore" + Math.random();
-
-        this.type = type.toUpperCase();
-
-        if(!((this.type == 'ASC') || (this.type == 'DESC'))) {
-
-            this.type = 'ASC';
-
+        if(typeof name === "undefined") {
+            throw new Error("You need to set a name for your highscore!");
         }
 
-        //get the cookie version of the highScore
+        // Set the name
+        this.name = name;
+
+        // Get the cookie version of the highscore if its there
         var cookie = this.getCookie(this.name);
+        // Get the highscore from teh cookie or set up an empty array
+        this.highscores = cookie != "" ? JSON.parse(cookie) : [];
 
-        if(cookie != "") {
+        // By default set the type to ASC
+        this.type = type || "ASC";
 
-            this.highScore = JSON.parse(cookie);
-        }
-
+        // Ensure the type is in uppercase
+        this.type = this.type.toUpperCase();
     }
 
     /**
@@ -54,49 +51,22 @@ function HighScore(type, name){
     * add the new score in the correct location based on
     * the sorting type.
     *
-    * @param {String} playerName The name of the player
+    * @param {String} name The name of the player
     * @param {number} score The players score
     *
     */
-    this.addScore = function(playerName, score) {
+    this.addScore = function(name, score) {
 
-        //get the index of where the score should be
-        var index = this.sort(score);
+        // Get the index of where the score should be
+        var index = this.getPosition(score);
 
-        //get a temp version of the highscore array
-        var tempHighScore = this.highScore;
-        //The array will be one bigger as we are adding a new score
-        var currentLength = this.highScore.length+1;
-        //reset the highscore array
-        this.highScore = [];
-        //has the new score been added yet?
-        var added = false;
+        // Get the new score
+        var newScore = {};
+        newScore['name'] = name;
+        newScore['score'] = score;
 
-        //loop through the array and add at the desired index
-        for(var i = 0; i < currentLength; i++) {
-
-            //we are at the index where we want to add it so add it
-            if(i == index) {
-
-                this.highScore[i] = {};
-                this.highScore[i]['playerName'] = playerName;
-                this.highScore[i]['score'] = score;
-
-                added = true;
-
-            } else {
-
-                var indexN = i;
-
-                //if it has been added the index will be one behind the value of i
-                if(added)
-                    indexN --;
-
-                this.highScore[i] = tempHighScore[indexN];
-
-            }
-
-        }
+        // Add the new score at its index
+        this.highscores.splice(index, 0, newScore);
 
         //write the highscore to the cookie for future use
         this.setCookie();
@@ -106,9 +76,9 @@ function HighScore(type, name){
     * Resets our highscore board
     */
     this.reset = function() {
-
-        this.highScore = [];
-        //effectively sets the cookie to nothing
+        // Empty the array
+        this.highscores = [];
+        // Effectively sets the cookie to nothing
         this.setCookie();
     }
 
@@ -121,11 +91,12 @@ function HighScore(type, name){
     */
     this.getCookie = function () {
 
-        //js cookies are stores as strings http://www.w3schools.com/js/js_cookies.asp
+        // Js cookies are stored as strings http://www.w3schools.com/js/js_cookies.asp
         var name = this.name + "=";
-
+        // Turn the string to an array
         var cookieArray = document.cookie.split(';');
 
+        // Loop through the array
         for(var i = 0; i < cookieArray.length; i++) {
 
             var cookie = cookieArray[i];
@@ -136,13 +107,13 @@ function HighScore(type, name){
 
             }
 
-            //found it!
-            //Return it without the first bit e.g. cookiename=
+            // Found it!
+            // Return it without the first bit e.g. cookiename=
             if (cookie.indexOf(name) == 0)
                 return cookie.substring(name.length, cookie.length);
         }
 
-        //no cookie
+        // No cookie
         return "";
     }
 
@@ -153,79 +124,111 @@ function HighScore(type, name){
     */
     this.setCookie = function() {
 
-        //encode the array as json as cookies can only store strings
-        var encodedHighscore = JSON.stringify(this.highScore);
+        // Encode the array as json as cookies can only store strings
+        var encodedHighscore = JSON.stringify(this.highscores);
 
         var date = new Date();
-        //expires in 10 days
-        var expires = date.setTime(d.getTime() + (10*24*60*60*1000)).toUTCString();
-        expires = "expires="+expires
+        // Expires in 10 days
+        date.setTime(date.getTime() + (10*24*60*60*1000))
+        expires = "expires=" + date.toUTCString();
 
-        //write the cookie in the form cookieName=highscoreData;expires=2000;
+        // Write the cookie in the form cookieName=highscoreData;expires=2000;
         document.cookie = this.name + "=" + encodedHighscore + "; " + expires + "; ";
 
     }
 
     /**
-    * Sort the highscores, calls on different functions
-    * depending on the type of ordering used.
+    * Get the highscores position based on if its DESC or ASC.
     *
     * Used Internally.
     *
     * @return {number} index The index of where the score fits
     */
-    this.sort = function(num) {
+    this.getPosition = function(num) {
 
         if(this.type == 'ASC')
-            return this.sortASC(num);
+            return this.getPositionASC(num);
         else
-            return this.sortDESC(num);
+            return this.getPositionDESC(num);
 
     }
 
     /**
-    * Sort the highscores in the ascending order
+    * Get the highscores position in the Ascending order.
     *
     * Used Internally.
     *
     * @return {number} index The index of where the score fits
     */
-    this.sortASC = function(num) {
+    this.getPositionASC = function(num) {
 
-        for(var i = this.highScore.length - 1; i >= 0; i--) {
+        for(var i = this.highscores.length - 1; i >= 0; i--) {
 
-            //if the number is smaller then the current value
-            if(num < this.highScore[i]['score'])
+            // If the number is smaller then the current value
+            if(num < this.highscores[i]['score'])
                 return i + 1;
 
         }
 
-        //its the biggest so should be on top
+        // Its the biggest so should be on top
         return 0;
     }
 
     /**
-    * Sort the highscores in the descending order
+    * Get the highscores position in the Descending order.
     *
     * Used Internally.
     *
     * @return {number} index The index of where the score fits
     */
-    this.sortDESC = function(num) {
+    this.getPositionDESC = function(num) {
 
-        for(var i = 0; i < this.highScore.length; i++) {
+        for(var i = 0; i < this.highscores.length; i++) {
 
-            //if its smaller then it should be at the current index
-            if(num < this.highScore[i]['score'])
+            // If its smaller then it should be at the current index
+            if(num < this.highscores[i]['score'])
                 return i;
 
         }
 
-        //its the biggest so should be at the bottom
-        return this.highScore.length;
+        // Its the biggest so should be at the bottom
+        return this.highscores.length;
     }
 
-    //set everything up when the object is instansiated.
+    /**
+     * Get all of the highscores in the form:
+     * [0] => {
+     *      "score" => 123,
+     *      "name" = > "Josh"
+     * },
+     * [1] => ....
+     *
+     * @return The highscores
+     */
+    this.getHighScores = function() {
+        return this.highscores;
+    }
+
+    /**
+     * Return the score at the specified index in the form:
+     * {
+     *    "score" => 123,
+     *    "name" = > "Josh"
+     * }
+     *
+     * @param index The index of the score to get.
+     * @return The score at that index.
+     */
+    this.getHighscore = function(index) {
+        // Ensure the index is within the range of the highscore array
+        if(index < 0 || index >= this.highscores.length) {
+            throw new Error("The index \"" + index + "\ is outside the valid range of the highscores. It must be above 0 and less than the number of highscores.");
+        }
+
+        return this.highscores[index];
+    }
+
+    // Set everything up when the object is instansiated.
     this.constructor();
 
 }

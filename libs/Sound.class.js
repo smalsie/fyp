@@ -33,34 +33,32 @@ function Sound(sound, volume, loop, name){
 
 		//Set up a counter to give unique names to each object
 		if ( typeof Sound.counter == 'undefined' ) {
-
 			Sound.counter = 1;
-
 		} else {
-
 			Sound.counter++;
-
 		}
 
+		// Get the phaser game
 		this.game = Game.GET_INSTANCE().world;
 
-		if(typeof name === 'undefined')
-		 	this.name = "Sound" + Sound.counter;
-		else
-			this.name = name;
+		// Use a Generaic name if not set
+		this.name = this.name || "Sound" + Sound.counter;
 
+		// Store the sound
 		this.sound = sound;
 
-		if(typeof volume === 'undefined')
-			volume = 1;
+		// Set volume to 1 if not set
+		volume = volume || 1;
+		// Set loop to false if not set
+		loop = loop || false;
 
-		if(typeof loop === 'undefined')
-			loop = false;
-
-		/** load in the audio file **/
+		// Load in the audio file
 		this.game.load.audio(this.name, this.sound);
-
+		// Create the audio
 		this.audio = this.game.add.audio(this.name, volume, loop);
+
+		// Allow multiple by default
+		this.allowMultiple(true);
 
 	}
 
@@ -68,27 +66,21 @@ function Sound(sound, volume, loop, name){
 	* Play the sound
 	*/
 	this.play = function() {
-
 		this.audio.play();
-
 	}
 
 	/**
 	* Pause the sound
 	*/
 	this.pause = function() {
-
 		this.audio.pause();
-
 	}
 
 	/**
 	* Restart the sound
 	*/
 	this.restart = function() {
-
 		this.audio.restart();
-
 	}
 
 
@@ -96,18 +88,14 @@ function Sound(sound, volume, loop, name){
 	* Resume the sound after pausing
 	*/
 	this.resume = function() {
-
 		this.audio.resume();
-
 	}
 
 	/**
 	* Stop the sound
 	*/
 	this.stop = function() {
-
 		this.audio.stop();
-
 	}
 
 	/**
@@ -119,13 +107,10 @@ function Sound(sound, volume, loop, name){
 	* @param {boolean} allowMultiple If multiple sounds are allowed
 	*/
 	this.allowMultiple = function(allowMultiple) {
-
 		this.audio.allowMultiple = allowMultiple;
-
 	}
 
-	//set everything up when the object is instansiated.
+	// Set everything up when the object is instansiated.
 	this.constructor();
-	this.allowMultiple(true);
 
 };
