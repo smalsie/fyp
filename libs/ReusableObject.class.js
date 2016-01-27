@@ -174,7 +174,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 			throw new Error("An animation with the name  \"" + name + "\ has already been set!");
 		}
 
-		// Add the name to the array
+		// Add the name to the array so it cannot be used again
 		this.animations.push(name);
 
 		// Go through each enemy in the array and add an animation to it

@@ -162,8 +162,10 @@ function GroupChild(child){
 		if(this.animations.indexOf(name) != -1) {
 			throw new Error("An animation with the name  \"" + name + "\" has already been set!");
 		}
-		console.log(name)
-		console.log(frames)
+
+		// Add the name so that it cannot be used again
+		this.animations.push(name);
+		
 		// By default set loop to true
 		loop = loop || true;
 		// Add the animation to the child
