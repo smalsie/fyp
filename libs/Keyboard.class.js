@@ -18,11 +18,11 @@ function Keyboard() {
 
 	/**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
-		// Get the pahser game
+		// Get the phaser game
 		this.game = Game.GET_INSTANCE().world;
 		// Get the keyboard object to interface with
 		this.phaserKeys = this.game.input.keyboard;
@@ -92,7 +92,7 @@ function Keyboard() {
 		return new Key(this.phaserKeyArrows.right);
 	}
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };

@@ -1,6 +1,6 @@
 /**
 * Game class which is at the core of the project, this is the first
-* class that should be initalised as all of the other classes rely
+* class that should be initialized as all of the other classes rely
 * on it as an interface to the Phaser Library.
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
@@ -28,7 +28,7 @@ function Game(width, height, name){
 
     /**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
     this.constructor = function() {
@@ -146,9 +146,9 @@ function Game(width, height, name){
     }
 
 	/**
-	* Get the current game time in miliseconds
+	* Get the current game time in milliseconds
 	*
-	* @return {number} time The current game time in miliseconds
+	* @return {number} time The current game time in milliseconds
 	*/
     this.getGameTime = function() {
     	return this.world.time.now;
@@ -180,7 +180,7 @@ function Game(width, height, name){
     }
 
     /**
-	* Used to swap the z index's of two ReusableObject's
+	* Used to swap the z indexes of two ReusableObject's
 	*
 	* @param {Object} obj1 The first object to swap
 	* @param {Object} obj2 The second object to swap
@@ -188,14 +188,14 @@ function Game(width, height, name){
     this.swap = function(obj1, obj2) {
 
         if(typeof obj1.group === "undefined" || typeof obj2.group === "undefined") {
-            throw new Error("You can currenly only swap ReusableObjects");
+            throw new Error("You can currently only swap ReusableObjects");
         }
 
-        // Get the objects z index's
+        // Get the objects z indexes
         var obj1ZIndex = obj1.group.z;
         var obj2ZIndex = obj2.group.z;
 
-        // Get the objects index's in the array, they are the z index - 1
+        // Get the objects indexes in the array, they are the z index - 1
         var obj1Index = obj1ZIndex - 1;
         var obj2Index = obj2ZIndex - 1;
 
@@ -203,7 +203,7 @@ function Game(width, height, name){
         var childA = game.world.stage.children[obj1Index];
         var childB = game.world.stage.children[obj2Index];
 
-        // Switch the index's around
+        // Switch the indexes around
         obj1.group.z = obj2ZIndex;
         obj2.group.z = obj1ZIndex;
 
@@ -301,7 +301,7 @@ function Game(width, height, name){
     *
     * @param {Object} obj The object to check
     *
-    * @return {Object} obj The object type thats being checked
+    * @return {Object} obj The object type that's being checked
     */
     objectType = function(obj) {
 
@@ -333,10 +333,10 @@ function Game(width, height, name){
         // Add these two passed through parameters to our parameters array
         var argsArray = [new GroupChild(obj1, this), new GroupChild(obj2, this)].concat(this.args);
 
-        // Set the field value to null so its not used next time
+        // Set the field value to null so it's not used next time
         this.args = null;
 
-        // Set the field value to null so its not used next time
+        // Set the field value to null so it's not used next time
         var functionToUseNow = this.functionToUse;
         this.functionToUse = null;
 
@@ -352,7 +352,7 @@ function Game(width, height, name){
         return Game.INSTANCE;
     }
 
-   // Set everything up when the object is instansiated.
+   // Set everything up when the object is instantiated.
    this.constructor();
 
 };

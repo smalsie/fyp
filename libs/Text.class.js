@@ -26,7 +26,7 @@ function Text(message, x, y, size, font, colour) {
 
 	/**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
@@ -103,7 +103,7 @@ function Text(message, x, y, size, font, colour) {
 		this.text.setText(text)
 	}
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };

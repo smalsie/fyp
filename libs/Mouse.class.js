@@ -1,6 +1,6 @@
 /**
 * Mouse class that allows you to get some information about the mouse,
-* mainly the cursor loaction and what to do when clicked.
+* mainly the cursor location and what to do when clicked.
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
 * @version 2.0
@@ -17,11 +17,11 @@ function Mouse(){
 
     /**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
-        // Get the pahser game
+        // Get the phaser game
         this.game = Game.GET_INSTANCE().world;
         // The mouse
         this.mouse = this.game.input;
@@ -54,7 +54,7 @@ function Mouse(){
         this.mouse.onDown.add(functionToUse, this);
     }
 
-    // Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };

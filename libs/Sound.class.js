@@ -1,5 +1,5 @@
 /**
-* Sound class allows the playing of sigular or looped sounds
+* Sound class allows the playing of singular or looped sounds
 * Unfortunately sound currently does not work on the lab machines
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
@@ -26,7 +26,7 @@ function Sound(sound, volume, loop, name){
 
 	/**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
@@ -110,7 +110,7 @@ function Sound(sound, volume, loop, name){
 		this.audio.allowMultiple = allowMultiple;
 	}
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };

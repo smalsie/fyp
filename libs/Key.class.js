@@ -17,10 +17,10 @@ function Key(key) {
     this.justClicked;
 
     /**
-    * The constructor used to encapsulate the code run when the object
-    * is first instanciated. It is called at the botttom of the file.
-    * So it does not need to be called as it has already been called.
-    */
+	* The constructor used to encapsulate the code run when the object
+	* is first instantiated. It is called at the bottom of the file.
+	* So it does not need to be called as it has already been called.
+	*/
     this.constructor = function() {
         // Store this key
         this.inputHandler = key;
@@ -39,7 +39,7 @@ function Key(key) {
 
     /**
     * Returns true if the key has just been clicked, useful of you want to do
-    * something on a click and not continiously when the key is held down.
+    * something on a click and not continuously when the key is held down.
     *
     * @return {boolean} justClicked If the key was just clicked
     */
@@ -69,7 +69,7 @@ function Key(key) {
 
     }
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };

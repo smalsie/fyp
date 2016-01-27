@@ -238,7 +238,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
 
     }
 
-    // Set everything up when the object is instansiated.
+    // Set everything up when the object is instantiated.
     this.constructor();
 
 }

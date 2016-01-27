@@ -9,7 +9,7 @@
 * Calls on this.constructor
 *
 * @param {String} name The name of the highscore
-* @param {String} type If the scores are ascending or decending (ASC|DESC)
+* @param {String} type If the scores are ascending or descending (ASC|DESC)
 */
 function HighScore(name, type){
 
@@ -22,7 +22,7 @@ function HighScore(name, type){
 
     /**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
     this.constructor = function() {
@@ -36,7 +36,7 @@ function HighScore(name, type){
 
         // Get the cookie version of the highscore if its there
         var cookie = this.getCookie(this.name);
-        // Get the highscore from teh cookie or set up an empty array
+        // Get the highscore from the cookie or set up an empty array
         this.highscores = cookie != "" ? JSON.parse(cookie) : [];
 
         // By default set the type to ASC
@@ -52,7 +52,7 @@ function HighScore(name, type){
     * the sorting type.
     *
     * @param {String} name The name of the player
-    * @param {number} score The players score
+    * @param {number} score The player's score
     *
     */
     this.addScore = function(name, score) {
@@ -170,7 +170,7 @@ function HighScore(name, type){
 
         }
 
-        // Its the biggest so should be on top
+        // It's the biggest so should be on top
         return 0;
     }
 
@@ -185,13 +185,13 @@ function HighScore(name, type){
 
         for(var i = 0; i < this.highscores.length; i++) {
 
-            // If its smaller then it should be at the current index
+            // If it's smaller then it should be at the current index
             if(num < this.highscores[i]['score'])
                 return i;
 
         }
 
-        // Its the biggest so should be at the bottom
+        // It's the biggest so should be at the bottom
         return this.highscores.length;
     }
 
@@ -228,7 +228,7 @@ function HighScore(name, type){
         return this.highscores[index];
     }
 
-    // Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
     this.constructor();
 
 }

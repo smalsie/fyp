@@ -38,7 +38,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 
 	/**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
@@ -64,7 +64,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 		// Load the spritesheet used into memory.
 		this.body = this.game.load.spritesheet(this.name, image, spriteWidth, spriteHeight);
 
-		// Set up arrays to store the children and their annimations
+		// Set up arrays to store the children and their animations
 		this.children = [];
 		this.animations = [];
 
@@ -459,7 +459,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 
 	/**
 	* Sets if the children collide with over object (only ones that were
-	* already set with setCollision).
+	* already set with @see setCollision).
 	*
 	* @param collisionOnDrag If the children should collide when being dragged
 	*/
@@ -519,7 +519,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 
 	}
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 }

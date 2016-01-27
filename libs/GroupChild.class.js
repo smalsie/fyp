@@ -22,7 +22,7 @@ function GroupChild(child){
 
 	/**
 	* The constructor used to encapsulate the code run when the object
-	* is first instanciated. It is called at the botttom of the file.
+	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
 	*/
 	this.constructor = function() {
@@ -152,17 +152,18 @@ function GroupChild(child){
 	* Add an animation to the child
 	*
 	* @param {String} name The name of an animation, required for referencing later.
-	* @param {number[]} frames An array of the frames thae animation playes in the order that they are played
-	* @param {number} fps The frame rate of the animetion, higher plays the animation faster
+	* @param {number[]} frames An array of the frames the animation plays in the order that they are given
+	* @param {number} fps The frame rate of the animation, higher plays the animation faster
 	* @param {boolean} loop If the animation should loop, true by default
 	*/
 	this.addAnimation = function(name, frames, fps, loop) {
 
 		// Ensure an animation with this name has not already been set
 		if(this.animations.indexOf(name) != -1) {
-			throw new Error("An animation with the name  \"" + name + "\ has already been set!");
+			throw new Error("An animation with the name  \"" + name + "\" has already been set!");
 		}
-
+		console.log(name)
+		console.log(frames)
 		// By default set loop to true
 		loop = loop || true;
 		// Add the animation to the child
@@ -183,12 +184,12 @@ function GroupChild(child){
 	* Plays a predefined animation
 	*
 	* @param {String} name The name of the animation to play, this animation
-	* must have been created with {@link Player#addAnimation} beforehand.
+	* must have been created with @see addAnimation beforehand.
 	*/
 	this.playAnimation = function(name) {
 		// Ensure an animation with this name has been set
 		if(this.animations.indexOf(name) == -1) {
-			throw new Error("An animation with the name  \"" + name + "\ has not yet been set!");
+			throw new Error("An animation with the name  \"" + name + "\" has not yet been set!");
 		}
 
 		this.child.animations.play(name);
@@ -211,7 +212,7 @@ function GroupChild(child){
 	}
 
 	/**
-	* Sets the childs angle
+	* Sets the child's angle
 	*
 	* @param {number} angle The angle to set the child
 	*/
@@ -242,7 +243,7 @@ function GroupChild(child){
 
 	/**
 	* Sets if the child will collide with over objects (only ones that were
-	* already set with setCollision).
+	* already set with @see setCollision).
 	*
 	* @param collisionOnDrag If the child should collide when being dragged
 	*/
@@ -296,7 +297,7 @@ function GroupChild(child){
 		return this.child.body.touching.down;
 	}
 
-	// Set everything up when the object is instansiated.
+	// Set everything up when the object is instantiated.
 	this.constructor();
 
 };
