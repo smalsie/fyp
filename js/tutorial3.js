@@ -1,72 +1,56 @@
 /////////////////////////////////////////////////////////////////
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
-//main game object
-var game = new Game(800, 600, "Tutorial 3");
-//player object
 var player;
-//input keys
-var keys;
-var left;
-var right;
+var keyboard, left, right, space;
+var platforms, platformOne, platformTwo;
+var game = new Game(800, 600, "Tutorial 3");
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	
-	//load in the player
-	player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
-
+	player = new Sprite("img/mario-sprite.png", 17, 32);
+	platforms = new Sprite("img/platform.png");
+	keyboard = new Keyboard();
+	left = keyboard.createLeftKey();
+	right = keyboard.createRightKey();
+	space = keyboard.createSpaceKey();
 }
 
 function create() {
-	
-	//create the player
-	player.createSprite();
-	
-	keys = new Keys(game);
-	left = keys.createLeftKey();
-	right = keys.createRightKey();
-	
-	//add the left animation
-    player.addAnimation('left', [7,8,9,10], 10);
-	//add the right animation
+	player.create(50, 50);
+	// Make mario stay in the world!
+	player.collideWorldBounds(true);
+	player.addAnimation('left', [7,8,9,10], 10);
 	player.addAnimation('right', [0,1,2,3], 10);
-	//set the stop frame
 	player.setStopFrame(5);
+	player.setGravityY(50);
 
-
+	platformOne = platforms.create(50, 100);
+	platformTwo = platforms.create(50, 200);
+	platformTwo.setImmovable(true);
 }
 
 
 function update() {
 
-	//move left
+	game.checkCollision(player, platforms);
+
 	if(left.isDown()) {
-		
-		player.moveX(-2);
-		//play the left animation
-    	player.playAnimation('left');
-		
-	} 
-	//move right
-	else if(right.isDown()) {
-	
-		player.moveX(2);
-		//play the right animation
-    	player.playAnimation('right');
-		
+		player.setVelocityX(-50);
+		player.playAnimation('left');
+	} else if(right.isDown()) {
+		player.setVelocityX(50);
+		player.playAnimation('right');
+	} else {
+		player.setVelocityX(0);
+		player.stop();
 	}
-	//no keys pressed
-	else {
-  	
-  		//stop the animation
-  		player.stop();	
-  		
-  	}
-	
+
+	if(space.justPressed()) {
+		player.setVelocityY(-50);
+	}
+
 }
-
-	
-

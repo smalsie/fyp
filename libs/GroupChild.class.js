@@ -1,6 +1,6 @@
 /**
 * GroupChild class, these are the actual objects created when
-* the ReusableObject.create is called. This allows for specific
+* the Sprite.create is called. This allows for specific
 * control over each object.
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
@@ -165,7 +165,7 @@ function GroupChild(child){
 
 		// Add the name so that it cannot be used again
 		this.animations.push(name);
-		
+
 		// By default set loop to true
 		loop = loop || true;
 		// Add the animation to the child

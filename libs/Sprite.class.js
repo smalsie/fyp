@@ -61,8 +61,11 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		// Set up a default name if one is not given
 		this.name = name || "Sprite" + Sprite.counter;
 
+		this.spriteWidth = spriteWidth || 0;
+		this.spriteHeight = spriteHeight || 0;
+
 		// Load the spritesheet used into memory.
-		this.body = this.game.load.spritesheet(this.name, image, spriteWidth, spriteHeight);
+		this.body = this.game.load.spritesheet(this.name, image, this.spriteWidth, this.spriteHeight);
 
 		// Set up arrays to store the children and their animations
 		this.children = [];
@@ -161,7 +164,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	}
 
 	/**
-	* Add an animation to all enemies
+	* Add an animation to all sprites
 	*
 	* @param {String} name The name of an animation, required for referencing later.
 	* @param {number[]} frames An array of the frames that the animation plays
@@ -172,6 +175,22 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		// Ensure an animation with this name has not already been set
 		if(this.animations.indexOf(name) != -1) {
 			throw new Error("An animation with the name  \"" + name + "\ has already been set!");
+		}
+
+		// Ensure the sprite width and height was provided
+		if(this.spriteWidth == 0 || this.spriteHeight == 0) {
+			throw new Error("You must provide a sprite width and height before creating an animation!");
+		}
+
+		var totalFrames = this.getTotalFrames();
+
+		// Loop through to ensure all frames are valid
+		for(var i = 0; i < frames.length; i++) {
+
+			if(frames[i] >= totalFrames  || frames[i] < 0) {
+				throw new Error("You have specified a frame outside of the valid range! (" + frames[i] + ") "
+								+ "The highest frame you can have is " + (totalFrames - 1) + ".");
+			}
 		}
 
 		// Add the name to the array so it cannot be used again
@@ -267,6 +286,19 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	* @param {number} frame The number of the frame to be set as the stop frame
 	*/
 	this.setStopFrame = function(frame) {
+
+		// Ensure the sprite width and height was provided
+		if(this.spriteWidth == 0 || this.spriteHeight == 0) {
+			throw new Error("You must provide a sprite width and height before setting a stop frame!");
+		}
+
+		var totalFrames = this.getTotalFrames();
+
+		if(frame >= totalFrames || frame < 0) {
+			throw new Error("Your stop frame must be within the range of the available frames! "
+							+ "(0-" + (totalFrames - 1) + ")");
+		}
+
 		// Set the stop frame on all children
 		for(var i = 0; i < this.children.length; i++)
 			this.children[i].setStopFrame(frame);
@@ -517,6 +549,24 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		for(var i = 0; i < this.children.length; i++)
 			this.children[i].addActionOnAnimationComplete(action);
 
+	}
+
+	/**
+	 * Gets the total frames that a sprite has.
+	 *
+	 * @return The number of frames.
+	 */
+	this.getTotalFrames = function() {
+		// Get the image from cache so we can get its dimensions
+		var image = this.game.cache.getImage(this.name);
+		width = image.width;
+		height = image.height;
+
+		// Work out the max number of frames
+		var xFrames = Math.floor(width / this.spriteWidth);
+		var yFrames = Math.floor(height / this.spriteHeight);
+
+		return xFrames * yFrames;
 	}
 
 	// Set everything up when the object is instantiated.

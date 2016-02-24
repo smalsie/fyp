@@ -180,15 +180,15 @@ function Game(width, height, name){
     }
 
     /**
-	* Used to swap the z indexes of two ReusableObject's
-	*
+	* Used to swap the z indexes of two Sprites
+    *
 	* @param {Object} obj1 The first object to swap
 	* @param {Object} obj2 The second object to swap
 	*/
     this.swap = function(obj1, obj2) {
 
         if(typeof obj1.group === "undefined" || typeof obj2.group === "undefined") {
-            throw new Error("You can currently only swap ReusableObjects");
+            throw new Error("You can currently only swap Sprites");
         }
 
         // Get the objects z indexes
@@ -305,7 +305,7 @@ function Game(width, height, name){
     */
     objectType = function(obj) {
 
-        if(obj instanceof ReusableObject)
+        if(obj instanceof Sprite)
             return obj.group;
 
         if(obj instanceof GroupChild)

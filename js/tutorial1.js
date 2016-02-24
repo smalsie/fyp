@@ -11,6 +11,9 @@ var game = new Game(800, 600, "Tutorial 1");
 
 function preload() {
 	player = new Sprite("img/mario-sprite.png", 17, 32);
+	keyboard = new Keyboard();
+	left = keyboard.createLeftKey();
+	right = keyboard.createRightKey();
 }
 
 function create() {
@@ -19,5 +22,13 @@ function create() {
 
 
 function update() {
+
+	if(left.isDown()) {
+		player.setVelocityX(-50);
+	} else if(right.isDown()) {
+		player.setVelocityX(50);
+	} else {
+		player.setVelocityX(0);
+	}
 
 }

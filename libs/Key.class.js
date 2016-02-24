@@ -38,12 +38,12 @@ function Key(key) {
     }
 
     /**
-    * Returns true if the key has just been clicked, useful of you want to do
+    * Returns true if the key has just been pressed, useful of you want to do
     * something on a click and not continuously when the key is held down.
     *
     * @return {boolean} justClicked If the key was just clicked
     */
-    this.onClick = function() {
+    this.justPressed = function() {
 
         // Key is pressed and has not been clicked yet
         if(this.isDown() && !this.justClicked) {

@@ -1,53 +1,40 @@
 /////////////////////////////////////////////////////////////////
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
-//main game object
-var game = new Game(800, 600, "Tutorial 2");
-//player object
 var player;
-//input keys
-var keys;
-var left;
-var right;
+var keyboard, left, right;
+var game = new Game(800, 600, "Tutorial 2");
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	
-	//load in the player
-	player = new Player(50,50, game, "img/mario-sprite.png", 17, 32);
-
+	player = new Sprite("img/mario-sprite.png", 17, 32);
+	keyboard = new Keyboard();
+	left = keyboard.createLeftKey();
+	right = keyboard.createRightKey();
 }
 
 function create() {
-	
-	//create the player
-	player.createSprite();
-	
-	keys = new Keys(game);
-	left = keys.createLeftKey();
-	right = keys.createRightKey();
-
+	player.create(50, 50);
+	player.addAnimation('left', [7,8,9,10], 10);
+	player.addAnimation('right', [0,1,2,3], 10);
+	player.setStopFrame(5);
 }
 
 
 function update() {
 
-	//move left
 	if(left.isDown()) {
-		
-		player.moveX(-2);
-		
-	} 
-	//move right
-	else if(right.isDown()) {
-	
-		player.moveX(2);
-		
+		player.setVelocityX(-50);
+		player.playAnimation('left');
+	} else if(right.isDown()) {
+		player.setVelocityX(50);
+		player.playAnimation('right');
+	} else {
+		player.setVelocityX(0);
+		player.stop();
 	}
-	
+
 }
-
-	
-
