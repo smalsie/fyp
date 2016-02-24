@@ -1,9 +1,9 @@
 /**
-* ReusableObject class which is at the core of the project
+* Sprite class which is at the core of the project
 * It is a class that is used to create all of the elements on the screen
 * apart from the background which is handled by the game object.
 *
-* The ReusableObject   Class creates and stores ChildObjects which are the actual
+* The Sprite Class creates and stores ChildObjects which are the actual
 * object that is created on screen. Each function here invokes a function on the
 * child object, this allows the manipulation of multiple objects with just one
 * function call.
@@ -17,9 +17,9 @@
 * @param {String} image String reference of an image to use
 * @param {number} spriteWidth The width of one frame of the sprite
 * @param {number} spriteHeight The height of one frame of the sprite
-* @param {String} name The name to give the object, by default it is ReusableObject plus the number so far created
+* @param {String} name The name to give the object, by default it is Sprite plus the number so far created
 */
-function ReusableObject(image, spriteWidth, spriteHeight, name){
+function Sprite(image, spriteWidth, spriteHeight, name){
 
 	/** @member {Phaser.Game} */
 	this.game;
@@ -44,10 +44,10 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 	this.constructor = function() {
 
 		// Set up a counter to give unique names to each object
-		if (typeof ReusableObject.counter == 'undefined') {
-			ReusableObject.counter = 1;
+		if (typeof Sprite.counter == 'undefined') {
+			Sprite.counter = 1;
 		} else {
-			ReusableObject.counter++;
+			Sprite.counter++;
 		}
 
 		// Store a reference to our custom game object
@@ -59,7 +59,7 @@ function ReusableObject(image, spriteWidth, spriteHeight, name){
 		this.group = this.game.add.group(null, '', true, false, 0);
 
 		// Set up a default name if one is not given
-		this.name = name || "ReusableObject" + ReusableObject.counter;
+		this.name = name || "Sprite" + Sprite.counter;
 
 		// Load the spritesheet used into memory.
 		this.body = this.game.load.spritesheet(this.name, image, spriteWidth, spriteHeight);

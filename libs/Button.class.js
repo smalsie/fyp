@@ -1,6 +1,6 @@
 /**
 * Button Class that allows buttons to be added to your game. The Button
-* class makes use of the ReusableObject class meaning that it behaves in
+* class makes use of the Sprite class meaning that it behaves in
 * a similar way. Like the ResuableObject class, a spritesheet is used to
 * show the different states of the button. Event handlers are used to
 * determine when a button is being clicked etc!
@@ -60,7 +60,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
         this.buttonName = 'button' + Button.counter;
 
         // Basically super();
-        this.button = new ReusableObject(image, spriteWidth, spriteHeight, this.buttonName, this.buttonName);
+        this.button = new Sprite(image, spriteWidth, spriteHeight, this.buttonName, this.buttonName);
         this.game = Game.GET_INSTANCE().world;
 
         // Set its position
@@ -78,7 +78,7 @@ function Button(image, spriteWidth, spriteHeight, x, y){
         if(this.created)
             return;
 
-        // ReusableObject.create()
+        // Basically: Sprite.create()
         this.button.create(this.x, this.y);
         // Reference the child(GroupChild) for later use
         this.buttonChild = this.button.children[0].child;
