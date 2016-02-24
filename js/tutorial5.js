@@ -1,78 +1,105 @@
 /////////////////////////////////////////////////////////////////
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
-//main game object
-var game = new Game(800, 600, "Tutorial 5");
-//player object
+var game = new Game(600, 400, "Tutorial 5");
+//player
 var player;
-//input keys
-var keys;
-var left;
-var right;
-var up;
-//enemy
-var enemy;
+//input
+var keyboard, space;
+//bottom platform
+var platform;
+//trees
+var trees;
+//used to set a delay between spawning trees
+var lastTreeSpawn = 0;
+
+//sound to play when jumping
+var jumpingSound;
+
+var currentPlayer;
+
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 function preload() {
-	 
-    //load in the player		
-	player = new Player((game.gameWidth()/2),(game.gameHeight() - 50), game, "img/ship.png", 60, 32);
-	//load in the enemy
-	enemy = new Enemy(game, 'invader', "img/space_invader_sprite.png", 24, 16);
-	
+
+	//set the background image
+    game.loadBackgroundImage('background', "img/dino.png");
+	//load in the player
+	player = new Sprite("img/dinosaur.png", 32, 32);
+	//load in the trees
+    trees = new Sprite("img/tree.png");
+	//load in the platform
+    platform = new Sprite("img/platform_dino.png");
+
+
 }
-	
+
 function create() {
-	
+
+	//set the background image
+	game.setBackgroundImage('background');
+
+	// Load in the jump sound
+    jumpSound = new Sound("sounds/jump.mp3", 1, false, "s");
+
+	// Input
+	keys = new Keyboard();
+	space = keys.createSpaceKey();
+
 	//create the player
-	player.createSprite();
-	//create the input
-	keys = new Keys(game);
-	left = keys.createLeftKey();
-	right = keys.createRightKey();
-	up = keys.createUpKey();
-	
-	 for(var i = 0; i < 4; i++) {
+	currentPlayer = player.create(50, game.gameHeight()-100);
+	//create running animation
+	currentPlayer.addAnimation('right', [0,1,2], 10);
+	//make the player fall
+	currentPlayer.setGravityY(100);
+	//play the running animation
+	currentPlayer.playAnimation('right');
+	//create a platform at the bottom
+	platform.create(0, "90", "100", 35);
+	//prevent it from moving
+	platform.setImmovable(true);
 
-     	for(var j = 0; j < 10; j++) {
-
-			var x = (j * 40);
-       		var y = (i * 30);
-
-        	enemy.createEnemySpriteSheet(x, y);
-
-		  }
-
-	 }
-	 
-	 //recentre the group
-	 enemy.setGroupCoordinates(50,50);
-	
 }
 
-	
+
 function update() {
-	//move left
-	if(left.isDown()) {
-		
-		player.moveX(-2);
-		
-	} 
-	//move right
-	else if(right.isDown()) {
-	
-		player.moveX(2);
-		
+
+	// Scroll the background
+    game.scrollBackgroundX(-1);
+
+	// Allow the player to be on top of the platform
+    game.checkCollision(platform, player);
+
+	// Check if player hit a tree
+    game.checkCollision(trees, player, hitTree);
+
+	// Spawn a tree
+	if(game.getGameTime() > lastTreeSpawn) {
+
+		var tree = trees.create(game.gameWidth()+10, game.gameHeight()-70);
+		tree.setVelocityX(-100);
+
+		lastTreeSpawn = game.getGameTime() + 2500;
+
 	}
-  	
-  	//up key pressed
-  	if(up.isDown()) {
-  	
-  	
-  	
-  	}
-		
+
+	// Only jump is the player is on the ground
+	if((space.justPressed()) && (currentPlayer.onGround())) {
+
+		currentPlayer.setVelocityY(-125);
+
+		// Play the sound
+		jumpSound.play();
+
+	}
+
+}
+
+// Pause the game when the player hits a tree
+function hitTree(tree, player) {
+
+    game.setPaused(true);
+
 }
