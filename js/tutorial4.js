@@ -2,7 +2,7 @@
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
 var player, currentPlayer, bullets;
-var keyboard, left, right, space;
+var keyboard, left, right, up;
 var invaders, bullets;
 var lastShotTime = 0;
 var game = new Game(800, 600, "Tutorial 4");
@@ -13,13 +13,12 @@ var game = new Game(800, 600, "Tutorial 4");
 
 function preload() {
 	player = new Sprite("img/ship.png");
-	bullets = new Sprite("img/bullet.png");
 	invaders = new Sprite("img/space_invader_sprite.png", 24, 16);
 
 	keyboard = new Keyboard();
 	left = keyboard.createLeftKey();
 	right = keyboard.createRightKey();
-	space = keyboard.createSpaceKey();
+	up = keyboard.createUpKey();
 }
 
 function create() {
@@ -42,7 +41,7 @@ function create() {
 
 
 function update() {
-
+	
 	if(left.isDown()) {
 		player.setVelocityX(-250);
 	} else if(right.isDown()) {
@@ -51,11 +50,8 @@ function update() {
 		player.setVelocityX(0);
 	}
 
-	if(space.isDown()) {
-
-		var currentBullet = bullets.create(currentPlayer.getX() + 28, currentPlayer.getY()-20);
-
-		currentBullet.setVelocityY(-400)
+	if(up.justPressed()) {
+		
 	}
-
+	
 }
