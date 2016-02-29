@@ -41,9 +41,6 @@ function create() {
 	//set the background image
 	game.setBackgroundImage('background');
 
-	// Load in the jump sound
-    jumpSound = new Sound("sounds/jump.mp3", 1, false, "s");
-
 	// Input
 	keys = new Keyboard();
 	space = keys.createSpaceKey();
@@ -89,9 +86,6 @@ function update() {
 	if((space.justPressed()) && (currentPlayer.onGround())) {
 
 		currentPlayer.setVelocityY(-125);
-
-		// Play the sound
-		jumpSound.play();
 
 	}
 

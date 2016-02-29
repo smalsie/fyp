@@ -15,15 +15,6 @@ var colliders;
 // Used to set a delay between spawning trees
 var lastTreeSpawn = 0;
 
-// Sound to play when jumping
-var jumpingSound;
-
-//text
-var scoreText;
-
-//score var
-var score = 0;
-
 /////////////////////////////////////////////////////////////////
 ///////////////	Functions //////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -66,9 +57,6 @@ function create() {
 	//prevent it from moving
 	platform.setImmovable(true);
 
-	//text to display the score
-	scoreText = new Text("Score: 0", game.gameWidth() - 150, 10, "34px", "Arial", "#000");
-
 
 
 }
@@ -107,8 +95,6 @@ function update() {
 	if((space.isDown()) && (currentPlayer.onGround())) {
 
 	  	player.setVelocityY(-125);
-	  	//play the sound
-	  	//jumpSound.play();
 
 	}
 
@@ -127,7 +113,4 @@ function hitOverTree(collider, player) {
 	collider.kill();
 	//increase score
 	score++;
-
-	//update the score text
-	scoreText.changeText("Score: " + score);
 }

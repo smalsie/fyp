@@ -18,6 +18,9 @@ function preload() {
 
 function create() {
 	player.create(50, 50);
+	player.addAnimation('left', [7,8,9,10], 10);
+	player.addAnimation('right', [0,1,2,3], 10);
+	player.setStopFrame(5);
 }
 
 
@@ -25,10 +28,13 @@ function update() {
 
 	if(left.isDown()) {
 		player.setVelocityX(-50);
+		player.playAnimation('left');
 	} else if(right.isDown()) {
 		player.setVelocityX(50);
+		player.playAnimation('right');
 	} else {
 		player.setVelocityX(0);
+		player.stop();
 	}
 
 }

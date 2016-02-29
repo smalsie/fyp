@@ -43,6 +43,8 @@ function create() {
 
 function update() {
 
+	game.checkCollision(bullets, invaders, hitEnemy);
+
 	if(left.isDown()) {
 		player.setVelocityX(-250);
 	} else if(right.isDown()) {
@@ -53,9 +55,20 @@ function update() {
 
 	if(space.isDown()) {
 
-		var currentBullet = bullets.create(currentPlayer.getX() + 28, currentPlayer.getY()-20);
+		if(game.getGameTime() > lastShotTime + 200) {
 
-		currentBullet.setVelocityY(-400)
+			var currentBullet = bullets.create(currentPlayer.getX() + 28, currentPlayer.getY()-20);
+
+			currentBullet.setVelocityY(-400);
+
+			lastShotTime = game.getGameTime();
+
+		}
 	}
 
+}
+
+function hitEnemy(bullet, enemy) {
+	enemy.kill();
+	bullet.kill();
 }

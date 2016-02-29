@@ -5,8 +5,7 @@ var game = new Game(600, 400, "Tutorial 5");
 //player
 var player;
 //input
-var keys;
-var space;
+var keyboard, space;
 //bottom platform
 var platform;
 //trees
@@ -26,15 +25,14 @@ var currentPlayer;
 function preload() {
 
 	//set the background image
-    game.loadBackgroundImage('background', "../img/dino.png");
+    game.loadBackgroundImage('background', "img/dino.png");
 	//load in the player
-	player = new ReusableObject("../img/dinosaur.png", 32, 32);
+	player = new Sprite("img/dinosaur.png", 32, 32);
 	//load in the trees
-    trees = new ReusableObject("../img/tree.png");
+    trees = new Sprite("img/tree.png");
 	//load in the platform
-    platform = new ReusableObject("../img/platform_dino.png");
-    //load in the jump sound
-    jumpSound = new Sound("../sounds/jump.mp3");
+    platform = new Sprite("img/platform_dino.png");
+
 
 }
 
@@ -43,7 +41,10 @@ function create() {
 	//set the background image
 	game.setBackgroundImage('background');
 
-	//input
+	// Load in the jump sound
+    jumpSound = new Sound("sounds/jump.mp3", 1, false, "s");
+
+	// Input
 	keys = new Keyboard();
 	space = keys.createSpaceKey();
 
@@ -65,38 +66,38 @@ function create() {
 
 function update() {
 
-	//scroll the background
+	// Scroll the background
     game.scrollBackgroundX(-1);
 
-	//allow the player to be on top of the platform
+	// Allow the player to be on top of the platform
     game.checkCollision(platform, player);
 
-	//check if player hit a tree
+	// Check if player hit a tree
     game.checkCollision(trees, player, hitTree);
 
-	//spawn a tree
-    if(game.getGameTime() > lastTreeSpawn) {
+	// Spawn a tree
+	if(game.getGameTime() > lastTreeSpawn) {
 
-      var tree = trees.create(game.gameWidth()+10, game.gameHeight()-70);
-      tree.setVelocityX(-100);
+		var tree = trees.create(game.gameWidth()+10, game.gameHeight()-70);
+		tree.setVelocityX(-100);
 
-      lastTreeSpawn = game.getGameTime() + 2500;
+		lastTreeSpawn = game.getGameTime() + 2500;
 
-  	}
+	}
 
-	//only jump is the player is on the ground
-	if((space.isDown()) && (currentPlayer.onGround())) {
+	// Only jump is the player is on the ground
+	if((space.justPressed()) && (currentPlayer.onGround())) {
 
-	  	currentPlayer.setVelocityY(-125);
+		currentPlayer.setVelocityY(-125);
 
-	  	//play the sound
-	  	//jumpSound.play();
+		// Play the sound
+		jumpSound.play();
 
 	}
 
 }
 
-//pause the game when the player hits a tree
+// Pause the game when the player hits a tree
 function hitTree(tree, player) {
 
     game.setPaused(true);

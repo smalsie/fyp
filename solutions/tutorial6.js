@@ -1,22 +1,21 @@
 /////////////////////////////////////////////////////////////////
 ///////////////	Global Variables  //////////////////////////////
 ///////////////////////////////////////////////////////////////
-var game = new Game(600, 400, "Tutorial 7");
-//player
+var game = new Game(600, 400, "Tutorial 6");
+// Player
 var player;
-//input
-var keys;
-var space;
-//bottom platform
+// Input
+var keyboard, space;
+//Bottom platform
 var platform;
-//trees
+// Trees
 var trees;
-//colliders
+// Colliders
 var colliders;
-//used to set a delay between spawning trees
+// Used to set a delay between spawning trees
 var lastTreeSpawn = 0;
 
-//sound to play when jumping
+// Sound to play when jumping
 var jumpingSound;
 
 //text
@@ -32,18 +31,21 @@ var score = 0;
 function preload() {
 
 	//set the background image
-    game.loadBackgroundImage('background', "../img/dino.png");
+    game.loadBackgroundImage('background', "img/dino.png");
 	//load in the player
-	player = new ReusableObject("../img/dinosaur.png", 32, 32);
+	player = new Sprite("img/dinosaur.png", 32, 32);
 	//load in the trees
-    trees = new ReusableObject("../img/tree.png");
+    trees = new Sprite("img/tree.png");
 	//load in the platform
-    platform = new ReusableObject("../img/platform_dino.png");
+    platform = new Sprite("img/platform_dino.png");
     //load in the jump sound
-    jumpSound = new Sound("../sounds/jump.mp3");
+    jumpSound = new Sound("sounds/jump.mp3");
     //load in colliders
-    colliders = new ReusableObject("../img/treeCollider.png");
+    colliders = new Sprite("img/treeCollider.png");
 
+	// Input
+	keyboard = new Keyboard();
+	space = keyboard.createSpaceKey();
 }
 
 function create() {
@@ -51,12 +53,8 @@ function create() {
 	//set the background image
 	game.setBackgroundImage('background');
 
-	//input
-	keys = new Keyboard();
-	space = keys.createSpaceKey();
-
 	//create the player
-	currentPlayer = player.create(50, game.gameHeight()-100);
+	currentPlayer = player.create(50, game.gameHeight() - 100);
 	//create running animation
 	currentPlayer.addAnimation('right', [0,1,2], 10);
 	//make the player fall
@@ -109,8 +107,6 @@ function update() {
 	if((space.isDown()) && (currentPlayer.onGround())) {
 
 	  	player.setVelocityY(-125);
-	  	//play the sound
-	  	//jumpSound.play();
 
 	}
 
