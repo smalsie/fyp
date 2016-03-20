@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Sprite.class.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Sprite.class.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 * Sprite class which is at the core of the project
 * It is a class that is used to create all of the elements on the screen
 * apart from the background which is handled by the game object.
@@ -187,9 +215,9 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		var totalFrames = this.getTotalFrames();
 
 		// Loop through to ensure all frames are valid
-		for(var i = 0; i < frames.length; i++) {
+		for(var i = 0; i &lt; frames.length; i++) {
 
-			if(frames[i] >= totalFrames  || frames[i] < 0) {
+			if(frames[i] >= totalFrames  || frames[i] &lt; 0) {
 				throw new Error("You have specified a frame outside of the valid range! (" + frames[i] + ") "
 								+ "The highest frame you can have is " + (totalFrames - 1) + ".");
 			}
@@ -199,14 +227,14 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		this.animations.push(name);
 
 		// Go through each enemy in the array and add an animation to it
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].addAnimation(name, frames, fps);
 
 	}
 
 	/**
 	* Plays a predefined animation on all of the children
-	* This animation must have been created with addAnimation beforehand
+	* This animation must have been created with @see addAnimation beforehand
 	*
 	* @param {String} name The name of the animation to play,
 	*/
@@ -218,7 +246,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 		}
 
 		// Go through each enemy in the array and play an animation on it
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].playAnimation(name);
 
 	}
@@ -230,7 +258,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setVelocityY = function(y) {
 		// Set the velocity on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setVelocityY(y);
 	}
 
@@ -241,7 +269,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setVelocityX = function(x) {
 		// Set the velocity on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setVelocityX(x);
 	}
 
@@ -254,7 +282,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setY = function(y) {
 		// Set the velocity on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setY(y);
 	}
 
@@ -267,7 +295,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setX = function(x) {
 		// Set the x position on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setX(x);
 	}
 
@@ -277,7 +305,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.stop = function() {
 		// Stop animation on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].stop();
 	}
 
@@ -296,13 +324,13 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 
 		var totalFrames = this.getTotalFrames();
 
-		if(frame >= totalFrames || frame < 0) {
+		if(frame >= totalFrames || frame &lt; 0) {
 			throw new Error("Your stop frame must be within the range of the available frames! "
 							+ "(0-" + (totalFrames - 1) + ")");
 		}
 
 		// Set the stop frame on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setStopFrame(frame);
 	}
 
@@ -317,7 +345,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.parseX = function(x, width) {
 
-		if((typeof x === "string") || (x < 0)) {
+		if((typeof x === "string") || (x &lt; 0)) {
 
 			var newX = parseInt(x);
 
@@ -333,7 +361,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 
 				var minWidth = this.parentGame.gameWidth() - width;
 
-				if(minWidth < x)
+				if(minWidth &lt; x)
 					x = minWidth;
 
 			}
@@ -355,7 +383,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.parseY = function(y, height) {
 
-		if((typeof y === "string") || (y < 0)) {
+		if((typeof y === "string") || (y &lt; 0)) {
 
 			var newY = parseInt(y);
 
@@ -371,7 +399,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 
 				var minHeight = this.parentGame.gameHeight() - height;
 
-				if(minHeight < y)
+				if(minHeight &lt; y)
 					y = minHeight;
 
 			}
@@ -391,7 +419,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.parseWidth = function(width) {
 
-		if((typeof width === "string") || (width < 0)) {
+		if((typeof width === "string") || (width &lt; 0)) {
 
 			var newWidth = parseInt(width);
 
@@ -422,7 +450,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.parseHeight = function(height) {
 
-		if((typeof height === "string") || (height < 0)) {
+		if((typeof height === "string") || (height &lt; 0)) {
 
 			var newHeight = parseInt(height);
 
@@ -451,7 +479,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setImmovable = function(immovable) {
 		// Set immovable on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setImmovable(immovable);
 
 	}
@@ -463,7 +491,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.collideWorldBounds = function(collide) {
 		// Set if collisions are on for all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].collideWorldBounds(collide);
 
 	}
@@ -475,7 +503,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setAngle = function(angle) {
 		// Set the angle on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setAngle(angle);
 	}
 
@@ -486,7 +514,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setDraggable = function(draggable) {
 		// Set draggable on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setDraggable(draggable);
 
 	}
@@ -499,7 +527,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setCollisionsOnDrag = function(collisionOnDrag) {
 		// Set collision on drag on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setCollisionsOnDrag(collisionOnDrag);
 
 	}
@@ -511,7 +539,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setGravityX = function(gravityX) {
 		// Set gravity on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setGravityX(gravityX);
 
 	}
@@ -523,7 +551,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setGravityY = function(gravityY) {
 		// Set gravity on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setGravityY(gravityY);
 
 	}
@@ -535,7 +563,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.setAlpha = function(alpha) {
 		// Set alpha on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].setAlpha(alpha);
 
 	}
@@ -548,7 +576,7 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	*/
 	this.addActionOnAnimationComplete = function(action) {
 		// Set addActionOnAnimationComplete on all children
-		for(var i = 0; i < this.children.length; i++)
+		for(var i = 0; i &lt; this.children.length; i++)
 			this.children[i].addActionOnAnimationComplete(action);
 
 	}
@@ -576,3 +604,26 @@ function Sprite(image, spriteWidth, spriteHeight, name){
 	this.constructor();
 
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Game.html">Game</a></li><li><a href="GroupChild.html">GroupChild</a></li><li><a href="HighScore.html">HighScore</a></li><li><a href="Key.html">Key</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Mouse.html">Mouse</a></li><li><a href="Sound.html">Sound</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Text.html">Text</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Mar 20 2016 14:40:55 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

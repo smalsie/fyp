@@ -3,9 +3,7 @@
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
 * @version 2.0
-
-* @constructor
-* Calls on this.constructor
+* @class
 *
 * @param {Phaser.Key} key The key to listen to events on
 */
@@ -20,6 +18,8 @@ function Key(key) {
 	* The constructor used to encapsulate the code run when the object
 	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
+    *
+    * @private
 	*/
     this.constructor = function() {
         // Store this key
@@ -31,7 +31,7 @@ function Key(key) {
 	/**
 	* Is Down function that returns if the key is currently held down or not
 	*
-	* @return {boolean} isDown Returns if the key is currently held down or not
+	* @return {boolean} If the key is currently held down or not
 	*/
 	this.isDown = function() {
 		return this.inputHandler.isDown;
@@ -41,7 +41,7 @@ function Key(key) {
     * Returns true if the key has just been pressed, useful of you want to do
     * something on a click and not continuously when the key is held down.
     *
-    * @return {boolean} justClicked If the key was just clicked
+    * @return {boolean} If the key was just clicked
     */
     this.justPressed = function() {
 

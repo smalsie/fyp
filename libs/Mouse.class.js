@@ -4,9 +4,7 @@
 *
 * @author Joshua Small [joshuahugh94@gmail.com/smalljh@aston.ac.uk]
 * @version 2.0
-*
-* @constructor
-* Calls on this.constructor
+* @class
 */
 function Mouse(){
 
@@ -19,6 +17,8 @@ function Mouse(){
 	* The constructor used to encapsulate the code run when the object
 	* is first instantiated. It is called at the bottom of the file.
 	* So it does not need to be called as it has already been called.
+    *
+    * @private
 	*/
 	this.constructor = function() {
         // Get the phaser game
@@ -30,7 +30,7 @@ function Mouse(){
     /**
     * Get the x position of the cursor
     *
-    * @return x The x position of the cursor
+    * @return {number} The x position of the cursor
     */
     this.mouseX = function() {
        return this.mouse.x;
@@ -39,7 +39,7 @@ function Mouse(){
     /**
     * Get the y position of the cursor
     *
-    * @return y The x position of the cursor
+    * @return {number} The x position of the cursor
     */
     this.mouseY = function() {
        return this.mouse.y;
