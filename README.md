@@ -18,14 +18,24 @@ The headstart materials have been updated to add in the well needed changes. The
 - Added in the ClassLoader class which loads in all of the files for us.
 - Removed Tutorial 4 as it is not as relevant due to there no longer being an enemy class.
 
+Folder Structure
+----------------
+
+The main source code is located in `src` this will want to be zipped up to give to the students.
+They will do all of their work in the js files.
+
+`solutions` contain the solutions to the tutorials, they should not be included in the zip file that is given to the students.
+
+`html` contains all of the documentation for the libs and the index page includes a link to download the zip file. You will want to ensure that the zip of src is inside of `html` with the name `headstart.zip`.
+
 Backend
 -------
 
-The main libray runs on [phaser](http://phaser.io) version 2.4.2. It does all of the actual rendering of the game, my library just makes it much simpler. If you ever decide to use a newer version of phaser ensure that the solutions work before upgrading.
+The main library runs on [phaser](http://phaser.io) version 2.4.2. It does all of the actual rendering of the game, my library just makes it much simpler. If you ever decide to use a newer version of phaser ensure that the solutions work before upgrading.
 
 Documentation
 -------------
-I am currently using [jsdoc](https://www.npmjs.com/package/jsdoc) for my documentation which is availale as a npm package. If you like you can use any js documentation generator but bear in mind I documented this code to jsdoc's standards.
+I am currently using [jsdoc](https://www.npmjs.com/package/jsdoc) for my documentation which is available as a npm package. If you like you can use any js documentation generator but keep in mind I documented this code to the jsdoc standards.
 
 To install jsdoc you will want to run:
 
@@ -35,7 +45,13 @@ You may need to install this as root.
 
 Then to generate the documentation you will want to run:
 
-`jsdoc`
+`jsdoc -c src/libs/conf.json -R DOCS_README.md -d html src/libs/`
+
+`src/libs/conf.json` contains the config file for jsdoc.
+
+`DOCS_README.md` contains the text that is displayed on the index page of the docs.
+
+Make sure to include a zip of the src code as `headstart.zip` inside the `html` folder
 
 Notes
 -----

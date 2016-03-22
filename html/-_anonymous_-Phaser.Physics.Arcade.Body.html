@@ -1,0 +1,5929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: Physics.Arcade.Body</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: Physics.Arcade.Body</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>Physics.Arcade.Body</h2>
+        
+            <div class="class-description">Phaser.Physics.Arcade.Body</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Physics.Arcade.Body"><span class="type-signature"></span>new Physics.Arcade.Body<span class="signature">(sprite)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    The Physics Body is linked to a single Sprite. All physics operations should be performed against the body rather thanthe Sprite itself. For example you can set the velocity, acceleration, bounce values etc all on the Body.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sprite</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Sprite.html">Phaser.Sprite</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The Sprite object this physics body belongs to.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81470">line 81470</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="acceleration"><span class="type-signature"></span>acceleration<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>acceleration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The acceleration is the rate of change of the velocity. Measured in pixels per second squared.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81596">line 81596</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="allowGravity"><span class="type-signature"></span>allowGravity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>allowGravity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allow this Body to be influenced by gravity? Either world or local.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81607">line 81607</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="allowRotation"><span class="type-signature"></span>allowRotation<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>allowRotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allow this Body to be rotated? (via angularVelocity, etc)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81514">line 81514</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="angle"><span class="type-signature">(readonly) </span>angle<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>angle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The angle of the Body in radians, as calculated by its angularVelocity.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81664">line 81664</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="angularAcceleration"><span class="type-signature"></span>angularAcceleration<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>angularAcceleration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The angular acceleration is the rate of change of the angular velocity. Measured in radians per second squared.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81640">line 81640</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="angularDrag"><span class="type-signature"></span>angularDrag<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>angularDrag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The drag applied during the rotation of the Body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81646">line 81646</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="angularVelocity"><span class="type-signature"></span>angularVelocity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>angularVelocity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The angular velocity controls the rotation speed of the Body. It is measured in radians per second.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81634">line 81634</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="blocked"><span class="type-signature"></span>blocked<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    This object is populated with boolean values when the Body collides with the World bounds or a Tile.For example if blocked.up is true then the Body cannot move up.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>blocked</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object containing on which faces this Body is blocked from moving, if any.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81758">line 81758</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bounce"><span class="type-signature"></span>bounce<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bounce</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The elasticity of the Body when colliding. bounce.x/y = 1 means full rebound, bounce.x/y = 0.5 means 50% rebound velocity.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81617">line 81617</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="center"><span class="type-signature">(readonly) </span>center<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>center</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The center coordinate of the Physics Body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81575">line 81575</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="checkCollision"><span class="type-signature"></span>checkCollision<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Set the checkCollision properties to control which directions collision is processed for this Body.For example checkCollision.up = false means it won't collide when the collision happened while moving up.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>checkCollision</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object containing allowed collision.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81738">line 81738</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="collideWorldBounds"><span class="type-signature"></span>collideWorldBounds<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    A Body can be set to collide against the World bounds automatically and rebound back into the World if this is set to true. Otherwise it will leave the World.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collideWorldBounds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Should the Body collide with the World bounds?</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81731">line 81731</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="customSeparateX"><span class="type-signature"></span>customSeparateX<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    This flag allows you to disable the custom x separation that takes place by Physics.Arcade.separate.Used in combination with your own collision processHandler you can create whatever type of collision response you need.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customSeparateX</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Use a custom separation system or the built-in one?</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81699">line 81699</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="customSeparateY"><span class="type-signature"></span>customSeparateY<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    This flag allows you to disable the custom y separation that takes place by Physics.Arcade.separate.Used in combination with your own collision processHandler you can create whatever type of collision response you need.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customSeparateY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Use a custom separation system or the built-in one?</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81707">line 81707</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="deltaMax"><span class="type-signature"></span>deltaMax<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>deltaMax</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The Sprite position is updated based on the delta x/y values. You can set a cap on those (both +-) using deltaMax.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81591">line 81591</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="dirty"><span class="type-signature"></span>dirty<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dirty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">If this Body in a preUpdate (true) or postUpdate (false) state?</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81770">line 81770</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="drag"><span class="type-signature"></span>drag<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>drag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The drag applied to the motion of the Body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81601">line 81601</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="embedded"><span class="type-signature"></span>embedded<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If a body is overlapping with another body, but neither of them are moving (maybe they spawned on-top of each other?) this is set to true.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>embedded</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Body embed value.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81725">line 81725</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="enable"><span class="type-signature"></span>enable<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>enable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A disabled body won't be checked for any form of collision or overlap or have its pre/post updates run.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81491">line 81491</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="facing"><span class="type-signature"></span>facing<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>facing</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A const reference to the direction the Body is traveling or facing.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81676">line 81676</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="friction"><span class="type-signature"></span>friction<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>friction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of movement that will occur if another object 'rides' this one.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81628">line 81628</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="game"><span class="type-signature"></span>game<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>game</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Local reference to game.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81480">line 81480</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gravity"><span class="type-signature"></span>gravity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gravity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A local gravity applied to this Body. If non-zero this over rides any world gravity, unless Body.allowGravity is set to false.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81612">line 81612</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="halfHeight"><span class="type-signature">(readonly) </span>halfHeight<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>halfHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calculated height / 2 of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81569">line 81569</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="halfWidth"><span class="type-signature">(readonly) </span>halfWidth<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>halfWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calculated width / 2 of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81563">line 81563</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="height"><span class="type-signature">(readonly) </span>height<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calculated height of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81539">line 81539</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="immovable"><span class="type-signature"></span>immovable<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>immovable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An immovable Body will not receive any impacts from other bodies.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81682">line 81682</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mass"><span class="type-signature"></span>mass<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The mass of the Body. When two bodies collide their mass is used in the calculation to determine the exchange of velocity.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>1</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81658">line 81658</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="maxAngular"><span class="type-signature"></span>maxAngular<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxAngular</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The maximum angular velocity in radians per second that the Body can reach.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>1000</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81652">line 81652</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="maxVelocity"><span class="type-signature"></span>maxVelocity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxVelocity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The maximum velocity in pixels per second sq. that the Body can reach.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81623">line 81623</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="moves"><span class="type-signature"></span>moves<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If you have a Body that is being moved around the world via a tween or a Group motion, but its local x/y position neveractually changes, then you should set Body.moves = false. Otherwise it will most likely fly off the screen.If you want the physics system to move the body around, then set moves to true.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>moves</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Set to true to allow the Physics system to move this Body, otherwise false to move it manually.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81691">line 81691</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="newVelocity"><span class="type-signature">(readonly) </span>newVelocity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>newVelocity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new velocity. Calculated during the Body.preUpdate and applied to its position.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81586">line 81586</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="offset"><span class="type-signature"></span>offset<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The offset of the Physics Body from the Sprite x/y position.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81496">line 81496</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="overlapX"><span class="type-signature"></span>overlapX<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    When this body collides with another, the amount of overlap is stored here.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>overlapX</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of horizontal overlap during the collision.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81713">line 81713</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="overlapY"><span class="type-signature"></span>overlapY<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    When this body collides with another, the amount of overlap is stored here.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>overlapY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of vertical overlap during the collision.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81719">line 81719</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="position"><span class="type-signature">(readonly) </span>position<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The position of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81502">line 81502</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preRotation"><span class="type-signature">(readonly) </span>preRotation<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>preRotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The previous rotation of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81527">line 81527</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="prev"><span class="type-signature">(readonly) </span>prev<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prev</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The previous position of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81508">line 81508</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rotation"><span class="type-signature"></span>rotation<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    An Arcade Physics Body can have angularVelocity and angularAcceleration. Please understand that the collision Bodyitself never rotates, it is always axis-aligned. However these values are passed up to the parent Sprite and updates its rotation.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81521">line 81521</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="skipQuadTree"><span class="type-signature"></span>skipQuadTree<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>skipQuadTree</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">If true and you collide this Sprite against a Group, it will disable the collision check from using a QuadTree.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81775">line 81775</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sourceHeight"><span class="type-signature">(readonly) </span>sourceHeight<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sourceHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The un-scaled original size.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81551">line 81551</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sourceWidth"><span class="type-signature">(readonly) </span>sourceWidth<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sourceWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The un-scaled original size.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81545">line 81545</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="speed"><span class="type-signature">(readonly) </span>speed<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>speed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The speed of the Body as calculated by its velocity.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81670">line 81670</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sprite"><span class="type-signature"></span>sprite<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sprite</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Sprite.html">Phaser.Sprite</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Reference to the parent Sprite.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81475">line 81475</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="syncBounds"><span class="type-signature"></span>syncBounds<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If true the Body will check itself against the Sprite.getBounds() dimensions and adjust its width and height accordingly.If false it will compare its dimensions against the Sprite scale instead, and adjust its width height if the scale has changed.Typically you would need to enable syncBounds if your sprite is the child of a responsive display object such as a FlexLayer, or in any situation where the Sprite scale doesn't change, but its parents scale is effecting the dimensions regardless.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>syncBounds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81785">line 81785</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tilePadding"><span class="type-signature"></span>tilePadding<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If this is an especially small or fast moving object then it can sometimes skip over tilemap collisions if it moves through a tile in a step.Set this padding value to add extra padding to its bounds. tilePadding.x applied to its width, y to its height.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tilePadding</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Extra padding to be added to this sprite's dimensions when checking for tile collision.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81765">line 81765</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="touching"><span class="type-signature"></span>touching<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    This object is populated with boolean values when the Body collides with another.touching.up = true means the collision happened to the top of this Body for example.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>touching</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object containing touching results.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81745">line 81745</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="type"><span class="type-signature"></span>type<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The type of physics system this body belongs to.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81485">line 81485</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="velocity"><span class="type-signature"></span>velocity<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>velocity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Point.html">Phaser.Point</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The velocity, or rate of change in speed of the Body. Measured in pixels per second.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81580">line 81580</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="wasTouching"><span class="type-signature"></span>wasTouching<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    This object is populated with previous touching values from the bodies previous collision.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>wasTouching</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object containing previous touching results.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81751">line 81751</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="width"><span class="type-signature">(readonly) </span>width<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calculated width of the physics body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="phaser.js.html">phaser.js</a>, <a href="phaser.js.html#line81533">line 81533</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-PIXI.html">PIXI</a></li></ul><h3>Classes</h3><ul><li><a href="-_anonymous_-Phaser.Animation.html">Animation</a></li><li><a href="-_anonymous_-Phaser.AnimationManager.html">AnimationManager</a></li><li><a href="-_anonymous_-Phaser.ArraySet.html">ArraySet</a></li><li><a href="-_anonymous_-Phaser.AudioSprite.html">AudioSprite</a></li><li><a href="-_anonymous_-Phaser.BitmapData.html">BitmapData</a></li><li><a href="-_anonymous_-Phaser.BitmapText.html">BitmapText</a></li><li><a href="-_anonymous_-Phaser.Button.html">Button</a></li><li><a href="-_anonymous_-Phaser.Cache.html">Cache</a></li><li><a href="-_anonymous_-Phaser.Camera.html">Camera</a></li><li><a href="-_anonymous_-Phaser.Circle.html">Circle</a></li><li><a href="-_anonymous_-Phaser.Component.Angle.html">Component.Angle</a></li><li><a href="-_anonymous_-Phaser.Component.Animation.html">Component.Animation</a></li><li><a href="-_anonymous_-Phaser.Component.AutoCull.html">Component.AutoCull</a></li><li><a href="-_anonymous_-Phaser.Component.Bounds.html">Component.Bounds</a></li><li><a href="-_anonymous_-Phaser.Component.BringToTop.html">Component.BringToTop</a></li><li><a href="-_anonymous_-Phaser.Component.Core.html">Component.Core</a></li><li><a href="-_anonymous_-Phaser.Component.Crop.html">Component.Crop</a></li><li><a href="-_anonymous_-Phaser.Component.Delta.html">Component.Delta</a></li><li><a href="-_anonymous_-Phaser.Component.Destroy.html">Component.Destroy</a></li><li><a href="-_anonymous_-Phaser.Component.FixedToCamera.html">Component.FixedToCamera</a></li><li><a href="-_anonymous_-Phaser.Component.Health.html">Component.Health</a></li><li><a href="-_anonymous_-Phaser.Component.InCamera.html">Component.InCamera</a></li><li><a href="-_anonymous_-Phaser.Component.InputEnabled.html">Component.InputEnabled</a></li><li><a href="-_anonymous_-Phaser.Component.InWorld.html">Component.InWorld</a></li><li><a href="-_anonymous_-Phaser.Component.LifeSpan.html">Component.LifeSpan</a></li><li><a href="-_anonymous_-Phaser.Component.LoadTexture.html">Component.LoadTexture</a></li><li><a href="-_anonymous_-Phaser.Component.Overlap.html">Component.Overlap</a></li><li><a href="-_anonymous_-Phaser.Component.PhysicsBody.html">Component.PhysicsBody</a></li><li><a href="-_anonymous_-Phaser.Component.Reset.html">Component.Reset</a></li><li><a href="-_anonymous_-Phaser.Component.ScaleMinMax.html">Component.ScaleMinMax</a></li><li><a href="-_anonymous_-Phaser.Component.Smoothed.html">Component.Smoothed</a></li><li><a href="-_anonymous_-Phaser.Create.html">Create</a></li><li><a href="-_anonymous_-Phaser.Device.html">Device</a></li><li><a href="-_anonymous_-Phaser.DeviceButton.html">DeviceButton</a></li><li><a href="-_anonymous_-Phaser.Ellipse.html">Ellipse</a></li><li><a href="-_anonymous_-Phaser.Events.html">Events</a></li><li><a href="-_anonymous_-Phaser.Filter.html">Filter</a></li><li><a href="-_anonymous_-Phaser.FlexGrid.html">FlexGrid</a></li><li><a href="-_anonymous_-Phaser.FlexLayer.html">FlexLayer</a></li><li><a href="-_anonymous_-Phaser.Frame.html">Frame</a></li><li><a href="-_anonymous_-Phaser.FrameData.html">FrameData</a></li><li><a href="-_anonymous_-Phaser.Game.html">Game</a></li><li><a href="-_anonymous_-Phaser.GameObjectCreator.html">GameObjectCreator</a></li><li><a href="-_anonymous_-Phaser.GameObjectFactory.html">GameObjectFactory</a></li><li><a href="-_anonymous_-Phaser.Gamepad.html">Gamepad</a></li><li><a href="-_anonymous_-Phaser.Graphics.html">Graphics</a></li><li><a href="-_anonymous_-Phaser.Image.html">Image</a></li><li><a href="-_anonymous_-Phaser.ImageCollection.html">ImageCollection</a></li><li><a href="-_anonymous_-Phaser.Input.html">Input</a></li><li><a href="-_anonymous_-Phaser.InputHandler.html">InputHandler</a></li><li><a href="-_anonymous_-Phaser.Key.html">Key</a></li><li><a href="-_anonymous_-Phaser.Keyboard.html">Keyboard</a></li><li><a href="-_anonymous_-Phaser.Line.html">Line</a></li><li><a href="-_anonymous_-Phaser.LinkedList.html">LinkedList</a></li><li><a href="-_anonymous_-Phaser.Matrix.html">Matrix</a></li><li><a href="-_anonymous_-Phaser.Mouse.html">Mouse</a></li><li><a href="-_anonymous_-Phaser.MSPointer.html">MSPointer</a></li><li><a href="-_anonymous_-Phaser.Net.html">Net</a></li><li><a href="-_anonymous_-Phaser.Particle.html">Particle</a></li><li><a href="-_anonymous_-Phaser.Particles.html">Particles</a></li><li><a href="-_anonymous_-Phaser.Particles.Arcade.Emitter.html">Particles.Arcade.Emitter</a></li><li><a href="-_anonymous_-Phaser.Physics.html">Physics</a></li><li><a href="-_anonymous_-Phaser.Physics.Arcade.html">Physics.Arcade</a></li><li><a href="-_anonymous_-Phaser.Physics.Arcade.Body.html">Physics.Arcade.Body</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.html">Physics.P2</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.Body.html">Physics.P2.Body</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.BodyDebug.html">Physics.P2.BodyDebug</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.CollisionGroup.html">Physics.P2.CollisionGroup</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.ContactMaterial.html">Physics.P2.ContactMaterial</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.DistanceConstraint.html">Physics.P2.DistanceConstraint</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.FixtureList.html">Physics.P2.FixtureList</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.GearConstraint.html">Physics.P2.GearConstraint</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.InversePointProxy.html">Physics.P2.InversePointProxy</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.LockConstraint.html">Physics.P2.LockConstraint</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.Material.html">Physics.P2.Material</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.PointProxy.html">Physics.P2.PointProxy</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.PrismaticConstraint.html">Physics.P2.PrismaticConstraint</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.RevoluteConstraint.html">Physics.P2.RevoluteConstraint</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.RotationalSpring.html">Physics.P2.RotationalSpring</a></li><li><a href="-_anonymous_-Phaser.Physics.P2.Spring.html">Physics.P2.Spring</a></li><li><a href="-_anonymous_-Phaser.Plugin.html">Plugin</a></li><li><a href="-_anonymous_-Phaser.PluginManager.html">PluginManager</a></li><li><a href="-_anonymous_-Phaser.Point.html">Point</a></li><li><a href="-_anonymous_-Phaser.Pointer.html">Pointer</a></li><li><a href="-_anonymous_-Phaser.Polygon.html">Polygon</a></li><li><a href="-_anonymous_-Phaser.QuadTree.html">QuadTree</a></li><li><a href="-_anonymous_-Phaser.RandomDataGenerator.html">RandomDataGenerator</a></li><li><a href="-_anonymous_-Phaser.Rectangle.html">Rectangle</a></li><li><a href="-_anonymous_-Phaser.RenderTexture.html">RenderTexture</a></li><li><a href="-_anonymous_-Phaser.RequestAnimationFrame.html">RequestAnimationFrame</a></li><li><a href="-_anonymous_-Phaser.RetroFont.html">RetroFont</a></li><li><a href="-_anonymous_-Phaser.Rope.html">Rope</a></li><li><a href="-_anonymous_-Phaser.RoundedRectangle.html">RoundedRectangle</a></li><li><a href="-_anonymous_-Phaser.ScaleManager.html">ScaleManager</a></li><li><a href="-_anonymous_-Phaser.Signal.html">Signal</a></li><li><a href="-_anonymous_-Phaser.SignalBinding.html">SignalBinding</a></li><li><a href="-_anonymous_-Phaser.SinglePad.html">SinglePad</a></li><li><a href="-_anonymous_-Phaser.Sound.html">Sound</a></li><li><a href="-_anonymous_-Phaser.SoundManager.html">SoundManager</a></li><li><a href="-_anonymous_-Phaser.Sprite.html">Sprite</a></li><li><a href="-_anonymous_-Phaser.SpriteBatch.html">SpriteBatch</a></li><li><a href="-_anonymous_-Phaser.Stage.html">Stage</a></li><li><a href="-_anonymous_-Phaser.State.html">State</a></li><li><a href="-_anonymous_-Phaser.StateManager.html">StateManager</a></li><li><a href="-_anonymous_-Phaser.Text.html">Text</a></li><li><a href="-_anonymous_-Phaser.Tile.html">Tile</a></li><li><a href="-_anonymous_-Phaser.Tilemap.html">Tilemap</a></li><li><a href="-_anonymous_-Phaser.TilemapLayer.html">TilemapLayer</a></li><li><a href="-_anonymous_-Phaser.Tileset.html">Tileset</a></li><li><a href="-_anonymous_-Phaser.TileSprite.html">TileSprite</a></li><li><a href="-_anonymous_-Phaser.Time.html">Time</a></li><li><a href="-_anonymous_-Phaser.Timer.html">Timer</a></li><li><a href="-_anonymous_-Phaser.TimerEvent.html">TimerEvent</a></li><li><a href="-_anonymous_-Phaser.Touch.html">Touch</a></li><li><a href="-_anonymous_-Phaser.Tween.html">Tween</a></li><li><a href="-_anonymous_-Phaser.TweenData.html">TweenData</a></li><li><a href="-_anonymous_-Phaser.TweenManager.html">TweenManager</a></li><li><a href="-_anonymous_-Phaser.Utils.Debug.html">Utils.Debug</a></li><li><a href="-_anonymous_-Phaser.Video.html">Video</a></li><li><a href="-_anonymous_-Phaser.World.html">World</a></li><li><a href="-_anonymous_-PIXI.AbstractFilter.html">AbstractFilter</a></li><li><a href="-_anonymous_-PIXI.BaseTexture.html">BaseTexture</a></li><li><a href="-_anonymous_-PIXI.CanvasBuffer.html">CanvasBuffer</a></li><li><a href="-_anonymous_-PIXI.CanvasMaskManager.html">CanvasMaskManager</a></li><li><a href="-_anonymous_-PIXI.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="-_anonymous_-PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></li><li><a href="-_anonymous_-PIXI.DisplayObject.html">DisplayObject</a></li><li><a href="-_anonymous_-PIXI.DisplayObjectContainer.html">DisplayObjectContainer</a></li><li><a href="-_anonymous_-PIXI.FilterTexture.html">FilterTexture</a></li><li><a href="-_anonymous_-PIXI.PixiFastShader.html">PixiFastShader</a></li><li><a href="-_anonymous_-PIXI.PixiShader.html">PixiShader</a></li><li><a href="-_anonymous_-PIXI.PrimitiveShader.html">PrimitiveShader</a></li><li><a href="-_anonymous_-PIXI.RenderTexture.html">RenderTexture</a></li><li><a href="-_anonymous_-PIXI.Rope.html">Rope</a></li><li><a href="-_anonymous_-PIXI.Sprite.html">Sprite</a></li><li><a href="-_anonymous_-PIXI.SpriteBatch.html">SpriteBatch</a></li><li><a href="-_anonymous_-PIXI.Stage.html">Stage</a></li><li><a href="-_anonymous_-PIXI.Strip.html">Strip</a></li><li><a href="-_anonymous_-PIXI.StripShader.html">StripShader</a></li><li><a href="-_anonymous_-PIXI.Texture.html">Texture</a></li><li><a href="-_anonymous_-PIXI.TilingSprite.html">TilingSprite</a></li><li><a href="-_anonymous_-PIXI.WebGLBlendModeManager.html">WebGLBlendModeManager</a></li><li><a href="-_anonymous_-PIXI.WebGLFastSpriteBatch.html">WebGLFastSpriteBatch</a></li><li><a href="-_anonymous_-PIXI.WebGLFilterManager.html">WebGLFilterManager</a></li><li><a href="-_anonymous_-PIXI.WebGLRenderer.html">WebGLRenderer</a></li><li><a href="Button.html">Button</a></li><li><a href="Game.html">Game</a></li><li><a href="GroupChild.html">GroupChild</a></li><li><a href="HighScore.html">HighScore</a></li><li><a href="Key.html">Key</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Line.html">Line</a></li><li><a href="module-PIXI.CanvasGraphics.html">CanvasGraphics</a></li><li><a href="module-PIXI.CanvasTinter.html">CanvasTinter</a></li><li><a href="module-PIXI.PIXI.html">PIXI</a></li><li><a href="module-PIXI-PIXI.Graphics.html">Graphics</a></li><li><a href="module-PIXI-PIXI.GraphicsData%2520=%2520function(lineWidth,%2520lineColor,%2520lineAlpha,%2520fillColor,%2520fillAlpha,%2520fill,%2520shape)%250D%250A%257B%250D%250A%2520%2520%2520%2520this.lineWidth%2520=%2520lineWidth;%250D%250A%2520%2520%2520%2520this.lineColor%2520=%2520lineColor;%250D%250A%2520%2520%2520%2520this.lineAlpha%2520=%2520lineAlpha;%250D%250A%2520%2520%2520%2520this._lineTint%2520=%2520lineColor;%250D%250A%250D%250A%2520%2520%2520%2520this.fillColor%2520=%2520fillColor;%250D%250A%2520%2520%2520%2520this.fillAlpha%2520=%2520fillAlpha;%250D%250A%2520%2520%2520%2520this._fillTint%2520=%2520fillColor;%250D%250A%2520%2520%2520%2520this.fill%2520=%2520fill;%250D%250A%250D%250A%2520%2520%2520%2520this.shape%2520=%2520shape;%250D%250A%2520%2520%2520%2520this.type%2520=%2520shape.type;%250D%250A%257D;.html">PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlpha, fill, shape)
+{
+    this.lineWidth = lineWidth;
+    this.lineColor = lineColor;
+    this.lineAlpha = lineAlpha;
+    this._lineTint = lineColor;
+
+    this.fillColor = fillColor;
+    this.fillAlpha = fillAlpha;
+    this._fillTint = fillColor;
+    this.fill = fill;
+
+    this.shape = shape;
+    this.type = shape.type;
+};</a></li><li><a href="module-PIXI-PolyK.html">PolyK</a></li><li><a href="Mouse.html">Mouse</a></li><li><a href="Phaser.AnimationParser.html">AnimationParser</a></li><li><a href="Phaser.ArrayUtils.html">ArrayUtils</a></li><li><a href="Phaser.Canvas.html">Canvas</a></li><li><a href="Phaser.Color.html">Color</a></li><li><a href="Phaser.DOM.html">DOM</a></li><li><a href="Phaser.Easing.html">Easing</a></li><li><a href="Phaser.Easing.Back.html">Back</a></li><li><a href="Phaser.Easing.Bounce.html">Bounce</a></li><li><a href="Phaser.Easing.Circular.html">Circular</a></li><li><a href="Phaser.Easing.Cubic.html">Cubic</a></li><li><a href="Phaser.Easing.Elastic.html">Elastic</a></li><li><a href="Phaser.Easing.Exponential.html">Exponential</a></li><li><a href="Phaser.Easing.Linear.html">Linear</a></li><li><a href="Phaser.Easing.Quadratic.html">Quadratic</a></li><li><a href="Phaser.Easing.Quartic.html">Quartic</a></li><li><a href="Phaser.Easing.Quintic.html">Quintic</a></li><li><a href="Phaser.Easing.Sinusoidal.html">Sinusoidal</a></li><li><a href="Phaser.Group.html">Group</a></li><li><a href="Phaser.Loader.html">Loader</a></li><li><a href="Phaser.LoaderParser.html">LoaderParser</a></li><li><a href="Phaser.Math.html">Math</a></li><li><a href="Phaser.Particles.Arcade.html">Arcade</a></li><li><a href="Phaser.TilemapParser.html">TilemapParser</a></li><li><a href="Phaser.Utils.html">Utils</a></li><li><a href="PIXI.GraphicsData.html">GraphicsData</a></li><li><a href="Point.html">Point</a></li><li><a href="Scalar.html">Scalar</a></li><li><a href="Sound.html">Sound</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Text.html">Text</a></li><li><a href="vec2.html">vec2</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:addBody">addBody</a></li><li><a href="global.html#event:addSpring">addSpring</a></li><li><a href="global.html#event:beginContact">beginContact</a></li><li><a href="global.html#event:endContact">endContact</a></li><li><a href="global.html#event:impact">impact</a></li><li><a href="global.html#event:postBroadphase">postBroadphase</a></li><li><a href="global.html#event:postStep">postStep</a></li><li><a href="global.html#event:preSolve">preSolve</a></li><li><a href="global.html#event:removeBody">removeBody</a></li><li><a href="global.html#event:sleep">sleep</a></li><li><a href="global.html#event:sleepy">sleepy</a></li><li><a href="global.html#event:wakeup">wakeup</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-PIXI-Phaser.html">Phaser</a></li></ul><h3>Global</h3><ul><li><a href="global.html#aabbQuery">aabbQuery</a></li><li><a href="global.html">add</a></li><li><a href="global.html#addBody">addBody</a></li><li><a href="global.html#addConstraint">addConstraint</a></li><li><a href="global.html#addContactMaterial">addContactMaterial</a></li><li><a href="global.html#addEquation">addEquation</a></li><li><a href="global.html#addEquations">addEquations</a></li><li><a href="global.html#addShape">addShape</a></li><li><a href="global.html#addSpring">addSpring</a></li><li><a href="global.html#addToWlambda">addToWlambda</a></li><li><a href="global.html#addToWorld">addToWorld</a></li><li><a href="global.html#addWheel">addWheel</a></li><li><a href="global.html#adjustCenterOfMass">adjustCenterOfMass</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html">appendArray</a></li><li><a href="global.html#applyDamping">applyDamping</a></li><li><a href="global.html#applyForce">applyForce</a></li><li><a href="global.html#applyForceLocal">applyForceLocal</a></li><li><a href="global.html#applyImpulse">applyImpulse</a></li><li><a href="global.html#applyImpulseLocal">applyImpulseLocal</a></li><li><a href="global.html">area</a></li><li><a href="global.html#at">at</a></li><li><a href="global.html#bfs">bfs</a></li><li><a href="global.html#bodiesAreOverlapping">bodiesAreOverlapping</a></li><li><a href="global.html#bodiesOverlap">bodiesOverlap</a></li><li><a href="global.html#boundingRadiusCheck">boundingRadiusCheck</a></li><li><a href="global.html#canCollide">canCollide</a></li><li><a href="global.html#canSee">canSee</a></li><li><a href="global.html#capsuleCapsule">capsuleCapsule</a></li><li><a href="global.html">centroid</a></li><li><a href="global.html#circleCapsule">circleCapsule</a></li><li><a href="global.html#circleCircle">circleCircle</a></li><li><a href="global.html#circleConvex">circleConvex</a></li><li><a href="global.html#circleHeightfield">circleHeightfield</a></li><li><a href="global.html#circleLine">circleLine</a></li><li><a href="global.html#circleParticle">circleParticle</a></li><li><a href="global.html#circlePlane">circlePlane</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html">clone</a></li><li><a href="global.html#collidedLastStep">collidedLastStep</a></li><li><a href="global.html#collinear">collinear</a></li><li><a href="global.html#computeAABB">computeAABB</a></li><li><a href="global.html#computeB">computeB</a></li><li><a href="global.html#computeGiMf">computeGiMf</a></li><li><a href="global.html#computeGiMGt">computeGiMGt</a></li><li><a href="global.html#computeGq">computeGq</a></li><li><a href="global.html#computeGW">computeGW</a></li><li><a href="global.html#computeGWlambda">computeGWlambda</a></li><li><a href="global.html#computeInvC">computeInvC</a></li><li><a href="global.html#computeMomentOfInertia">computeMomentOfInertia</a></li><li><a href="global.html#conputeMomentOfInertia">conputeMomentOfInertia</a></li><li><a href="global.html#containsPoint">containsPoint</a></li><li><a href="global.html#convexCapsule">convexCapsule</a></li><li><a href="global.html#convexConvex">convexConvex</a></li><li><a href="global.html#convexLine">convexLine</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createContactEquation">createContactEquation</a></li><li><a href="global.html#createFrictionEquation">createFrictionEquation</a></li><li><a href="global.html#createFrictionFromContact">createFrictionFromContact</a></li><li><a href="global.html">crossLength</a></li><li><a href="global.html">crossVZ</a></li><li><a href="global.html">crossZV</a></li><li><a href="global.html#decomp">decomp</a></li><li><a href="global.html">defaults</a></li><li><a href="global.html#destroy">destroy</a></li><li><a href="global.html#disableBodyCollision">disableBodyCollision</a></li><li><a href="global.html#disableMotor">disableMotor</a></li><li><a href="global.html">dist</a></li><li><a href="global.html">distance</a></li><li><a href="global.html">div</a></li><li><a href="global.html">divide</a></li><li><a href="global.html">dot</a></li><li><a href="global.html#emit">emit</a></li><li><a href="global.html#enableBodyCollision">enableBodyCollision</a></li><li><a href="global.html#enableMotor">enableMotor</a></li><li><a href="global.html">eq</a></li><li><a href="global.html">extend</a></li><li><a href="global.html">findSeparatingAxis</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#fromPolygon">fromPolygon</a></li><li><a href="global.html">fromValues</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAABB">getAABB</a></li><li><a href="global.html#getArea">getArea</a></li><li><a href="global.html#getBodies">getBodies</a></li><li><a href="global.html#getBodyById">getBodyById</a></li><li><a href="global.html#getByKey">getByKey</a></li><li><a href="global.html">getClosestEdge</a></li><li><a href="global.html#getCollisionPairs">getCollisionPairs</a></li><li><a href="global.html#getContactMaterial">getContactMaterial</a></li><li><a href="global.html#getCutEdges">getCutEdges</a></li><li><a href="global.html#getHitDistance">getHitDistance</a></li><li><a href="global.html#getHitPoint">getHitPoint</a></li><li><a href="global.html#getKey">getKey</a></li><li><a href="global.html#getLineSegment">getLineSegment</a></li><li><a href="global.html">getLineSegmentsIntersection</a></li><li><a href="global.html">getLineSegmentsIntersectionFraction</a></li><li><a href="global.html#getMaxForce">getMaxForce</a></li><li><a href="global.html#getMaxTorque">getMaxTorque</a></li><li><a href="global.html#getMotorSpeed">getMotorSpeed</a></li><li><a href="global.html#getSlipForce">getSlipForce</a></li><li><a href="global.html#getSpeed">getSpeed</a></li><li><a href="global.html">getUnvisitedNode</a></li><li><a href="global.html#getVelocityAtPoint">getVelocityAtPoint</a></li><li><a href="global.html#getWorldAnchorA">getWorldAnchorA</a></li><li><a href="global.html#getWorldAnchorB">getWorldAnchorB</a></li><li><a href="global.html#gmult">gmult</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#hasHit">hasHit</a></li><li><a href="global.html#hitTest">hitTest</a></li><li><a href="global.html#integrate">integrate</a></li><li><a href="global.html#intersectBodies">intersectBodies</a></li><li><a href="global.html#isReflex">isReflex</a></li><li><a href="global.html#isSimple">isSimple</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html">len</a></li><li><a href="global.html">length</a></li><li><a href="global.html">lerp</a></li><li><a href="global.html#lineBox">lineBox</a></li><li><a href="global.html#lineCapsule">lineCapsule</a></li><li><a href="global.html">lineInt</a></li><li><a href="global.html#lineLine">lineLine</a></li><li><a href="global.html#makeCCW">makeCCW</a></li><li><a href="global.html#motorIsEnabled">motorIsEnabled</a></li><li><a href="global.html">mul</a></li><li><a href="global.html">multiply</a></li><li><a href="global.html">negate</a></li><li><a href="global.html">normalize</a></li><li><a href="global.html#off">off</a></li><li><a href="global.html#on">on</a></li><li><a href="global.html#overlaps">overlaps</a></li><li><a href="global.html#overlapsRay">overlapsRay</a></li><li><a href="global.html#particleConvex">particleConvex</a></li><li><a href="global.html#particlePlane">particlePlane</a></li><li><a href="global.html#planeCapsule">planeCapsule</a></li><li><a href="global.html#planeConvex">planeConvex</a></li><li><a href="global.html#planeLine">planeLine</a></li><li><a href="global.html">projectConvexOntoAxis</a></li><li><a href="global.html">projectOntoAxis</a></li><li><a href="global.html#quickDecomp">quickDecomp</a></li><li><a href="global.html#raycast">raycast</a></li><li><a href="global.html">reflect</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#removeAllEquations">removeAllEquations</a></li><li><a href="global.html#removeBody">removeBody</a></li><li><a href="global.html#removeCollinearPoints">removeCollinearPoints</a></li><li><a href="global.html#removeConstraint">removeConstraint</a></li><li><a href="global.html#removeContactMaterial">removeContactMaterial</a></li><li><a href="global.html#removeEquation">removeEquation</a></li><li><a href="global.html#removeFromWorld">removeFromWorld</a></li><li><a href="global.html#removeShape">removeShape</a></li><li><a href="global.html#removeSpring">removeSpring</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html">rotate</a></li><li><a href="global.html">rotate90cw</a></li><li><a href="global.html#runNarrowphase">runNarrowphase</a></li><li><a href="global.html">scale</a></li><li><a href="global.html#segmentsIntersect">segmentsIntersect</a></li><li><a href="global.html">set</a></li><li><a href="global.html#setDensity">setDensity</a></li><li><a href="global.html#setForwardFriction">setForwardFriction</a></li><li><a href="global.html#setFromPoints">setFromPoints</a></li><li><a href="global.html#setGlobalRelaxation">setGlobalRelaxation</a></li><li><a href="global.html#setGlobalStiffness">setGlobalStiffness</a></li><li><a href="global.html#setLimits">setLimits</a></li><li><a href="global.html#setMaxForce">setMaxForce</a></li><li><a href="global.html#setMaxTorque">setMaxTorque</a></li><li><a href="global.html#setMotorSpeed">setMotorSpeed</a></li><li><a href="global.html#setOverlapping">setOverlapping</a></li><li><a href="global.html#setRatio">setRatio</a></li><li><a href="global.html#setRelaxation">setRelaxation</a></li><li><a href="global.html#setSideFriction">setSideFriction</a></li><li><a href="global.html#setSlipForce">setSlipForce</a></li><li><a href="global.html#setStiffness">setStiffness</a></li><li><a href="global.html#setWorld">setWorld</a></li><li><a href="global.html#setWorldAnchorA">setWorldAnchorA</a></li><li><a href="global.html#setWorldAnchorB">setWorldAnchorB</a></li><li><a href="global.html#setZeroForce">setZeroForce</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#sleepTick">sleepTick</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#solve">solve</a></li><li><a href="global.html#solveIsland">solveIsland</a></li><li><a href="global.html#sortAxisList">sortAxisList</a></li><li><a href="global.html#sortEquations">sortEquations</a></li><li><a href="global.html">splice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html">sqrDist</a></li><li><a href="global.html">sqrLen</a></li><li><a href="global.html">squaredDistance</a></li><li><a href="global.html">squaredLength</a></li><li><a href="global.html#step">step</a></li><li><a href="global.html#stop">stop</a></li><li><a href="global.html">str</a></li><li><a href="global.html">sub</a></li><li><a href="global.html">subtract</a></li><li><a href="global.html#tick">tick</a></li><li><a href="global.html#toGlobalFrame">toGlobalFrame</a></li><li><a href="global.html#toLocalFrame">toLocalFrame</a></li><li><a href="global.html#toWorldFrame">toWorldFrame</a></li><li><a href="global.html">triangleArea</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateAABB">updateAABB</a></li><li><a href="global.html#updateArea">updateArea</a></li><li><a href="global.html#updateBoundingRadius">updateBoundingRadius</a></li><li><a href="global.html#updateCenterOfMass">updateCenterOfMass</a></li><li><a href="global.html#updateMassProperties">updateMassProperties</a></li><li><a href="global.html#updateMaxMinValues">updateMaxMinValues</a></li><li><a href="global.html#updateTriangles">updateTriangles</a></li><li><a href="global.html#vectorToLocalFrame">vectorToLocalFrame</a></li><li><a href="global.html#vectorToWorldFrame">vectorToWorldFrame</a></li><li><a href="global.html#visit">visit</a></li><li><a href="global.html#wakeUp">wakeUp</a></li><li><a href="global.html#wantsToSleep">wantsToSleep</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Mar 22 2016 22:19:19 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
